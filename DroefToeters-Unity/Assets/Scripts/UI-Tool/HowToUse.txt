@@ -1,0 +1,70 @@
+# **UI Sequence System Setup: A Step-by-Step Guide**
+
+Below is a concise **step-by-step summary** of how to **set up** and **use** the entire system in Unity, including a **Unity Tool** (Editor Window). You can:
+
+- **Register scene-based panels** (no type mismatch).
+- **Optionally use prefabs** for future expansion.
+- **Build UI sequences** in the custom tool.
+- **Click a button** to open a step-by-step panel flow.
+
+---
+
+## **1. Scene Setup**
+
+1. **Create** a new empty `GameObject` in your scene named **`ScenePanelRegistry`**  
+   - Attach the `ScenePanelRegistry` script.  
+   - This script scans your scene for panels with `ScenePanelID`.
+
+2. **Add `ScenePanelID`** to Each Panel in the Scene  
+   - For each UI panel (e.g., `CenterPanel01`, `CenterPanel02`), add the `ScenePanelID` component.  
+   - Set a **unique** `panelID` (this exact string will be used in the editor if you choose `SceneObject` type).
+
+3. **Create** an empty `GameObject` named **`UIManager`** (or place it on your Main Camera if you prefer)  
+   - Attach the `UIManager` script.  
+   - Assign optional `Left`, `Right`, `Close` buttons in the Inspector (for Next/Previous/Close).
+
+4. **Create** an empty `GameObject` named **`UIButtonManager`**  
+   - Attach the `UIButtonHandler` script.  
+   - In the Inspector:
+     - Assign your `UISequenceDatabase` asset (which you'll create in a later step).
+     - Assign `uiParent` (usually your main `Canvas`) so that instantiated prefabs appear on-screen.
+
+5. **Optionally** Deactivate scene panels at start  
+   - Either **uncheck** them in the **Inspector** (so they begin inactive).
+   - Or modify `ScenePanelRegistry` to disable them in `Awake()`.
+
+---
+
+## **2. Create the UISequence Database Asset**
+
+1. In your **Project** window, right-click and choose:  
+   **`Create > UI > UISequence Database`**  
+2. Name it something like **`UISequenceDatabase.asset`**.  
+3. This ScriptableObject holds your **button-to-sequence data**.
+
+---
+
+## **3. Use the Custom Editor Tool**
+
+1. **Open** the **UI Sequence Editor** via:  
+   **`Tools > UI Sequence Editor`**  
+2. In the window:  
+   - Assign the **`UISequenceDatabase`** asset in the **Database** field.
+   - Enter a **Button Name** (the **name** of a `Button` GameObject in your scene).
+   - **Add Steps**:
+     - Select **Panel Type** → `SceneObject` or `Prefab`.
+     - If `SceneObject`, type the **`panelID`** that matches `ScenePanelID.panelID`.
+     - If `Prefab`, drag in a **Prefab** from your Project.  
+   - Click **`Save Sequence`** to store this data in the asset.
+
+---
+
+## **4. Connecting Buttons to Sequences Automatically**
+
+- **`UIButtonHandler`** scans **all** `Button` components in the scene at runtime.
+- If a button’s **name** matches the **`buttonName`** from the database, it assigns an onClick event:
+  ```csharp
+  button.onClick.AddListener(() => {
+      var panels = UISequenceResolver.ResolvePanels(panelData, uiParent);
+      UIManager.Instance.OpenPanelSequence(panels);
+  });

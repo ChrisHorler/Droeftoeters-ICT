@@ -25,12 +25,12 @@ jobs:
 
       - name: Build with dotnet
         run: | 
-            cd backend/droeftoeters-api
+            cd $GITHUB_WORKSPACE/backend/droeftoeters-api
             dotnet build --configuration Release
 
       - name: dotnet publish
         run: |
-            cd /backend/droeftoeters-api
+            cd $GITHUB_WORKSPACE/backend/droeftoeters-api
             dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job

@@ -174,26 +174,13 @@ public class ApiConnecter : MonoBehaviour
     }
 
 
-    public bool HandleLoginError(string response, string error, bool autoLogin, CanvasGroup loadingScreen = null, CanvasGroup contentPanel = null)
+    public bool HandleLoginError(string response, string error, bool autoLogin)
     {
         if (error == "HTTP/1.1 401 Unauthorized" || error == "Not logged in")
         {
             Debug.LogWarning("Login Session Illegal/Expired");
             if (autoLogin && error == "HTTP/1.1 401 Unauthorized" && MainManager.Instance.LoginResponse != null)
             {
-                if (loadingScreen != null && contentPanel != null)
-                {
-                    loadingScreen.alpha = 1f;
-                    contentPanel.alpha = 0f;
-                    contentPanel.interactable = false;
-                    loadingScreen.interactable = true;
-                    if (loadingScreen != null && loadingScreen.transform.childCount >= 2)
-                    {
-                        // Access the second child and get the TextMeshProUGUI component
-                        TextMeshProUGUI LoadingScreenTooltipLabel = loadingScreen.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-                        LoadingScreenTooltipLabel.text = "Trying to log back in automatically...";
-                    }
-                }
                 Debug.Log("Trying to refresh token");
                 StartCoroutine(SendAuthPostRequest(JsonConvert.SerializeObject(new { refreshToken = MainManager.Instance.LoginResponse.refreshToken }),"/account/refresh", 
                     (string response, string error) =>

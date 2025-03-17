@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf0c1cf30a347f7b1810f3a392bdfd9, type: 3}
+  m_Name: UISequenceDatabase
+  m_EditorClassIdentifier: 
+  sequences:
+  - buttonName: Panel01-Button
+    panelData:
+    - panelType: 0
+      scenePanelID: Panel01
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: Panel02
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: Panel03
+      prefab: {fileID: 0}
+  - buttonName: Panel02-Button
+    panelData:
+    - panelType: 0
+      scenePanelID: Panel01
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: Panel02
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: Panel03
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: Panel04
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: Panel05
+      prefab: {fileID: 0}
+  - buttonName: Panel03-Button
+    panelData:
+    - panelType: 0
+      scenePanelID: Panel01
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: Panel02
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: Panel03
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: Panel04
+      prefab: {fileID: 0}

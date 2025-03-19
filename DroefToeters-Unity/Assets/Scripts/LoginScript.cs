@@ -32,9 +32,11 @@ public class Validator
 public class LoginScript : MonoBehaviour
 {
     private string passwordValue = "";
+    private string secondPasswordValue = "";
     private string usernameValue = "";
     public TextMeshProUGUI errorMessageLabel;
     public TMP_InputField passwordField;
+    public TMP_InputField secondPasswordField;
     private ApiConnecter apiConnecter;
     public string defaultSceneAfterLogin = "SampleScene";
 
@@ -62,11 +64,34 @@ public class LoginScript : MonoBehaviour
             }
             else
             {
-                string filePath = "UserSettings/playerLogin.json";
-                if (System.IO.File.Exists(filePath))
+                StartCoroutine(apiConnecter.SendAuthPostRequest(JsonConvert.SerializeObject(new { refreshToken = MainManager.Instance.LoginResponse.refreshToken }), "/account/refresh",
+                (string response, string error) =>
                 {
-                    System.IO.File.Delete(filePath);
-                }
+                    if (error == null)
+                    {
+                        Debug.Log($"Trying to use new token: {response}");
+                        LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
+                        MainManager.Instance.SetLoginCredentials(decodedResponse);
+                        System.IO.File.WriteAllText("UserSettings/playerLogin.json", response);
+                        if (MainManager.Instance.NavigationScene != null && MainManager.Instance.NavigationScene != "")
+                        {
+                            SceneManager.LoadScene(MainManager.Instance.NavigationScene);
+                        }
+                        else
+                        {
+                            SceneManager.LoadScene(defaultSceneAfterLogin);
+                        }
+                    }
+                    else
+                    {
+                        string filePath = "UserSettings/playerLogin.json";
+                        if (System.IO.File.Exists(filePath))
+                        {
+                            System.IO.File.Delete(filePath);
+                        }
+                    }
+                }));
+                
             }
         }));
     }
@@ -96,6 +121,10 @@ public class LoginScript : MonoBehaviour
                 errorMessageLabel.text = "Password must have 1 lowercase, 1 uppercase, 1 number and 1 special character.";
                 return;
             }
+        } else if (secondPasswordField != null && passwordValue != secondPasswordValue)
+        {
+            errorMessageLabel.text = "The 2 Passwords are not the same.";
+            return;
         }
         string json = JsonConvert.SerializeObject(new { email = usernameValue, password = passwordValue }, Formatting.Indented);
         Debug.Log(json);
@@ -111,6 +140,12 @@ public class LoginScript : MonoBehaviour
                 passwordField.Select();
                 passwordField.text = "";
                 passwordValue = "";
+                if (secondPasswordField != null)
+                {
+                    secondPasswordField.Select();
+                    secondPasswordField.text = "";
+                    secondPasswordValue = "";
+                }
             }
             else
             {
@@ -160,9 +195,15 @@ public class LoginScript : MonoBehaviour
         }
     }
 
-    public void SetPasswordValue(string value)
+    public void SetPasswordValue(string value, bool secondPasswordField = false)
     {
-        passwordValue = value;
+        if (secondPasswordField)
+        {
+            secondPasswordValue = value;
+        } else
+        {
+            passwordValue = value;
+        }
     }
 
     public void SetTextColor(string colorText, TextMeshProUGUI element)

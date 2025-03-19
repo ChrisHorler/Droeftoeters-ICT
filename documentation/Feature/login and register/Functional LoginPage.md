@@ -10,10 +10,10 @@ tags:
 >Martijn will update this system soon, and so will the documentation. 
 
 contains:
-- canvas
+- **canvas**
 	- login elements like buttons and inputs
 	- loginPage script
-- MainManager
+- **MainManager**
 	- api connector script
 	- MainManager script
 	
@@ -23,9 +23,17 @@ Dit script hendelt de validatie van de invoer, het afhandelen van de login reque
 
 Bij startup checkt ie met `MainManager script` en `api connector script` of dat je bent ingelogd (hiervoor moet nog een endpoint komen op de api)
 
-ClickButton(string) is hoe de 2 buttons communiceren met de logica, Bij het invoer van "Register" wordt de invoer gebruikt om te registreren. Bij al het andere wordt er ingelogd.
+Als je niet bent ingelogd, haalt ie gelijk een nieuwe session token op als dat mogenlijk is waardoor je toch automatisch ingelogd wordt.
 
-SetPasswordValue(string) en SetUsernameValue(string) is hoe de invoer velden aangeven aan de logica wat de value is van de 2 velden, dit gebeurt bij de `on value changed` event van de input field.
+`ClickButton(string)` is hoe de 2 buttons communiceren met de logica, Bij het invoer van "Register" wordt de invoer gebruikt om te registreren. Bij al het andere wordt er ingelogd.
+
+`SetPasswordValue(string, int)` en `SetUsernameValue(string)` is hoe de invoer velden aangeven aan de logica wat de value is van de 2 velden, dit gebeurt bij de `on value changed` event van de input field.
+Bij de `SetPasswordValue(string, bool)` is de `bool` parameter alleen nodig als je formulier 2 wachtwoord velden heeft, hierbij moet de 2e wachtwoord veld `true` meegeven.
+
+Het loginpagescript heeft 3 public fields die je kan / moet assignen in unity:
+- `errorMessageLabel` is waar hij het error bericht op gaat plakken.
+- `passwordField` is het wachtwoord invoer veld.
+- `secondPasswordField` is optioneel, dit wordt gebruikt voor als je formulier 2 wachtwoord velden heeft.
 
 ## mainManager script
 
@@ -35,20 +43,20 @@ dit script zorgt ervoor dat data bewaard blijft als je switcht tussen scenes, hi
 
 `public string baseUrl = "";` voor de correcte api address.
 
-HandleResponse(string, string) is voor het testen van het afhandelen van je api request, dit logged de response van de api.
+`HandleResponse(string, string)` is voor het testen van het afhandelen van je api request, dit logged de response van de api.
 
-SendGetRequest(string, Action<string, string>) stuurt een GET
+`SendGetRequest(string, Action<string, string>)` stuurt een GET
 
-SendAuthGetRequest(string, Action<string, string>) stuurt een authorized GET met de hulp van het mainmanager script.
+`SendAuthGetRequest(string, Action<string, string>)` stuurt een authorized GET met de hulp van het mainmanager script.
 
-SendAuthDeleteRequest(string, Action<string, string>) stuurt een authorized DELETE met behulp van mainmanager script
+`SendAuthDeleteRequest(string, Action<string, string>)` stuurt een authorized DELETE met behulp van mainmanager script
 
-SendPostRequest(string, string, Action<string, string>) stuurt een POST, vergeet de body niet te serializen naar een string.
+`SendPostRequest(string, string, Action<string, string>)` stuurt een POST, vergeet de body niet te serializen naar een string.
 
-sentAuthPutRequest(string, string, Action<string, string>) stuurt een authorized PUT naar de api met behulp van de mainmanager script, vergeet niet het serializen van de body naar n string
+`sentAuthPutRequest(string, string, Action<string, string>)` stuurt een authorized PUT naar de api met behulp van de mainmanager script, vergeet niet het serializen van de body naar n string
 
-handleLoginError(string, string, bool) dit is een functie die je kan gebruiken om te checken of een error is omdat je niet meer bent ingelogd, en dat ie dan automatisch probeert in te loggen door je refresh token. 
+`handleLoginError(string, string, bool)` dit is een functie die je kan gebruiken om te checken of een error is omdat je niet meer bent ingelogd, en dat ie dan automatisch probeert in te loggen door je refresh token. 
 
-SendAuthPostRequest(string, Action<string, string>) stuurt een authorized POST met behulp van het mainmanagerscript, vergeet niet de body te serializen naar een string
+`SendAuthPostRequest(string, Action<string, string>)` stuurt een authorized POST met behulp van het mainmanagerscript, vergeet niet de body te serializen naar een string
 
  

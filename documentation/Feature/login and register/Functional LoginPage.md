@@ -1,4 +1,13 @@
-# functional login pagina
+---
+tags:
+  - author/martijn
+  - front-end
+  - back-end
+  - feature/login
+---
+>[!warning] IMPORTANT
+>
+>Martijn will update this system soon, and so will the documentation. 
 
 contains:
 - canvas

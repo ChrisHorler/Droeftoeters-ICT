@@ -7,12 +7,12 @@ builder.Services.AddAuthorization();
 builder.Services.AddIdentityApiEndpoints<IdentityUser>(options =>
     {
         options.User.RequireUniqueEmail = true;
-        options.Password.RequiredLength = 10;
+        options.Password.RequiredLength = 50;
     })
     .AddRoles<IdentityRole>()
     .AddDapperStores(options =>
     {
-        options.ConnectionString = builder.Configuration.GetConnectionString("azure");
+
     });
 
 builder.Services.AddControllers();

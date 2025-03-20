@@ -59,12 +59,15 @@ jobs:
 
       - name: Build
         run: dotnet build --no-restore
+        working-directory: backend/droeftoeters-api
 
       - name: Test
         run: dotnet test --no-build --verbosity normal
+        working-directory: backend/droeftoeters-api
 
       - name: Publish
         run: dotnet publish ./${{ secrets.WEBAPI_PROJECT_NAME }} --output ${{env.PUBLISH_DIRECTORY}} --configuration Release
+        working-directory: backend/droeftoeters-api
 
       - name: Publish Artifacts
         uses: actions/upload-artifact@v4

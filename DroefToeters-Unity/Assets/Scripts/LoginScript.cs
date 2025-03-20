@@ -64,34 +64,45 @@ public class LoginScript : MonoBehaviour
             }
             else
             {
-                StartCoroutine(apiConnecter.SendAuthPostRequest(JsonConvert.SerializeObject(new { refreshToken = MainManager.Instance.LoginResponse.refreshToken }), "/account/refresh",
-                (string response, string error) =>
+                if (MainManager.Instance.LoginResponse != null)
                 {
-                    if (error == null)
+                    StartCoroutine(apiConnecter.SendAuthPostRequest(JsonConvert.SerializeObject(new { refreshToken = MainManager.Instance.LoginResponse.refreshToken }), "/account/refresh",
+                    (string response, string error) =>
                     {
-                        Debug.Log($"Trying to use new token: {response}");
-                        LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
-                        MainManager.Instance.SetLoginCredentials(decodedResponse);
-                        System.IO.File.WriteAllText("UserSettings/playerLogin.json", response);
-                        if (MainManager.Instance.NavigationScene != null && MainManager.Instance.NavigationScene != "")
+                        if (error == null)
                         {
-                            SceneManager.LoadScene(MainManager.Instance.NavigationScene);
+                            Debug.Log($"Trying to use new token: {response}");
+                            LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
+                            MainManager.Instance.SetLoginCredentials(decodedResponse);
+                            System.IO.File.WriteAllText("UserSettings/playerLogin.json", response);
+                            if (MainManager.Instance.NavigationScene != null && MainManager.Instance.NavigationScene != "")
+                            {
+                                SceneManager.LoadScene(MainManager.Instance.NavigationScene);
+                            }
+                            else
+                            {
+                                SceneManager.LoadScene(defaultSceneAfterLogin);
+                            }
                         }
                         else
                         {
-                            SceneManager.LoadScene(defaultSceneAfterLogin);
+                            string filePath = "UserSettings/playerLogin.json";
+                            if (System.IO.File.Exists(filePath))
+                            {
+                                System.IO.File.Delete(filePath);
+                            }
                         }
-                    }
-                    else
+                    }));
+                }
+                else
+                {
+                    string filePath = "UserSettings/playerLogin.json";
+                    if (System.IO.File.Exists(filePath))
                     {
-                        string filePath = "UserSettings/playerLogin.json";
-                        if (System.IO.File.Exists(filePath))
-                        {
-                            System.IO.File.Delete(filePath);
-                        }
+                        System.IO.File.Delete(filePath);
                     }
-                }));
-                
+                }
+
             }
         }));
     }
@@ -121,7 +132,7 @@ public class LoginScript : MonoBehaviour
                 errorMessageLabel.text = "Password must have 1 lowercase, 1 uppercase, 1 number and 1 special character.";
                 return;
             }
-        } else if (secondPasswordField != null && passwordValue != secondPasswordValue)
+        } else if ((secondPasswordField != null || secondPasswordValue != "") && passwordValue != secondPasswordValue)
         {
             errorMessageLabel.text = "The 2 Passwords are not the same.";
             return;
@@ -195,15 +206,14 @@ public class LoginScript : MonoBehaviour
         }
     }
 
-    public void SetPasswordValue(string value, bool secondPasswordField = false)
+    public void SetPasswordValue(string value)
     {
-        if (secondPasswordField)
-        {
-            secondPasswordValue = value;
-        } else
-        {
-            passwordValue = value;
-        }
+        passwordValue = value;
+    }
+
+    public void SetSecondPasswordValue(string value)
+    {
+        secondPasswordValue = value;
     }
 
     public void SetTextColor(string colorText, TextMeshProUGUI element)

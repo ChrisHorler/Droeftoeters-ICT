@@ -27,8 +27,8 @@ Als je niet bent ingelogd, haalt ie gelijk een nieuwe session token op als dat m
 
 `ClickButton(string)` is hoe de 2 buttons communiceren met de logica, Bij het invoer van "Register" wordt de invoer gebruikt om te registreren. Bij al het andere wordt er ingelogd.
 
-`SetPasswordValue(string, int)` en `SetUsernameValue(string)` is hoe de invoer velden aangeven aan de logica wat de value is van de 2 velden, dit gebeurt bij de `on value changed` event van de input field.
-Bij de `SetPasswordValue(string, bool)` is de `bool` parameter alleen nodig als je formulier 2 wachtwoord velden heeft, hierbij moet de 2e wachtwoord veld `true` meegeven.
+`SetPasswordValue(string)` en `SetUsernameValue(string)` is hoe de invoer velden aangeven aan de logica wat de value is van de 2 velden, dit gebeurt bij de `on value changed` event van de input field.
+Als je een 2e password veld hebt, dan gebruik je `SetSecondPasswordValue(string)`, dit 2e wachtwoord veld is voor bij het registreren om te kijken of de wachtwoorden het zelfde zijn.
 
 Het loginpagescript heeft 3 public fields die je kan / moet assignen in unity:
 - `errorMessageLabel` is waar hij het error bericht op gaat plakken.

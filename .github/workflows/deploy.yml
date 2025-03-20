@@ -66,8 +66,7 @@ jobs:
         working-directory: backend/droeftoeters-api
 
       - name: Publish
-        run: dotnet publish ./${{ secrets.WEBAPI_PROJECT_NAME }} --output ${{env.PUBLISH_DIRECTORY}} --configuration Release
-        working-directory: backend/droeftoeters-api
+        run: dotnet publish ./backend/droeftoeters-api/${{ secrets.WEBAPI_PROJECT_NAME }} --output ${{env.PUBLISH_DIRECTORY}} --configuration Release
 
       - name: Publish Artifacts
         uses: actions/upload-artifact@v4

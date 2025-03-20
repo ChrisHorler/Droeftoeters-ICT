@@ -2,7 +2,7 @@ name: Build, Test and Deploy a .NET Core WebApi to Azure App Service
 
 env: # Change these settings when you need to
   ARTIFACT_NAME: WebApi
-  DOTNET_CORE_VERSION: 9.0.x
+  DOTNET_CORE_VERSION: 8.0.x
   PUBLISH_DIRECTORY: "./out/publish"
 on:
   push:

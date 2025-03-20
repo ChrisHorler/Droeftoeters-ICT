@@ -8,6 +8,14 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
+public enum HttpMethod
+{
+    POST,
+    PUT,
+    GET,
+    DELETE
+}
+
 public class LoginResponse
 {
     public string tokenType { get; set; }
@@ -18,6 +26,7 @@ public class LoginResponse
 public class ApiConnecter : MonoBehaviour
 {
     public string baseUrl = "";
+    public string defaultLoginScene = "TestFunctionalLogin";
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,140 +50,134 @@ public class ApiConnecter : MonoBehaviour
         }
     }
 
-    public IEnumerator SendGetRequest(string path, Action<string, string> callback)
+    public IEnumerator SendRequest(string path, HttpMethod protocol, bool authorized, Action<string, string> callback, string body = "", bool autoLogin = true)
     {
-        Debug.Log("Sent GET");
         string url = $"{baseUrl}/{path}";
-        using (UnityWebRequest request = UnityWebRequest.Get(url))
+        if (MainManager.Instance.LoginResponse == null && authorized)
         {
-            yield return request.SendWebRequest();
-
-            if (request.result == UnityWebRequest.Result.Success)
-                callback?.Invoke(request.downloadHandler.text, null);
-            else
-                callback?.Invoke(null, request.error);
+            callback?.Invoke(null, "Not logged in");
+        }
+        else
+        {
+            switch (protocol)
+            {
+                case HttpMethod.POST:
+                    using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
+                    {
+                        byte[] jsonToSend = Encoding.UTF8.GetBytes(body);
+                        request.uploadHandler = new UploadHandlerRaw(jsonToSend);
+                        request.downloadHandler = new DownloadHandlerBuffer();
+                        request.SetRequestHeader("Content-Type", "application/json");
+                        yield return ManageRequest(request, callback, authorized, autoLogin);
+                    }
+                    break;
+                case HttpMethod.PUT:
+                    using (UnityWebRequest request = UnityWebRequest.Put(url, body))
+                    {
+                        request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(body));
+                        request.downloadHandler = new DownloadHandlerBuffer();
+                        request.SetRequestHeader("Content-Type", "application/json");
+                    }
+                    break;
+                case HttpMethod.GET:
+                    using (UnityWebRequest request = UnityWebRequest.Get(url))
+                    {
+                        yield return ManageRequest(request, callback, authorized, autoLogin);
+                    }
+                    break;
+                case HttpMethod.DELETE:
+                    break;
+                default:
+                    using (UnityWebRequest request = UnityWebRequest.Get(url))
+                    {
+                        yield return ManageRequest(request, callback, authorized, autoLogin);
+                    }
+                    break;
+            }
         }
     }
 
-    public IEnumerator SendAuthGetRequest(string path, Action<string, string> callback)
+    private IEnumerator ManageRequest(UnityWebRequest request, Action<string, string> callback, bool authorized, bool autoLogin)
     {
-        Debug.Log("Sent Auth GET");
-        string url = $"{baseUrl}/{path}";
-        using (UnityWebRequest request = UnityWebRequest.Get(url))
+        if (authorized)
         {
-            if (MainManager.Instance.LoginResponse == null)
+            request.SetRequestHeader("Authorization", $"Bearer {MainManager.Instance.LoginResponse.accessToken}");
+        }
+        yield return request.SendWebRequest();
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            if (request.downloadHandler == null)
             {
-                callback?.Invoke(null, "Not logged in");
+                callback?.Invoke("", null);
+            }
+            else
+            {
+                callback?.Invoke(request.downloadHandler.text, null);
+            }
+        }
+        else
+        {
+            if (authorized)
+            {
+                if (!HandleLoginError(request.downloadHandler.text, GetErrorRequest(request, callback), true))
+                {
+                    Debug.LogError(GetErrorRequest(request, callback));
+                    // nothing to do here :3
+                } else
+                {
+                    Debug.LogError(GetErrorRequest(request, callback));
+                    callback?.Invoke(null, GetErrorRequest(request, callback));
+                }
             } else
             {
-                request.SetRequestHeader("Authorization", $"Bearer {MainManager.Instance.LoginResponse.accessToken}");
+                Debug.LogError(GetErrorRequest(request, callback));
+                callback?.Invoke(null, GetErrorRequest(request, callback));
+            }
+            
+        }
+    }
 
-                yield return request.SendWebRequest();
+    public string GetErrorRequest(UnityWebRequest request, Action<string, string> callback)
+    {
+        Debug.LogError(JsonConvert.SerializeObject(request));
 
-                if (request.result == UnityWebRequest.Result.Success)
+        if (request.downloadHandler != null && request.downloadHandler.text != null)
+        {
+            try
+            {
+                var jsonObject = JObject.Parse(request.downloadHandler.text);
+                if (jsonObject["errors"] != null)
                 {
-                    callback?.Invoke(request.downloadHandler.text, null);
+                    var firstError = jsonObject["errors"]
+                    .First
+                    .First[0]
+                    .ToString();
+
+                    return firstError;
                 }
                 else
                 {
-                    Debug.LogError(JsonConvert.SerializeObject(request));
-                    callback?.Invoke(null, request.error);
+                    return request.downloadHandler.text;
+                }
+            }
+            catch
+            {
+                if (request.downloadHandler.text != "")
+                {
+                    return request.downloadHandler.text;
+                } else
+                {
+                    return request.error;
                 }
             }
         }
-    }
-
-    public IEnumerator SendAuthDeleteRequest(string path, Action<string, string> callback)
-    {
-        Debug.Log("Sent Auth DELETE");
-        string url = $"{baseUrl}/{path}";
-        using (UnityWebRequest request = UnityWebRequest.Delete(url))
+        else
         {
-            if (MainManager.Instance.LoginResponse == null)
-            {
-                callback?.Invoke(null, "Not logged in");
-            }
-            else
-            {
-                request.SetRequestHeader("Authorization", $"Bearer {MainManager.Instance.LoginResponse.accessToken}");
-
-                yield return request.SendWebRequest();
-
-                if (request.result == UnityWebRequest.Result.Success)
-                {
-                    if (request.downloadHandler == null)
-                    {
-                        callback?.Invoke("", null);
-                    } else
-                    {
-                        callback?.Invoke(request.downloadHandler.text, null);
-                    }
-                    
-                }
-                else
-                {
-                    Debug.LogError(JsonConvert.SerializeObject(request.error));
-                    callback?.Invoke(null, request.error);
-                }
-            }
+            return request.error;
         }
     }
 
-
-    public IEnumerator SendPostRequest(string jsonData, string path, Action<string, string> callback)
-    {
-        Debug.Log("Sent POST");
-        string url = $"{baseUrl}/{path}";
-        using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
-        {
-            byte[] jsonToSend = Encoding.UTF8.GetBytes(jsonData);
-            request.uploadHandler = new UploadHandlerRaw(jsonToSend);
-            request.downloadHandler = new DownloadHandlerBuffer();
-            request.SetRequestHeader("Content-Type", "application/json");
-
-            yield return request.SendWebRequest();
-
-            if (request.result == UnityWebRequest.Result.Success)
-                callback?.Invoke(request.downloadHandler.text, null);
-            else
-                callback?.Invoke(null, request.error);
-        }
-    }
-
-    public IEnumerator SendAuthPutRequest(string jsonData, string path, Action<string, string> callback)
-    {
-        Debug.Log("Sent Auth PUT");
-        string url = $"{baseUrl}/{path}";
-        using (UnityWebRequest request = UnityWebRequest.Put(url, jsonData))
-        {
-            if (MainManager.Instance.LoginResponse == null)
-            {
-                callback?.Invoke(null, "Not logged in");
-            }
-            else
-            {
-                request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(jsonData));
-                request.downloadHandler = new DownloadHandlerBuffer();
-                request.SetRequestHeader("Content-Type", "application/json");
-                request.SetRequestHeader("Authorization", $"Bearer {MainManager.Instance.LoginResponse.accessToken}");
-
-                yield return request.SendWebRequest();
-
-                if (request.result == UnityWebRequest.Result.Success)
-                {
-                    callback?.Invoke(request.downloadHandler.text, null);
-                }
-                else
-                {
-                    Debug.LogError(JsonConvert.SerializeObject(request.error));
-                    callback?.Invoke(null, request.error);
-                }
-            }
-        }
-    }
-
-
-    public bool HandleLoginError(string response, string error, bool autoLogin)
+    private bool HandleLoginError(string response, string error, bool autoLogin)
     {
         if (error == "HTTP/1.1 401 Unauthorized" || error == "Not logged in")
         {
@@ -182,8 +185,7 @@ public class ApiConnecter : MonoBehaviour
             if (autoLogin && error == "HTTP/1.1 401 Unauthorized" && MainManager.Instance.LoginResponse != null)
             {
                 Debug.Log("Trying to refresh token");
-                StartCoroutine(SendAuthPostRequest(JsonConvert.SerializeObject(new { refreshToken = MainManager.Instance.LoginResponse.refreshToken }),"/account/refresh", 
-                    (string response, string error) =>
+                StartCoroutine(SendRequest("/account/refresh", HttpMethod.POST, true, (string response, string error) =>
                 {
                     if (error == null)
                     {
@@ -191,83 +193,24 @@ public class ApiConnecter : MonoBehaviour
                         LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
                         MainManager.Instance.SetLoginCredentials(decodedResponse);
                         System.IO.File.WriteAllText("UserSettings/playerLogin.json", response);
-                        SceneManager.LoadScene("LoginScene");
-                    } else
+                        SceneManager.LoadScene(defaultLoginScene);
+                    }
+                    else
                     {
                         Debug.LogError($"Not new sessiontoken: {error}");
-                        SceneManager.LoadScene("LoginScene");
+                        SceneManager.LoadScene(defaultLoginScene);
                     }
-                }));
-                return true;
-            } 
-            else
-            {
-                SceneManager.LoadScene("LoginScene");
+                },
+                JsonConvert.SerializeObject(new { refreshToken = MainManager.Instance.LoginResponse.refreshToken }), false));
                 return true;
             }
-            
+            else
+            {
+                SceneManager.LoadScene(defaultLoginScene);
+                return true;
+            }
+
         }
         return false;
-    }
-
-    public IEnumerator SendAuthPostRequest(string jsonData, string path, Action<string, string> callback)
-    {
-        Debug.Log("Sent Auth POST");
-        string url = $"{baseUrl}/{path}";
-        using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
-        {
-            if (MainManager.Instance.LoginResponse == null)
-            {
-                callback?.Invoke(null, "Not logged in");
-            }
-            else
-            {
-                byte[] jsonToSend = Encoding.UTF8.GetBytes(jsonData);
-                request.uploadHandler = new UploadHandlerRaw(jsonToSend);
-                request.downloadHandler = new DownloadHandlerBuffer();
-                request.SetRequestHeader("Content-Type", "application/json");
-
-                // Add Authorization header
-                request.SetRequestHeader("Authorization", $"Bearer {MainManager.Instance.LoginResponse.accessToken}");
-
-                yield return request.SendWebRequest();
-
-                if (request.result == UnityWebRequest.Result.Success)
-                {
-                    callback?.Invoke(request.downloadHandler.text, null);
-                }
-                else
-                {
-                    Debug.LogError(JsonConvert.SerializeObject(request));
-                    
-                    if (request.downloadHandler != null && request.downloadHandler.text != null)
-                    {
-                        try
-                        {
-                            var jsonObject = JObject.Parse(request.downloadHandler.text);
-                            if (jsonObject["errors"] != null)
-                            {
-                                var firstError = jsonObject["errors"]
-                                .First        
-                                .First[0]     
-                                .ToString();
-
-                                callback?.Invoke(null, firstError);
-                            } else
-                            {
-                                callback?.Invoke(null, request.downloadHandler.text);
-                            }
-
-                        } catch
-                        {
-                            callback?.Invoke(null, request.downloadHandler.text);
-                        }
-                    } else
-                    {
-                        callback?.Invoke(null, request.error);
-                    }
-                }
-            }
-        }
     }
 }

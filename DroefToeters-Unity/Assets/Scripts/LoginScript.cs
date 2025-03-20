@@ -50,14 +50,15 @@ public class LoginScript : MonoBehaviour
     IEnumerator DelayedRequest()
     {
         yield return new WaitForSeconds(1f);
-        StartCoroutine(apiConnecter.SendAuthGetRequest("account/checkAccessToken", (string response, string error) =>
+        StartCoroutine(apiConnecter.SendRequest("account/checkAccessToken", HttpMethod.GET, true, (string response, string error) =>
         {
             if (error == null)
             {
                 if (MainManager.Instance.NavigationScene != null && MainManager.Instance.NavigationScene != "")
                 {
                     SceneManager.LoadScene(MainManager.Instance.NavigationScene);
-                }else
+                }
+                else
                 {
                     SceneManager.LoadScene(defaultSceneAfterLogin);
                 }
@@ -66,8 +67,7 @@ public class LoginScript : MonoBehaviour
             {
                 if (MainManager.Instance.LoginResponse != null)
                 {
-                    StartCoroutine(apiConnecter.SendAuthPostRequest(JsonConvert.SerializeObject(new { refreshToken = MainManager.Instance.LoginResponse.refreshToken }), "/account/refresh",
-                    (string response, string error) =>
+                    StartCoroutine(apiConnecter.SendRequest("account/checkAccessToken", HttpMethod.POST, true, (string response, string error) =>
                     {
                         if (error == null)
                         {
@@ -92,7 +92,9 @@ public class LoginScript : MonoBehaviour
                                 System.IO.File.Delete(filePath);
                             }
                         }
-                    }));
+                    },
+                    JsonConvert.SerializeObject(new { refreshToken = MainManager.Instance.LoginResponse.refreshToken })
+                    ));
                 }
                 else
                 {
@@ -132,14 +134,15 @@ public class LoginScript : MonoBehaviour
                 errorMessageLabel.text = "Password must have 1 lowercase, 1 uppercase, 1 number and 1 special character.";
                 return;
             }
-        } else if ((secondPasswordField != null || secondPasswordValue != "") && passwordValue != secondPasswordValue)
+        }
+        else if ((secondPasswordField != null || secondPasswordValue != "") && passwordValue != secondPasswordValue)
         {
             errorMessageLabel.text = "The 2 Passwords are not the same.";
             return;
         }
         string json = JsonConvert.SerializeObject(new { email = usernameValue, password = passwordValue }, Formatting.Indented);
         Debug.Log(json);
-        StartCoroutine(apiConnecter.SendPostRequest(json, "account/register", (string response, string error) =>
+        StartCoroutine(apiConnecter.SendRequest("account/register", HttpMethod.POST, false, (string response, string error) =>
         {
             SetTextColor("#FFFFFF", errorMessageLabel);
             errorMessageLabel.text = "Connecting...";
@@ -164,7 +167,8 @@ public class LoginScript : MonoBehaviour
                 errorMessageLabel.text = "Username already taken.";
                 Debug.LogError(error);
             }
-        }));
+        },
+        json, false));
     }
 
     private void LoginUser()
@@ -173,7 +177,7 @@ public class LoginScript : MonoBehaviour
         errorMessageLabel.text = "Connecting...";
         string json = JsonConvert.SerializeObject(new { email = usernameValue, password = passwordValue }, Formatting.Indented);
         Debug.Log(json);
-        StartCoroutine(apiConnecter.SendPostRequest(json, "account/login", (string response, string error) =>
+        StartCoroutine(apiConnecter.SendRequest("account/login", HttpMethod.POST, false, (string response, string error) =>
         {
             if (error == null)
             {
@@ -189,7 +193,8 @@ public class LoginScript : MonoBehaviour
                 SetTextColor("#FF0000", errorMessageLabel);
                 errorMessageLabel.text = "Invalid username & password combination.";
             }
-        }));
+        },
+        json, false));
     }
 
     public void ClickButton(string registerOrLogin)

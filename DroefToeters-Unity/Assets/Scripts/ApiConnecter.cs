@@ -50,6 +50,16 @@ public class ApiConnecter : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The method that connects the frontend with the backend.
+    /// </summary>
+    /// <param name="path">The path that you put behind the baseurl of the api.</param>
+    /// <param name="protocol">POST GET PUT or DELETE</param>
+    /// <param name="authorized">wether you need to be logged in for this endpoint or not.</param>
+    /// <param name="callback">the method that will get called with the result of the api request.</param>
+    /// <param name="body">the body that you provide for an PUT and POST request. JSON string.</param>
+    /// <param name="autoLogin">whether we send the user to the login page if we get an unauthorized error. If enabled it will try to auto login the user again.</param>
+    /// <returns></returns>
     public IEnumerator SendRequest(string path, HttpMethod protocol, bool authorized, Action<string, string> callback, string body = "", bool autoLogin = true)
     {
         string url = $"{baseUrl}/{path}";
@@ -192,7 +202,7 @@ public class ApiConnecter : MonoBehaviour
                         Debug.Log($"Trying to use new token: {response}");
                         LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
                         MainManager.Instance.SetLoginCredentials(decodedResponse);
-                        System.IO.File.WriteAllText("UserSettings/playerLogin.json", response);
+                        System.IO.File.WriteAllText(MainManager.Instance.LoginDataSaveLocation, response);
                         SceneManager.LoadScene(defaultLoginScene);
                     }
                     else

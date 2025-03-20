@@ -74,7 +74,7 @@ public class LoginScript : MonoBehaviour
                             Debug.Log($"Trying to use new token: {response}");
                             LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
                             MainManager.Instance.SetLoginCredentials(decodedResponse);
-                            System.IO.File.WriteAllText("UserSettings/playerLogin.json", response);
+                            System.IO.File.WriteAllText(MainManager.Instance.LoginDataSaveLocation, response);
                             if (MainManager.Instance.NavigationScene != null && MainManager.Instance.NavigationScene != "")
                             {
                                 SceneManager.LoadScene(MainManager.Instance.NavigationScene);
@@ -86,7 +86,7 @@ public class LoginScript : MonoBehaviour
                         }
                         else
                         {
-                            string filePath = "UserSettings/playerLogin.json";
+                            string filePath = MainManager.Instance.LoginDataSaveLocation;
                             if (System.IO.File.Exists(filePath))
                             {
                                 System.IO.File.Delete(filePath);
@@ -98,7 +98,7 @@ public class LoginScript : MonoBehaviour
                 }
                 else
                 {
-                    string filePath = "UserSettings/playerLogin.json";
+                    string filePath = MainManager.Instance.LoginDataSaveLocation;
                     if (System.IO.File.Exists(filePath))
                     {
                         System.IO.File.Delete(filePath);
@@ -186,7 +186,7 @@ public class LoginScript : MonoBehaviour
                 SceneManager.LoadScene(defaultSceneAfterLogin);
                 LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
                 MainManager.Instance.SetLoginCredentials(decodedResponse);
-                System.IO.File.WriteAllText("UserSettings/playerLogin.json", response);
+                System.IO.File.WriteAllText(MainManager.Instance.LoginDataSaveLocation, response);
             }
             else
             {

@@ -1,73 +1,94 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
+name: Build, Test and Deploy a .NET Core WebApi to Azure App Service
 
-name: Build and deploy ASP.Net Core app to Azure Web App - avansict2227807
-
+env: # Change these settings when you need to
+  ARTIFACT_NAME: WebApi
+  DOTNET_CORE_VERSION: 8.0.x
+  PUBLISH_DIRECTORY: "./backend/droeftoeters-api/out/publish"
 on:
   push:
     branches:
       - develop
+  
+  # Allows you to run this workflow manually from the Actions tab.
   workflow_dispatch:
 
 jobs:
-  build:
+  check: # checking if the secrets exist (src: https://stackoverflow.com/questions/72925899/github-actions-detect-if-secret-exists)
     runs-on: ubuntu-latest
-    permissions:
-      contents: read #This is required for actions/checkout
-
     steps:
-      - uses: actions/checkout@v4
+      - name: "Check if AZURE_WEBAPP_NAME secret exists"
+        env:
+          super_secret: ${{ secrets.AZURE_WEBAPP_NAME }}
+        if: ${{ env.super_secret == '' }}
+        run: 'echo "echo the secret \"AZURE_WEBAPP_NAME\" has not been made; echo please go to \"settings \> Actions secrets and variables \> actions\" to create it"; exit 1;'
 
-      - name: Set up .NET Core
+      - name: "Check if AZURE_WEBAPP_PUBLISH_PASSWORD secret exists"
+        env:
+          super_secret: ${{ secrets.AZURE_WEBAPP_PUBLISH_PASSWORD }}
+        if: ${{ env.super_secret == '' }}
+        run: 'echo "echo the secret \"AZURE_WEBAPP_PUBLISH_PASSWORD\" has not been made; echo please go to \"settings \> Actions secrets and variables \> actions \" to create it"; exit 1;'
+
+      - name: "Check if AZURE_WEBAPP_PUBLISH_USERNAME secret exists"
+        env:
+          super_secret: ${{ secrets.AZURE_WEBAPP_PUBLISH_USERNAME }}
+        if: ${{ env.super_secret == '' }}
+        run: 'echo "echo the secret \"AZURE_WEBAPP_PUBLISH_USERNAME\" has not been made; echo please go to \"settings \> Actions secrets and variables \> actions\" to create it"; exit 1;'
+
+      - name: "Check if WEBAPI_PROJECT_NAME secret exists"
+        env:
+          super_secret: ${{ secrets.WEBAPI_PROJECT_NAME }}
+        if: ${{ env.super_secret == '' }}
+        run: 'echo "echo the secret \"WEBAPI_PROJECT_NAME\" has not been made; echo please go to \"settings \> Actions secrets and variables \> actions\" to create it"; exit 1;'
+  
+  build:
+
+    runs-on: ubuntu-latest
+    needs: check
+    steps:
+
+      - uses: actions/checkout@v4
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0'
+          dotnet-version: ${{env.DOTNET_CORE_VERSION}}
 
-      - name: Build with dotnet
-        run: | 
-            cd $GITHUB_WORKSPACE/backend/droeftoeters-api
-            dotnet build --configuration Release
+      - name: Restore dependencies
+        run: dotnet restore 
+        working-directory: backend/droeftoeters-api
 
-      - name: dotnet publish
-        run: |
-            cd $GITHUB_WORKSPACE/backend/droeftoeters-api
-            dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      - name: Build
+        run: dotnet build --no-restore
+        working-directory: backend/droeftoeters-api
 
-      - name: Upload artifact for deployment job
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
+        working-directory: backend/droeftoeters-api
+
+      - name: Publish
+        run: dotnet publish ./backend/droeftoeters-api/${{ secrets.WEBAPI_PROJECT_NAME }} --output ${{env.PUBLISH_DIRECTORY}} --configuration Release
+
+      - name: Publish Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          name: ${{ env.ARTIFACT_NAME }}
+          path: ${{ env.PUBLISH_DIRECTORY}}
+      
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read #This is required for actions/checkout
-
+    needs: [check, build]
     steps:
+
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: .net-app
+          name: ${{ env.ARTIFACT_NAME }}
+          path: ${{ env.PUBLISH_DIRECTORY}}
       
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A83C8F010F2E4ED283CCFE1E13194982 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_589A13A8D0054F929694B6BF32135898 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_3DFCC8C12D324F45ABFBC98F2555DEED }}
-
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
+      # Deploy to Azure Web apps
+      - name: 'Deploy to Azure App Service'
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'avansict2227807'
-          slot-name: 'Production'
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: <publishData><publishProfile profileName="${{secrets.AZURE_WEBAPP_NAME}} - Zip Deploy" publishMethod="ZipDeploy" publishUrl="${{ secrets.AZURE_WEBAPP_NAME }}.scm.azurewebsites.net:443" userName="${{ secrets.AZURE_WEBAPP_PUBLISH_USERNAME }}" userPWD="${{ secrets.AZURE_WEBAPP_PUBLISH_PASSWORD }}" destinationAppUrl="http://${{ secrets.AZURE_WEBAPP_NAME }}.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="https://portal.azure.com" webSystem="WebSites"><databases /></publishProfile></publishData>
-          package: .
-          
+          package: '${{ env.PUBLISH_DIRECTORY}}'

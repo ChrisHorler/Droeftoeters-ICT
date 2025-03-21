@@ -127,7 +127,7 @@ public class ApiConnecter : MonoBehaviour
         }
         else
         {
-            if (authorized)
+            if (authorized && autoLogin)
             {
                 if (!HandleLoginError(request.downloadHandler.text, GetErrorRequest(request, callback), true))
                 {

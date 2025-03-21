@@ -51,7 +51,7 @@ public class LoginScript : MonoBehaviour
     void Start()
     {
         apiConnecter = FindFirstObjectByType<ApiConnecter>();
-        //StartCoroutine(DelayedRequest());
+        StartCoroutine(DelayedRequest());
     }
 
     IEnumerator DelayedRequest()

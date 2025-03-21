@@ -149,8 +149,6 @@ public class ApiConnecter : MonoBehaviour
 
     public string GetErrorRequest(UnityWebRequest request, Action<string, string> callback)
     {
-        Debug.LogError(JsonConvert.SerializeObject(request));
-
         if (request.downloadHandler != null && request.downloadHandler.text != null)
         {
             try

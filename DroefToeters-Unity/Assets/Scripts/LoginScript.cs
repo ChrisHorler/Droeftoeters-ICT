@@ -32,11 +32,20 @@ public class Validator
 public class LoginScript : MonoBehaviour
 {
     private string passwordValue = "";
+    private string secondPasswordValue = "";
     private string usernameValue = "";
-    public TextMeshProUGUI errorMessageLabel;
-    public TMP_InputField passwordField;
+    public TextMeshProUGUI parentRegisterErrorMessageLabel;
+    public TMP_InputField parentRegisterUsernameField;
+    public TMP_InputField parentRegisterPasswordField;
+    public TMP_InputField parentRegisterSecondPasswordField;
+    public TextMeshProUGUI parentLoginErrorMessageLabel;
+    public TMP_InputField parentLoginUsernameField;
+    public TMP_InputField parentLoginPasswordField;
+    public TextMeshProUGUI childLoginErrorMessageLabel;
+    public TMP_InputField childLoginUsernameField;
+    public TMP_InputField childLoginPasswordField;
     private ApiConnecter apiConnecter;
-    public string defaultSceneAfterLogin = "SampleScene";
+    public string defaulSceneAfterLogin = "SampleScene";
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -48,27 +57,63 @@ public class LoginScript : MonoBehaviour
     IEnumerator DelayedRequest()
     {
         yield return new WaitForSeconds(1f);
-        StartCoroutine(apiConnecter.SendAuthGetRequest("account/checkAccessToken", (string response, string error) =>
+        StartCoroutine(apiConnecter.SendRequest("account/checkAccessToken", HttpMethod.GET, true, (string response, string error) =>
         {
             if (error == null)
             {
                 if (MainManager.Instance.NavigationScene != null && MainManager.Instance.NavigationScene != "")
                 {
                     SceneManager.LoadScene(MainManager.Instance.NavigationScene);
-                }else
+                }
+                else
                 {
-                    SceneManager.LoadScene(defaultSceneAfterLogin);
+                    SceneManager.LoadScene(defaulSceneAfterLogin);
                 }
             }
             else
             {
-                string filePath = "UserSettings/playerLogin.json";
-                if (System.IO.File.Exists(filePath))
+                if (MainManager.Instance.LoginResponse != null)
                 {
-                    System.IO.File.Delete(filePath);
+                    StartCoroutine(apiConnecter.SendRequest("account/checkAccessToken", HttpMethod.POST, true, (string response, string error) =>
+                    {
+                        if (error == null)
+                        {
+                            Debug.Log($"Trying to use new token: {response}");
+                            LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
+                            MainManager.Instance.SetLoginCredentials(decodedResponse);
+                            System.IO.File.WriteAllText(MainManager.Instance.LoginDataSaveLocation, response);
+                            if (MainManager.Instance.NavigationScene != null && MainManager.Instance.NavigationScene != "")
+                            {
+                                SceneManager.LoadScene(MainManager.Instance.NavigationScene);
+                            }
+                            else
+                            {
+                                SceneManager.LoadScene(defaulSceneAfterLogin);
+                            }
+                        }
+                        else
+                        {
+                            string filePath = MainManager.Instance.LoginDataSaveLocation;
+                            if (System.IO.File.Exists(filePath))
+                            {
+                                System.IO.File.Delete(filePath);
+                            }
+                        }
+                    },
+                    JsonConvert.SerializeObject(new { refreshToken = MainManager.Instance.LoginResponse.refreshToken }),
+                    false));
                 }
+                else
+                {
+                    string filePath = MainManager.Instance.LoginDataSaveLocation;
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath);
+                    }
+                }
+
             }
-        }));
+        }, "", false));
     }
 
     // Update is called once per frame
@@ -77,86 +122,139 @@ public class LoginScript : MonoBehaviour
 
     }
 
+    private void SetErrorMessages(string text)
+    {
+        parentRegisterErrorMessageLabel.text = text;
+        parentLoginErrorMessageLabel.text = text;
+        childLoginErrorMessageLabel.text = text;
+    }
+
     private void RegisterUser()
     {
         if (!Validator.IsValidEmail(usernameValue))
         {
-            errorMessageLabel.text = "Invalid MailAddress";
+            SetErrorMessages("Invalid MailAddress");
             return;
         }
         else if (!Validator.IsValidPassword(passwordValue))
         {
             if (passwordValue.Length < 10)
             {
-                errorMessageLabel.text = "Password must be 10+ characters";
+                SetErrorMessages("Password must be 10+ characters");
                 return;
             }
             else
             {
-                errorMessageLabel.text = "Password must have 1 lowercase, 1 uppercase, 1 number and 1 special character.";
+                SetErrorMessages("Password must have 1 lowercase, 1 uppercase, 1 number and 1 special character.");
                 return;
             }
         }
+        else if ((parentRegisterSecondPasswordField != null || secondPasswordValue != "") && passwordValue != secondPasswordValue)
+        {
+            SetErrorMessages("The 2 Passwords are not the same.");
+            return;
+        }
         string json = JsonConvert.SerializeObject(new { email = usernameValue, password = passwordValue }, Formatting.Indented);
         Debug.Log(json);
-        StartCoroutine(apiConnecter.SendPostRequest(json, "account/register", (string response, string error) =>
+        StartCoroutine(apiConnecter.SendRequest("account/register", HttpMethod.POST, false, (string response, string error) =>
         {
-            SetTextColor("#FFFFFF", errorMessageLabel);
-            errorMessageLabel.text = "Connecting...";
+            SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+            SetErrorMessages("Connecting...");
             if (error == null)
             {
                 Debug.Log("Response: " + response);
-                SetTextColor("#FFFFFF", errorMessageLabel);
-                errorMessageLabel.text = "Account Created! Re-enter password to Login.";
-                passwordField.Select();
-                passwordField.text = "";
+                SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+                SetErrorMessages("Account Created! You are now able to login!");
+                parentRegisterPasswordField.Select();
+                parentRegisterPasswordField.text = "";
                 passwordValue = "";
+                if (parentRegisterSecondPasswordField != null)
+                {
+                    parentRegisterSecondPasswordField.Select();
+                    parentRegisterSecondPasswordField.text = "";
+                    secondPasswordValue = "";
+                }
             }
             else
             {
-                SetTextColor("#FF0000", errorMessageLabel);
-                errorMessageLabel.text = "Username already taken.";
+                SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+                SetErrorMessages("Username already taken.");
                 Debug.LogError(error);
             }
-        }));
+        },
+        json, false));
     }
 
     private void LoginUser()
     {
-        SetTextColor("#FFFFFF", errorMessageLabel);
-        errorMessageLabel.text = "Connecting...";
+        SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+        SetErrorMessages("Connecting...");
         string json = JsonConvert.SerializeObject(new { email = usernameValue, password = passwordValue }, Formatting.Indented);
         Debug.Log(json);
-        StartCoroutine(apiConnecter.SendPostRequest(json, "account/login", (string response, string error) =>
+        StartCoroutine(apiConnecter.SendRequest("account/login", HttpMethod.POST, false, (string response, string error) =>
         {
             if (error == null)
             {
-                errorMessageLabel.text = "";
+                SetErrorMessages("");
                 Debug.Log("Response: " + response);
-                SceneManager.LoadScene(defaultSceneAfterLogin);
+                SceneManager.LoadScene(defaulSceneAfterLogin);
                 LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
                 MainManager.Instance.SetLoginCredentials(decodedResponse);
-                System.IO.File.WriteAllText("UserSettings/playerLogin.json", response);
+                System.IO.File.WriteAllText(MainManager.Instance.LoginDataSaveLocation, response);
             }
             else
             {
-                SetTextColor("#FF0000", errorMessageLabel);
-                errorMessageLabel.text = "Invalid username & password combination.";
+                SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+                SetErrorMessages("Invalid username & password combination.");
             }
-        }));
+        },
+        json, false));
+    }
+
+    public void EmptyLoginFormFields()
+    {
+        parentRegisterPasswordField.Select();
+        parentRegisterPasswordField.text = "";
+        passwordValue = "";
+        parentRegisterUsernameField.Select();
+        parentRegisterUsernameField.text = "";
+        usernameValue = "";
+        if (parentRegisterSecondPasswordField != null)
+        {
+            parentRegisterSecondPasswordField.Select();
+            parentRegisterSecondPasswordField.text = "";
+            secondPasswordValue = "";
+        }
+        childLoginPasswordField.Select();
+        childLoginPasswordField.text = "";
+        parentLoginUsernameField.Select();
+        parentLoginUsernameField.text = "";
+        parentLoginPasswordField.Select();
+        parentLoginPasswordField.text = "";
+        childLoginUsernameField.Select();
+        childLoginUsernameField.text = "";
+        SetErrorMessages("");
+        SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
     }
 
     public void ClickButton(string registerOrLogin)
     {
-        errorMessageLabel.text = "";
-        SetTextColor("#FF0000", errorMessageLabel);
-        if (registerOrLogin == "Register")
+        SetErrorMessages("");
+        SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+        if (registerOrLogin == "ParentRegister")
         {
             RegisterUser();
         }
-        else
+        else if (registerOrLogin == "ParentLogin")
         {
             LoginUser();
+        } else if (registerOrLogin == "ChildLogin")
+        {
+            LoginUser();
+        }
+        else
+        {
+            Debug.LogError($"'{registerOrLogin}' is not a valid formButtonId, use 'ParentRegister', 'ParentLogin' or 'ChildLogin' instead.");
         }
     }
 
@@ -165,12 +263,19 @@ public class LoginScript : MonoBehaviour
         passwordValue = value;
     }
 
-    public void SetTextColor(string colorText, TextMeshProUGUI element)
+    public void SetSecondPasswordValue(string value)
+    {
+        secondPasswordValue = value;
+    }
+
+    public void SetTextColor(string colorText, TextMeshProUGUI element, TextMeshProUGUI element2, TextMeshProUGUI element3)
     {
         Color color;
         if (ColorUtility.TryParseHtmlString(colorText, out color))
         {
             element.color = color;
+            element2.color = color;
+            element3.color = color;
         }
         else
         {

@@ -7,6 +7,7 @@ public class MainManager : MonoBehaviour
     public static MainManager Instance;
     public LoginResponse LoginResponse; 
     public string NavigationScene; // the scene to go back to after login
+    public string LoginDataSaveLocation = "UserSettings/playerLogin.json";
 
     private void Awake()
     {
@@ -29,7 +30,7 @@ public class MainManager : MonoBehaviour
 
     private void Start()
     {
-        string filePath = "UserSettings/playerLogin.json";
+        string filePath = LoginDataSaveLocation;
         if (System.IO.File.Exists(filePath))
         {
             string jsonString = System.IO.File.ReadAllText(filePath);

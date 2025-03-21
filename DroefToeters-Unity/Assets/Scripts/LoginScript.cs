@@ -34,17 +34,25 @@ public class LoginScript : MonoBehaviour
     private string passwordValue = "";
     private string secondPasswordValue = "";
     private string usernameValue = "";
-    public TextMeshProUGUI errorMessageLabel;
-    public TMP_InputField passwordField;
-    public TMP_InputField secondPasswordField;
+    public TextMeshProUGUI parentRegisterErrorMessageLabel;
+    public TMP_InputField parentRegisterUsernameField;
+    public TMP_InputField parentRegisterPasswordField;
+    public TMP_InputField parentRegisterSecondPasswordField;
+    public TextMeshProUGUI parentLoginErrorMessageLabel;
+    public TMP_InputField parentLoginUsernameField;
+    public TMP_InputField parentLoginPasswordField;
+    public TextMeshProUGUI childLoginErrorMessageLabel;
+    public TMP_InputField childLoginUsernameField;
+    public TMP_InputField childLoginPasswordField;
     private ApiConnecter apiConnecter;
-    public string defaultSceneAfterLogin = "SampleScene";
+    public string defaultParentSceneAfterLogin = "SampleScene";
+    public string defaultChildSceneAfterLogin = "SampleScene";
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         apiConnecter = FindFirstObjectByType<ApiConnecter>();
-        StartCoroutine(DelayedRequest());
+        //StartCoroutine(DelayedRequest());
     }
 
     IEnumerator DelayedRequest()
@@ -60,7 +68,7 @@ public class LoginScript : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene(defaultSceneAfterLogin);
+                    SceneManager.LoadScene(defaultParentSceneAfterLogin);
                 }
             }
             else
@@ -81,7 +89,7 @@ public class LoginScript : MonoBehaviour
                             }
                             else
                             {
-                                SceneManager.LoadScene(defaultSceneAfterLogin);
+                                SceneManager.LoadScene(defaultParentSceneAfterLogin);
                             }
                         }
                         else
@@ -115,56 +123,63 @@ public class LoginScript : MonoBehaviour
 
     }
 
+    private void SetErrorMessages(string text)
+    {
+        parentRegisterErrorMessageLabel.text = text;
+        parentLoginErrorMessageLabel.text = text;
+        childLoginErrorMessageLabel.text = text;
+    }
+
     private void RegisterUser()
     {
         if (!Validator.IsValidEmail(usernameValue))
         {
-            errorMessageLabel.text = "Invalid MailAddress";
+            SetErrorMessages("Invalid MailAddress");
             return;
         }
         else if (!Validator.IsValidPassword(passwordValue))
         {
             if (passwordValue.Length < 10)
             {
-                errorMessageLabel.text = "Password must be 10+ characters";
+                SetErrorMessages("Password must be 10+ characters");
                 return;
             }
             else
             {
-                errorMessageLabel.text = "Password must have 1 lowercase, 1 uppercase, 1 number and 1 special character.";
+                SetErrorMessages("Password must have 1 lowercase, 1 uppercase, 1 number and 1 special character.");
                 return;
             }
         }
-        else if ((secondPasswordField != null || secondPasswordValue != "") && passwordValue != secondPasswordValue)
+        else if ((parentRegisterSecondPasswordField != null || secondPasswordValue != "") && passwordValue != secondPasswordValue)
         {
-            errorMessageLabel.text = "The 2 Passwords are not the same.";
+            SetErrorMessages("The 2 Passwords are not the same.");
             return;
         }
         string json = JsonConvert.SerializeObject(new { email = usernameValue, password = passwordValue }, Formatting.Indented);
         Debug.Log(json);
         StartCoroutine(apiConnecter.SendRequest("account/register", HttpMethod.POST, false, (string response, string error) =>
         {
-            SetTextColor("#FFFFFF", errorMessageLabel);
-            errorMessageLabel.text = "Connecting...";
+            SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+            SetErrorMessages("Connecting...");
             if (error == null)
             {
                 Debug.Log("Response: " + response);
-                SetTextColor("#FFFFFF", errorMessageLabel);
-                errorMessageLabel.text = "Account Created! Re-enter password to Login.";
-                passwordField.Select();
-                passwordField.text = "";
+                SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+                SetErrorMessages("Account Created! You are now able to login!");
+                parentRegisterPasswordField.Select();
+                parentRegisterPasswordField.text = "";
                 passwordValue = "";
-                if (secondPasswordField != null)
+                if (parentRegisterSecondPasswordField != null)
                 {
-                    secondPasswordField.Select();
-                    secondPasswordField.text = "";
+                    parentRegisterSecondPasswordField.Select();
+                    parentRegisterSecondPasswordField.text = "";
                     secondPasswordValue = "";
                 }
             }
             else
             {
-                SetTextColor("#FF0000", errorMessageLabel);
-                errorMessageLabel.text = "Username already taken.";
+                SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+                SetErrorMessages("Username already taken.");
                 Debug.LogError(error);
             }
         },
@@ -173,41 +188,75 @@ public class LoginScript : MonoBehaviour
 
     private void LoginUser()
     {
-        SetTextColor("#FFFFFF", errorMessageLabel);
-        errorMessageLabel.text = "Connecting...";
+        SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+        SetErrorMessages("Connecting...");
         string json = JsonConvert.SerializeObject(new { email = usernameValue, password = passwordValue }, Formatting.Indented);
         Debug.Log(json);
         StartCoroutine(apiConnecter.SendRequest("account/login", HttpMethod.POST, false, (string response, string error) =>
         {
             if (error == null)
             {
-                errorMessageLabel.text = "";
+                SetErrorMessages("");
                 Debug.Log("Response: " + response);
-                SceneManager.LoadScene(defaultSceneAfterLogin);
+                SceneManager.LoadScene(defaultParentSceneAfterLogin);
                 LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
                 MainManager.Instance.SetLoginCredentials(decodedResponse);
                 System.IO.File.WriteAllText(MainManager.Instance.LoginDataSaveLocation, response);
             }
             else
             {
-                SetTextColor("#FF0000", errorMessageLabel);
-                errorMessageLabel.text = "Invalid username & password combination.";
+                SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+                SetErrorMessages("Invalid username & password combination.");
             }
         },
         json, false));
     }
 
+    public void EmptyLoginFormFields()
+    {
+        parentRegisterPasswordField.Select();
+        parentRegisterPasswordField.text = "";
+        passwordValue = "";
+        parentRegisterUsernameField.Select();
+        parentRegisterUsernameField.text = "";
+        usernameValue = "";
+        if (parentRegisterSecondPasswordField != null)
+        {
+            parentRegisterSecondPasswordField.Select();
+            parentRegisterSecondPasswordField.text = "";
+            secondPasswordValue = "";
+        }
+        childLoginPasswordField.Select();
+        childLoginPasswordField.text = "";
+        parentLoginUsernameField.Select();
+        parentLoginUsernameField.text = "";
+        parentLoginPasswordField.Select();
+        parentLoginPasswordField.text = "";
+        childLoginUsernameField.Select();
+        childLoginUsernameField.text = "";
+        SetErrorMessages("");
+        SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+    }
+
     public void ClickButton(string registerOrLogin)
     {
-        errorMessageLabel.text = "";
-        SetTextColor("#FF0000", errorMessageLabel);
-        if (registerOrLogin == "Register")
+        SetErrorMessages("");
+        SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+        if (registerOrLogin == "ParentRegister")
         {
             RegisterUser();
         }
-        else
+        else if (registerOrLogin == "ParentLogin")
         {
             LoginUser();
+        } else if (registerOrLogin == "ChildLogin")
+        {
+            LoginUser();
+
+        }
+        else
+        {
+            Debug.LogError($"'{registerOrLogin}' is not a valid formButtonId, use 'ParentRegister', 'ParentLogin' or 'ChildLogin' instead.");
         }
     }
 
@@ -221,12 +270,14 @@ public class LoginScript : MonoBehaviour
         secondPasswordValue = value;
     }
 
-    public void SetTextColor(string colorText, TextMeshProUGUI element)
+    public void SetTextColor(string colorText, TextMeshProUGUI element, TextMeshProUGUI element2, TextMeshProUGUI element3)
     {
         Color color;
         if (ColorUtility.TryParseHtmlString(colorText, out color))
         {
             element.color = color;
+            element2.color = color;
+            element3.color = color;
         }
         else
         {

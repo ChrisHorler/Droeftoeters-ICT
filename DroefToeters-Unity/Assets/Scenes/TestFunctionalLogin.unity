@@ -505,10 +505,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1938e791c8ce8854ab898de0d100bffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  errorMessageLabel: {fileID: 2094586447}
-  passwordField: {fileID: 660973867}
-  secondPasswordField: {fileID: 393201997}
-  defaultSceneAfterLogin: SampleScene
+  parentRegisterErrorMessageLabel: {fileID: 2094586447}
+  parentRegisterUsernameField: {fileID: 1384376343}
+  parentRegisterPasswordField: {fileID: 660973867}
+  parentRegisterSecondPasswordField: {fileID: 393201997}
+  parentLoginErrorMessageLabel: {fileID: 2094586447}
+  parentLoginUsernameField: {fileID: 1384376343}
+  parentLoginPasswordField: {fileID: 660973867}
+  childLoginErrorMessageLabel: {fileID: 2094586447}
+  childLoginUsernameField: {fileID: 1384376343}
+  childLoginPasswordField: {fileID: 660973867}
+  defaulSceneAfterLogin: SampleScene
 --- !u!114 &293964180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1342,7 +1349,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Login
+          m_StringArgument: ParentLogin
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &743057535
@@ -1663,7 +1670,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Register
+          m_StringArgument: ParentRegister
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1233005727

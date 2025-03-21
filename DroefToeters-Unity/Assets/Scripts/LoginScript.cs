@@ -251,7 +251,6 @@ public class LoginScript : MonoBehaviour
         } else if (registerOrLogin == "ChildLogin")
         {
             LoginUser();
-
         }
         else
         {

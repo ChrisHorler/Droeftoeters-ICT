@@ -93,8 +93,8 @@ public class LoginScript : MonoBehaviour
                             }
                         }
                     },
-                    JsonConvert.SerializeObject(new { refreshToken = MainManager.Instance.LoginResponse.refreshToken })
-                    ));
+                    JsonConvert.SerializeObject(new { refreshToken = MainManager.Instance.LoginResponse.refreshToken }),
+                    false));
                 }
                 else
                 {
@@ -106,7 +106,7 @@ public class LoginScript : MonoBehaviour
                 }
 
             }
-        }));
+        }, "", false));
     }
 
     // Update is called once per frame

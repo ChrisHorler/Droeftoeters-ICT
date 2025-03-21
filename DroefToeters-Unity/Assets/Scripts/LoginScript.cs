@@ -45,8 +45,7 @@ public class LoginScript : MonoBehaviour
     public TMP_InputField childLoginUsernameField;
     public TMP_InputField childLoginPasswordField;
     private ApiConnecter apiConnecter;
-    public string defaultParentSceneAfterLogin = "SampleScene";
-    public string defaultChildSceneAfterLogin = "SampleScene";
+    public string defaulSceneAfterLogin = "SampleScene";
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -68,7 +67,7 @@ public class LoginScript : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene(defaultParentSceneAfterLogin);
+                    SceneManager.LoadScene(defaulSceneAfterLogin);
                 }
             }
             else
@@ -89,7 +88,7 @@ public class LoginScript : MonoBehaviour
                             }
                             else
                             {
-                                SceneManager.LoadScene(defaultParentSceneAfterLogin);
+                                SceneManager.LoadScene(defaulSceneAfterLogin);
                             }
                         }
                         else
@@ -198,7 +197,7 @@ public class LoginScript : MonoBehaviour
             {
                 SetErrorMessages("");
                 Debug.Log("Response: " + response);
-                SceneManager.LoadScene(defaultParentSceneAfterLogin);
+                SceneManager.LoadScene(defaulSceneAfterLogin);
                 LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
                 MainManager.Instance.SetLoginCredentials(decodedResponse);
                 System.IO.File.WriteAllText(MainManager.Instance.LoginDataSaveLocation, response);

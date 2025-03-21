@@ -27,20 +27,39 @@ Bij startup checkt ie met `MainManager script` en `api connector script` of dat 
 
 Als je niet bent ingelogd, haalt ie gelijk een nieuwe session token op als dat mogenlijk is waardoor je toch automatisch ingelogd wordt.
 
-`ClickButton(string)` is hoe de 2 buttons communiceren met de logica, Bij het invoer van "Register" wordt de invoer gebruikt om te registreren. Bij al het andere wordt er ingelogd.
+`ClickButton(string)` is hoe de buttons communiceren met de logica, Vul 1 van de volgende waarden in:
+- `ParentRegister`
+- `ParentLogin`
+- `ChildLogin`
+
+Als je iets anders invult wordt er een error gelogd wanneer je klikt op de knop.
 
 `SetPasswordValue(string)` en `SetUsernameValue(string)` is hoe de invoer velden aangeven aan de logica wat de value is van de 2 velden, dit gebeurt bij de `on value changed` event van de input field.
 Als je een 2e password veld hebt, dan gebruik je `SetSecondPasswordValue(string)`, dit 2e wachtwoord veld is voor bij het registreren om te kijken of de wachtwoorden het zelfde zijn.
 
-Het loginpagescript heeft 3 public fields die je kan / moet assignen in unity:
-- `errorMessageLabel` is waar hij het error bericht op gaat plakken.
-- `passwordField` is het wachtwoord invoer veld.
-- `secondPasswordField` is optioneel, dit wordt gebruikt voor als je formulier 2 wachtwoord velden heeft.
+Het loginpagescript heeft 11 public fields die je kan / moet assignen in unity:
+- `parentRegisterErrorMessageLabel` en `parentLoginErrorMessageLabel` en `childLoginErrorMessageLabel` is waar hij het error bericht op gaat plakken.
+- `parentRegisterUsernameField` en `parentLoginUsernameField` en `childLoginUsernameField` is het username invoer veld.
+- `parentRegisterPasswordField` en `parentLoginPasswordField` en `childLoginPasswordField` is het wachtwoord invoer veld.
+- `parentRegisterSecondPasswordField` is optioneel, dit wordt gebruikt voor als je registratie formulier 2 wachtwoord velden heeft. 
+- `defaulSceneAfterLogin` is de scene die geopend wordt wanneer je bent ingelogd.
+
+Als je je afvraagt waarom er zoveel fields zijn, en ik dit niet via methods doe: Unity is fucked. :/
+
+Verder hebben we nog de volgende method:
+
+```cs
+EmptyLoginFormFields() {}
+```
+
+Deze method moet gebruikt worden wanneer je switcht tussen de login, register en parent/child forms.
 
 ## MainManager Class
 
 dit script zorgt ervoor dat data bewaard blijft als je switcht tussen scenes, hiervan bestaat er max 1. Dit wordt nu gebruikt zodat je vanaf elke scene een AUTH request kan sturen naar de api.
 Verder haalt dit ook de login credentials op aan het begin uit je bestanden, en onthoudt hij die gegevens.
+
+`LoginDataSaveLocation` is het pad waar de login van de user wordt opgeslagen.
 
 ## ApiConnecter Class
 

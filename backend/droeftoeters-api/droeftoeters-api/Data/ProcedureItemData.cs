@@ -1,0 +1,71 @@
+﻿using droeftoeters_api.Interfaces;
+using droeftoeters_api.Models;
+
+namespace droeftoeters_api.Data;
+
+public class ProcedureItemData : IProcedureItemData
+{
+    private const string TABLE = "ProcedureItems";
+    private readonly IDataService _dataService;
+    
+    public ProcedureItemData(IDataService dataService)
+    {
+        _dataService = dataService;
+    }
+
+    public IEnumerable<ProcedureItem> ReadAll()
+    {
+        string query = @$"SELECT * FROM {TABLE}";
+        var result = _dataService.QuerySql<ProcedureItem>(query);
+        return result;
+    }
+
+    public ProcedureItem Read(string id)
+    {
+        string query = @$"SELECT * FROM {TABLE} WHERE `Id` is @Id";
+        var result = _dataService.QueryFirstSql<ProcedureItem>(query, id);
+        return result;
+    }
+
+    public bool Write(ProcedureItem procedureItem)
+    {
+        string query = @$"INSERT INTO {TABLE}
+(Id, ProcedureId, Title, Description, PreviousItemId, NextItemId)
+VALUES(@Id, @ProcedureId, @Title, @Description, @PreviousItemId, @NextItemId)";
+        var result = _dataService.ExecuteSql(query, procedureItem);
+        
+        if (!result) throw new("Writing procedure item to table resulted in nothing happening");
+        
+        return result;
+    }
+
+    public bool Update(ProcedureItem procedureItem)
+    {
+        string query = @$"UPDATE {TABLE}
+SET
+ProcedureId = @ProcedureId, 
+Title = @Title, 
+Description = @Description, 
+PreviousItemId = @PreviousItemId, 
+NextItemId = @NextItemId
+WHERE `Id` = @Id";
+        var result = _dataService.ExecuteSql(query, procedureItem);
+        
+        if (!result) throw new("Updating procedure item to table resulted in nothing happening");
+        
+        return result;
+    }
+
+    public bool Delete(string id)
+    {
+        string query =
+            $@"DELETE FROM {TABLE}
+where `Id` = @Id";
+
+        var result = _dataService.ExecuteSql(query, new { Id = id });
+        
+        if (!result) throw new("Deleting procedure item from table resulted in nothing happening");
+
+        return result;
+    }
+}

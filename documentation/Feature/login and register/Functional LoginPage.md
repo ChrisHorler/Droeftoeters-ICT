@@ -5,9 +5,12 @@ tags:
   - back-end
   - feature/login
 ---
->[!warning] IMPORTANT
->
->Martijn will update this system soon, and so will the documentation. 
+## Theory
+
+The login page is simple by concept, but there is more underwater, I made a flowchart canvas to show the flow. this way you could debug it if something needs to change.
+
+![[Login Flowchart.canvas|Login Flow]]
+## code etc
 
 In deze scene ziet het er zo ongeveer uit:
 - **canvas**
@@ -19,7 +22,7 @@ In deze scene ziet het er zo ongeveer uit:
 
 Hier is de uitleg van de classes/scripts:
 
-## LoginScript Class
+### LoginScript Class
 
 Dit script hendelt de validatie van de invoer, het afhandelen van de login request, en register request.
 
@@ -54,14 +57,14 @@ EmptyLoginFormFields() {}
 
 Deze method moet gebruikt worden wanneer je switcht tussen de login, register en parent/child forms.
 
-## MainManager Class
+### MainManager Class
 
 dit script zorgt ervoor dat data bewaard blijft als je switcht tussen scenes, hiervan bestaat er max 1. Dit wordt nu gebruikt zodat je vanaf elke scene een AUTH request kan sturen naar de api.
 Verder haalt dit ook de login credentials op aan het begin uit je bestanden, en onthoudt hij die gegevens.
 
 `LoginDataSaveLocation` is het pad waar de login van de user wordt opgeslagen.
 
-## ApiConnecter Class
+### ApiConnecter Class
 
 `public string baseUrl = "";` voor de correcte api address.
 `public string defaultLoginScene = "TestFunctionalLogin";` is om aan te geven welke scene de login scene is.
@@ -99,10 +102,10 @@ verder heeft deze classe ook nog een `HandleResponse(string, string)` om te logg
 
 Verder zijn er nog meer methods die onderwater aangeroepen worden door `SendRequest()`, maar die zijn allemaal private.
 
-## Support Classes Etc
+### Support Classes Etc
 
 Here are a few support classes I created for helping with the main logic. 
-### LoginResponse
+#### LoginResponse
 
 ```cs
 public class LoginResponse
@@ -119,7 +122,7 @@ It is initiated in `ApiConnecter.cs`.
 
 It is used so that we can save the login session, re-authenticate etc. This has all the data we need to restart the session.
 
-### HttpMethod ENUM
+#### HttpMethod ENUM
 
 ```cs
 public enum HttpMethod
@@ -134,7 +137,7 @@ public enum HttpMethod
 This is used in the `ApiConnecter.SendRequest()`, it is initiated in `ApiConnector.cs`.
 The use is to differentiate between the request you want to send.
 
-### Validator
+#### Validator
 
 ```cs
 public class Validator

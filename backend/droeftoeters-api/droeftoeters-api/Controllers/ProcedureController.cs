@@ -1,3 +1,4 @@
+using droeftoeters_api.Data;
 using droeftoeters_api.Interfaces;
 using droeftoeters_api.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -37,6 +38,7 @@ namespace droeftoeters_api.Controllers
             try
             {
                 if(!Guid.TryParse(id, out _)) throw new($"Id not valid guid: {id}");
+                //TODO: check if id exists
                 return Ok(_procedureData.Read(id));
             }
             catch (Exception e)
@@ -54,6 +56,8 @@ namespace droeftoeters_api.Controllers
                 //Validate guid
                 if(!Guid.TryParse(procedure.Id, out _)) throw new("Invalid guid supplied");
                 
+                //TODO: check if procedure doesnt exist
+                
                 return Ok(_procedureData.Write(procedure));
             }
             catch (Exception e)
@@ -62,12 +66,35 @@ namespace droeftoeters_api.Controllers
                 return BadRequest();
             }
         }   
-    
+        
+        [HttpPut]
+        public IActionResult Update([FromBody] Procedure procedure)
+        {
+            try
+            {
+                //Validate guid
+                if(!Guid.TryParse(procedure.Id, out _)) throw new("Invalid guid supplied");
+                
+                //TODO: check if procedure exists
+                
+                return Ok(_procedureData.Update(procedure));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message + "\n" + e.InnerException);
+                return BadRequest();
+            }
+        }  
+        
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
             try
             {
+                //Validate guid
+                if(!Guid.TryParse(id, out _)) throw new("Invalid guid supplied");
+                
+                //TODO: check if id exists
                 return Ok(_procedureData.Delete(id));
             }
             catch (Exception e)
@@ -82,6 +109,7 @@ namespace droeftoeters_api.Controllers
         {
             try
             {
+                //TODO: check if procedure exists
                 return Ok(_procedureData.AddProcedureItem(procedureItem));
             }
             catch (Exception e)
@@ -96,6 +124,7 @@ namespace droeftoeters_api.Controllers
         {
             try
             {
+                //TODO: check if procedure item id exists
                 return Ok(_procedureData.RemoveProcedureItem(id));
             }
             catch (Exception e)

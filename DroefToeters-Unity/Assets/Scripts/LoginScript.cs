@@ -74,7 +74,7 @@ public class LoginScript : MonoBehaviour
             {
                 if (MainManager.Instance.LoginResponse != null)
                 {
-                    StartCoroutine(apiConnecter.SendRequest("account/checkAccessToken", HttpMethod.POST, true, (string response, string error) =>
+                    StartCoroutine(apiConnecter.SendRequest("account/refresh", HttpMethod.POST, true, (string response, string error) =>
                     {
                         if (error == null)
                         {

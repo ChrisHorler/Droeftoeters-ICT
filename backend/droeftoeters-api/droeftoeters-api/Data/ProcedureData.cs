@@ -24,8 +24,9 @@ public class ProcedureData : IProcedureData
 
     public Procedure Read(string id)
     {
-        string query = @$"SELECT * FROM {TABLE} WHERE `Id` is @Id";
-        var result = _dataService.QueryFirstSql<Procedure>(query, id);
+        var guidId = Guid.Parse(id);
+        string query = @$"SELECT * FROM {TABLE} WHERE [Id] = @Id";
+        var result = _dataService.QueryFirstSql<Procedure>(query, new {Id = guidId});
         return result;
     }
 
@@ -41,14 +42,14 @@ VALUES(@Id, @Title, @Description)";
         return result;
     }
 
-    public bool Update(Procedure procedureItem)
+    public bool Update(Procedure procedure)
     {
         string query = @$"UPDATE {TABLE}
 SET
 Title = @Title, 
 Description = @Description
-WHERE `Id` = @Id";
-        var result = _dataService.ExecuteSql(query, procedureItem);
+WHERE [Id] = @Id";
+        var result = _dataService.ExecuteSql(query, procedure);
         
         if (!result) throw new("Updating procedure to table resulted in nothing happening");
         
@@ -59,7 +60,7 @@ WHERE `Id` = @Id";
     {
         string query =
             $@"DELETE FROM {TABLE}
-where `Id` = @Id";
+where [Id] = @Id";
 
         var result = _dataService.ExecuteSql(query, new { Id = id });
         

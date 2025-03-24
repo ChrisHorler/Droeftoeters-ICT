@@ -22,7 +22,7 @@ public class ProcedureItemData : IProcedureItemData
 
     public ProcedureItem Read(string id)
     {
-        string query = @$"SELECT * FROM {TABLE} WHERE `Id` is @Id";
+        string query = @$"SELECT * FROM {TABLE} WHERE [Id] is @Id";
         var result = _dataService.QueryFirstSql<ProcedureItem>(query, id);
         return result;
     }
@@ -48,7 +48,7 @@ Title = @Title,
 Description = @Description, 
 PreviousItemId = @PreviousItemId, 
 NextItemId = @NextItemId
-WHERE `Id` = @Id";
+WHERE [Id] = @Id";
         var result = _dataService.ExecuteSql(query, procedureItem);
         
         if (!result) throw new("Updating procedure item to table resulted in nothing happening");
@@ -60,7 +60,7 @@ WHERE `Id` = @Id";
     {
         string query =
             $@"DELETE FROM {TABLE}
-where `Id` = @Id";
+where [Id] = @Id";
 
         var result = _dataService.ExecuteSql(query, new { Id = id });
         

@@ -38,6 +38,7 @@ namespace droeftoeters_api.Controllers
             try
             {
                 if(!Guid.TryParse(id, out _)) throw new($"Id not valid guid: {id}");
+                //TODO: check if id exists
                 return Ok(_procedureItemData.Read(id));
             }
             catch (Exception e)
@@ -55,9 +56,28 @@ namespace droeftoeters_api.Controllers
                 //Validate guid
                 if(!Guid.TryParse(procedureItem.Id, out _)) throw new("Invalid guid supplied");
                 
-                //TODO: implement duplicate name checking
+                //TODO: check if id or name exists
                 
                 return Ok(_procedureItemData.Write(procedureItem));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message + "\n" + e.InnerException);
+                return BadRequest();
+            }
+        }          
+        
+        [HttpPut]
+        public IActionResult update([FromBody] ProcedureItem procedureItem)
+        {
+            try
+            {
+                //Validate guid
+                if(!Guid.TryParse(procedureItem.Id, out _)) throw new("Invalid guid supplied");
+                
+                //TODO: check if procedure item exists
+                
+                return Ok(_procedureItemData.Update(procedureItem));
             }
             catch (Exception e)
             {
@@ -71,6 +91,7 @@ namespace droeftoeters_api.Controllers
         {
             try
             {
+                //TODO: check if id exists
                 return Ok(_procedureItemData.Delete(id));
             }
             catch (Exception e)

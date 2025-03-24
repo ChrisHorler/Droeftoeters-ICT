@@ -6,7 +6,7 @@ namespace droeftoeters_api.Interfaces;
 public class SqlDataService : IDataService
 {
     private readonly IConfiguration _config;
-    private const string CONN = "azure";
+    private const string CONN = "local";
     public SqlDataService(IConfiguration config)
     {
         _config = config;

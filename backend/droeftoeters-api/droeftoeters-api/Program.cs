@@ -23,7 +23,7 @@ builder.Services.AddIdentityApiEndpoints<IdentityUser>(options =>
     .AddRoles<IdentityRole>()
     .AddDapperStores(options =>
     {
-        options.ConnectionString = Environment.GetEnvironmentVariable("ENVIRONMENT_VARIABLE_SQL") ?? builder.Configuration.GetConnectionString("azure");
+        options.ConnectionString = Environment.GetEnvironmentVariable("ENVIRONMENT_VARIABLE_SQL") ?? builder.Configuration.GetConnectionString("local");
     });
 
 builder.Services.AddControllers();

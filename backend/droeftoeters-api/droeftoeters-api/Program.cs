@@ -32,8 +32,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
 // these 2 endpoints could be merged
 app.MapGroup("/account").MapIdentityApi<IdentityUser>();
 app.MapGet("/account/checkAccessToken", [Authorize] () => Results.Content("{\"authorized\": true}", "application/json"));

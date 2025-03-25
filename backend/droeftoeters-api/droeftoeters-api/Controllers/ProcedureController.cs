@@ -1,6 +1,5 @@
-using droeftoeters_api.Data;
 using droeftoeters_api.Interfaces;
-using droeftoeters_api.Models;
+using droeftoeters_api.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace droeftoeters_api.Controllers

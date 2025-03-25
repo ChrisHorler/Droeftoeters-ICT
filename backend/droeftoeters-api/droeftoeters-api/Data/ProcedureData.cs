@@ -1,5 +1,5 @@
 ﻿using droeftoeters_api.Interfaces;
-using droeftoeters_api.Models;
+using droeftoeters_api.DataModels;
 
 namespace droeftoeters_api.Data;
 

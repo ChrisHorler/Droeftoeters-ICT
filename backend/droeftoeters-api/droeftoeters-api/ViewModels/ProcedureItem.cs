@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace droeftoeters_api.Models;
+namespace droeftoeters_api.ViewModels;
 
 public class ProcedureItem
 {

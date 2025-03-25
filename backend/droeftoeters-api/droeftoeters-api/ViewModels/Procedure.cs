@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using droeftoeters_api.Data;
 using Newtonsoft.Json;
 
-namespace droeftoeters_api.Models;
+namespace droeftoeters_api.ViewModels;
 
 public class Procedure
 {

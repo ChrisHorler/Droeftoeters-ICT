@@ -1,8 +1,8 @@
-﻿using droeftoeters_api.DataModels;
+﻿using droeftoeters_api.ViewModels;
 
 namespace droeftoeters_api.Interfaces;
 
-public interface IProcedureItemData : IRepositoryObject<ProcedureItem>
+public interface IProcedureItemData : IDatabaseObject<ProcedureItem>
 {
     
 }

@@ -1,5 +1,5 @@
 ﻿using droeftoeters_api.Interfaces;
-using droeftoeters_api.DataModels;
+using droeftoeters_api.ViewModels;
 
 namespace droeftoeters_api.Data;
 
@@ -24,9 +24,8 @@ public class ProcedureData : IProcedureData
 
     public Procedure Read(string id)
     {
-        var guidId = Guid.Parse(id);
         string query = @$"SELECT * FROM {TABLE} WHERE [Id] = @Id";
-        var result = _dataService.QueryFirstSql<Procedure>(query, new {Id = guidId});
+        var result = _dataService.QueryFirstSql<Procedure>(query, new {Id = id});
         return result;
     }
 

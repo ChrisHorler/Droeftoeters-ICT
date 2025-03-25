@@ -8,12 +8,12 @@ namespace droeftoeters_api.Controllers
     [ApiController]
     public class ProcedureController : ControllerBase
     {
-        private readonly IProcedureService _procedureService;
+        private readonly IProcedureData _procedureData;
         private readonly ILogger<ProcedureController> _logger;
 
-        public ProcedureController(IProcedureService procedureService, ILogger<ProcedureController> logger)
+        public ProcedureController(IProcedureData procedureData, ILogger<ProcedureController> logger)
         {
-            _procedureService = procedureService;
+            _procedureData = procedureData;
             _logger = logger;
         }
         
@@ -22,7 +22,7 @@ namespace droeftoeters_api.Controllers
         {
             try
             {
-                return Ok(_procedureService.ReadAll());
+                return Ok(_procedureData.ReadAll());
             }
             catch (Exception e)
             {
@@ -38,7 +38,7 @@ namespace droeftoeters_api.Controllers
             {
                 if(!Guid.TryParse(id, out _)) throw new($"Id not valid guid: {id}");
                 //TODO: check if id exists
-                return Ok(_procedureService.Read(id));
+                return Ok(_procedureData.Read(id));
             }
             catch (Exception e)
             {
@@ -57,7 +57,7 @@ namespace droeftoeters_api.Controllers
                 
                 //TODO: check if procedure doesnt exist
                 
-                return Ok(_procedureService.Write(procedure));
+                return Ok(_procedureData.Write(procedure));
             }
             catch (Exception e)
             {
@@ -76,7 +76,7 @@ namespace droeftoeters_api.Controllers
                 
                 //TODO: check if procedure exists
                 
-                return Ok(_procedureService.Update(procedure));
+                return Ok(_procedureData.Update(procedure));
             }
             catch (Exception e)
             {
@@ -94,7 +94,7 @@ namespace droeftoeters_api.Controllers
                 if(!Guid.TryParse(id, out _)) throw new("Invalid guid supplied");
                 
                 //TODO: check if id exists
-                return Ok(_procedureService.Delete(id));
+                return Ok(_procedureData.Delete(id));
             }
             catch (Exception e)
             {
@@ -109,7 +109,7 @@ namespace droeftoeters_api.Controllers
             try
             {
                 //TODO: check if procedure exists
-                return Ok(_procedureService.AddProcedureItem(procedureItem));
+                return Ok(_procedureData.AddProcedureItem(procedureItem));
             }
             catch (Exception e)
             {
@@ -124,7 +124,7 @@ namespace droeftoeters_api.Controllers
             try
             {
                 //TODO: check if procedure item id exists
-                return Ok(_procedureService.RemoveProcedureItem(id));
+                return Ok(_procedureData.RemoveProcedureItem(id));
             }
             catch (Exception e)
             {

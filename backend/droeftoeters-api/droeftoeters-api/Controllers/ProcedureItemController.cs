@@ -8,12 +8,12 @@ namespace droeftoeters_api.Controllers
     [ApiController]
     public class ProcedureItemController : ControllerBase
     {
-        private readonly IProcedureItemService _procedureItemService;
+        private readonly IProcedureItemData _procedureItemData;
         private readonly ILogger<ProcedureItemController> _logger;
 
-        public ProcedureItemController(IProcedureItemService procedureItemService, ILogger<ProcedureItemController> logger)
+        public ProcedureItemController(IProcedureItemData procedureItemData, ILogger<ProcedureItemController> logger)
         {
-            _procedureItemService = procedureItemService;
+            _procedureItemData = procedureItemData;
             _logger = logger;
         }
         
@@ -22,7 +22,7 @@ namespace droeftoeters_api.Controllers
         {
             try
             {
-                return Ok(_procedureItemService.ReadAll());
+                return Ok(_procedureItemData.ReadAll());
             }
             catch (Exception e)
             {
@@ -38,7 +38,7 @@ namespace droeftoeters_api.Controllers
             {
                 if(!Guid.TryParse(id, out _)) throw new($"Id not valid guid: {id}");
                 //TODO: check if id exists
-                return Ok(_procedureItemService.Read(id));
+                return Ok(_procedureItemData.Read(id));
             }
             catch (Exception e)
             {
@@ -57,7 +57,7 @@ namespace droeftoeters_api.Controllers
                 
                 //TODO: check if id or name exists
                 
-                return Ok(_procedureItemService.Write(procedureItem));
+                return Ok(_procedureItemData.Write(procedureItem));
             }
             catch (Exception e)
             {
@@ -76,7 +76,7 @@ namespace droeftoeters_api.Controllers
                 
                 //TODO: check if procedure item exists
                 
-                return Ok(_procedureItemService.Update(procedureItem));
+                return Ok(_procedureItemData.Update(procedureItem));
             }
             catch (Exception e)
             {
@@ -91,7 +91,7 @@ namespace droeftoeters_api.Controllers
             try
             {
                 //TODO: check if id exists
-                return Ok(_procedureItemService.Delete(id));
+                return Ok(_procedureItemData.Delete(id));
             }
             catch (Exception e)
             {

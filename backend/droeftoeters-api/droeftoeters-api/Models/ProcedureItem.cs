@@ -19,14 +19,4 @@ public class ProcedureItem
     public string? PreviousItemId { get; set; }
     
     public string? NextItemId { get; set; }
-
-    public ProcedureItem(DataModels.ProcedureItem procedureItem)
-    {
-        Id = procedureItem.Id.ToString();
-        ProcedureId = procedureItem.ProcedureId;
-        Title = procedureItem.Title;
-        Description = procedureItem.Description;
-        PreviousItemId = procedureItem.PreviousItemId.ToString();
-        NextItemId = procedureItem.NextItemId.ToString();
-    }
 }

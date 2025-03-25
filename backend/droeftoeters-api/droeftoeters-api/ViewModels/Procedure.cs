@@ -1,7 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using droeftoeters_api.Data;
-using Newtonsoft.Json;
 
 namespace droeftoeters_api.ViewModels;
 
@@ -17,4 +14,17 @@ public class Procedure
     public string? Description { get; set; }
     
     public List<ProcedureItem>? ProcedureItems { get; set; }
+
+    public Procedure(DataModels.Procedure procedure)
+    {
+        Id = procedure.Id.ToString();
+        Title = procedure.Title;
+        Description = procedure.Description;
+        ProcedureItems = [];
+        
+        //Converts the datamodel procedure items list to the viewmodel variant
+        ProcedureItems = procedure.ProcedureItems?
+            .Select(x => new ProcedureItem(x))
+            .ToList() ?? new();
+    }
 }

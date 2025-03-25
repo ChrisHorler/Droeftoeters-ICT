@@ -12,11 +12,21 @@ public class ProcedureItem
     
     [Required(ErrorMessage = "A Title is required to make a procedure item")]
     [StringLength(64, ErrorMessage = "Title cannot be longer than 64 characters")]
-    public required string Title { get; set; }
+    public string Title { get; set; }
     
     public string? Description { get; set; }
     
     public string? PreviousItemId { get; set; }
     
     public string? NextItemId { get; set; }
+
+    public ProcedureItem(DataModels.ProcedureItem procedureItem)
+    {
+        Id = procedureItem.Id.ToString();
+        ProcedureId = procedureItem.ProcedureId;
+        Title = procedureItem.Title;
+        Description = procedureItem.Description;
+        PreviousItemId = procedureItem.PreviousItemId.ToString();
+        NextItemId = procedureItem.NextItemId.ToString();
+    }
 }

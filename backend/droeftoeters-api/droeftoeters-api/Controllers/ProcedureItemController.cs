@@ -99,5 +99,20 @@ namespace droeftoeters_api.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet("parent/{id}")]
+        public IActionResult Parent(string id)
+        {
+            try
+            {
+                //TODO: check if id exists
+                return Ok(_procedureItemData.Parent(id));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message + "\n" + e.InnerException);
+                return BadRequest();
+            }
+        }
     }
 }

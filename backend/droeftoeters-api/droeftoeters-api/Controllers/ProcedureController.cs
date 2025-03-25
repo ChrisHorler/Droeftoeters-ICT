@@ -9,11 +9,13 @@ namespace droeftoeters_api.Controllers
     public class ProcedureController : ControllerBase
     {
         private readonly IProcedureData _procedureData;
+        private readonly IProcedureItemData _procedureItemData;
         private readonly ILogger<ProcedureController> _logger;
 
-        public ProcedureController(IProcedureData procedureData, ILogger<ProcedureController> logger)
+        public ProcedureController(IProcedureData procedureData, IProcedureItemData procedureItemData, ILogger<ProcedureController> logger)
         {
             _procedureData = procedureData;
+            _procedureItemData = procedureItemData;
             _logger = logger;
         }
         
@@ -22,7 +24,14 @@ namespace droeftoeters_api.Controllers
         {
             try
             {
-                return Ok(_procedureData.ReadAll());
+                var results = _procedureData.ReadAll();
+
+                foreach (var result in results)
+                {
+                    result.ProcedureItems = _procedureItemData.Parent(result.Id);
+                }
+                
+                return Ok(results);
             }
             catch (Exception e)
             {
@@ -38,7 +47,13 @@ namespace droeftoeters_api.Controllers
             {
                 if(!Guid.TryParse(id, out _)) throw new($"Id not valid guid: {id}");
                 //TODO: check if id exists
-                return Ok(_procedureData.Read(id));
+                
+                var result = _procedureData.Read(id);
+                
+                //Add the procedure items
+                result.ProcedureItems = _procedureItemData.Parent(result.Id);
+                
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -104,7 +119,7 @@ namespace droeftoeters_api.Controllers
         }
 
         [HttpPost("additem")]
-        public IActionResult AddItem(ProcedureItem procedureItem)
+        public IActionResult AddProcedureItem(ProcedureItem procedureItem)
         {
             try
             {

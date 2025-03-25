@@ -68,4 +68,11 @@ where [Id] = @Id";
 
         return result;
     }
+
+    public IEnumerable<ProcedureItem> Parent(string id)
+    {
+        string query = $@"SELECT * FROM {TABLE} WHERE [ProcedureId] = @Id";
+        var result = _dataService.QuerySql<ProcedureItem>(query, new { Id = id });
+        return result;
+    }
 }

@@ -2,7 +2,7 @@
 
 namespace droeftoeters_api.Interfaces;
 
-public interface IProcedureItemData : IDatabaseObject<ProcedureItem>
+public interface IProcedureItemData : IRepositoryObject<ProcedureItem>
 {
     
 }

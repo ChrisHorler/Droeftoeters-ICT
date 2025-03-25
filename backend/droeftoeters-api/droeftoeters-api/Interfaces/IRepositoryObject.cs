@@ -1,6 +1,6 @@
 ﻿namespace droeftoeters_api.Interfaces;
 
-public interface IDatabaseObject<T>
+public interface IRepositoryObject<T>
 {
     public IEnumerable<T> ReadAll();
 

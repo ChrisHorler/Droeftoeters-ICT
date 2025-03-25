@@ -1,8 +1,8 @@
-﻿using droeftoeters_api.DataModels;
+﻿using droeftoeters_api.ViewModels;
 
 namespace droeftoeters_api.Interfaces;
 
-public interface IProcedureData : IRepositoryObject<Procedure>
+public interface IProcedureService : IRepositoryObject<Procedure>
 {
     public bool AddProcedureItem(ProcedureItem procedureItem);
 

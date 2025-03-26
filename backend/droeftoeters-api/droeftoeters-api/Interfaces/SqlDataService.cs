@@ -20,7 +20,7 @@ public class SqlDataService : IDataService
         return result;
     }
     
-    public T QueryFirstSql<T>(string query, object? parameters = null) => QuerySql<T>(query, parameters).First();
+    public T? QueryFirstSql<T>(string query, object? parameters = null) => QuerySql<T>(query, parameters).FirstOrDefault();
     
     public bool ExecuteSql(string query, object? parameters=null)
     {

@@ -37,8 +37,13 @@ namespace droeftoeters_api.Controllers
             try
             {
                 if(!Guid.TryParse(id, out _)) throw new($"Id not valid guid: {id}");
-                //TODO: check if id exists
-                return Ok(_procedureItemData.Read(id));
+
+                var result = _procedureItemData.Read(id);
+
+                //Check if item exists
+                if (result == null) throw new("Item not found");
+                    
+                return Ok(result);
             }
             catch (Exception e)
             {

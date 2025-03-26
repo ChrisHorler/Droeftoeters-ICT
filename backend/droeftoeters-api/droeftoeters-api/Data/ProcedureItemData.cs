@@ -25,8 +25,8 @@ public class ProcedureItemData : IProcedureItemData
     {
         string query = @$"SELECT * FROM {TABLE} WHERE [Id] = @Id";
         
-        var result = _dataService.QueryFirstSql<ProcedureItem>(query, new {Id = id});
-        return result;
+        var result = _dataService.QueryFirstSql<ProcedureItem?>(query, new {Id = id});
+        return result!;
     }
 
     public bool Write(ProcedureItem procedureItem)
@@ -64,11 +64,11 @@ where [Id] = @Id";
         return result;
     }
 
-    public IEnumerable<ProcedureItem> Parent(string id)
+    public Procedure Parent(string id)
     {
-        string query = $@"SELECT * FROM {TABLE} WHERE [ProcedureId] = @Id";
+        string query = $@"SELECT * FROM [Procedures] WHERE [Id] = @Id";
         
-        var result = _dataService.QuerySql<ProcedureItem>(query, new { Id = id });
+        var result = _dataService.QueryFirstSql<Procedure>(query, new { Id = id });
         return result;
     }
 }

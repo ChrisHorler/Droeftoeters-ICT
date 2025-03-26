@@ -22,7 +22,7 @@ public class ProcedureData : IProcedureData
         return result;
     }
 
-    public Procedure Read(string id)
+    public Procedure? Read(string id)
     {
         string query = @$"SELECT * FROM {TABLE} WHERE [Id] = @Id";
         var result = _dataService.QueryFirstSql<Procedure>(query, new {Id = id});
@@ -65,4 +65,11 @@ where [Id] = @Id";
     public bool AddProcedureItem(ProcedureItem procedureItem) => _procedureItemData.Write(procedureItem);
 
     public bool RemoveProcedureItem(string procedureItemId) => _procedureItemData.Delete(procedureItemId);
+    public IEnumerable<ProcedureItem> Children(string id)
+    {
+        string query = $@"SELECT * FROM [ProcedureItems] WHERE [ProcedureId] = @Id";
+        
+        var result = _dataService.QuerySql<ProcedureItem>(query, new { Id = id });
+        return result;
+    }
 }

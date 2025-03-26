@@ -25,7 +25,8 @@ namespace droeftoeters_api.Controllers
             try
             {
                 var results = _procedureData.ReadAll();
-
+                
+                //Fill the procedure items list with its children
                 foreach (var result in results)
                 {
                     result.ProcedureItems = _procedureItemData.Parent(result.Id);
@@ -71,8 +72,14 @@ namespace droeftoeters_api.Controllers
                 if(!Guid.TryParse(procedure.Id, out _)) throw new("Invalid guid supplied");
                 
                 //TODO: check if procedure doesnt exist
+
+
+                var success = _procedureData.Write(procedure);
                 
-                return Ok(_procedureData.Write(procedure));
+                //Check if execution succeeded
+                if (!success) throw new("Writing procedure to database failed");
+                    
+                return Ok(success);
             }
             catch (Exception e)
             {
@@ -91,7 +98,12 @@ namespace droeftoeters_api.Controllers
                 
                 //TODO: check if procedure exists
                 
-                return Ok(_procedureData.Update(procedure));
+                var success = _procedureData.Update(procedure);
+                
+                //Check if execution succeeded
+                if (!success) throw new("Updating procedure to database failed");
+                
+                return Ok(success);
             }
             catch (Exception e)
             {
@@ -109,7 +121,13 @@ namespace droeftoeters_api.Controllers
                 if(!Guid.TryParse(id, out _)) throw new("Invalid guid supplied");
                 
                 //TODO: check if id exists
-                return Ok(_procedureData.Delete(id));
+                
+                var success= _procedureData.Delete(id);
+                
+                //Check if execution succeeded
+                if (!success) throw new("Deleting procedure on database failed");
+                
+                return Ok(success);
             }
             catch (Exception e)
             {
@@ -124,7 +142,13 @@ namespace droeftoeters_api.Controllers
             try
             {
                 //TODO: check if procedure exists
-                return Ok(_procedureData.AddProcedureItem(procedureItem));
+
+                var success = _procedureData.AddProcedureItem(procedureItem);
+                
+                //Check if execution succeeded
+                if (!success) throw new("Adding item to procedure on database failed");
+                
+                return Ok(success);
             }
             catch (Exception e)
             {
@@ -139,7 +163,13 @@ namespace droeftoeters_api.Controllers
             try
             {
                 //TODO: check if procedure item id exists
-                return Ok(_procedureData.RemoveProcedureItem(id));
+                
+                var success = _procedureData.RemoveProcedureItem(id);
+                
+                //Check if execution succeeded
+                if (!success) throw new("Adding item to procedure on database failed");
+                
+                return Ok(success);
             }
             catch (Exception e)
             {

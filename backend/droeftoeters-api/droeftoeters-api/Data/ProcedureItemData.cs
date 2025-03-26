@@ -16,6 +16,7 @@ public class ProcedureItemData : IProcedureItemData
     public IEnumerable<ProcedureItem> ReadAll()
     {
         string query = @$"SELECT * FROM {TABLE}";
+        
         var result = _dataService.QuerySql<ProcedureItem>(query);
         return result;
     }
@@ -23,6 +24,7 @@ public class ProcedureItemData : IProcedureItemData
     public ProcedureItem Read(string id)
     {
         string query = @$"SELECT * FROM {TABLE} WHERE [Id] = @Id";
+        
         var result = _dataService.QueryFirstSql<ProcedureItem>(query, new {Id = id});
         return result;
     }
@@ -32,10 +34,8 @@ public class ProcedureItemData : IProcedureItemData
         string query = @$"INSERT INTO {TABLE}
 (Id, ProcedureId, Title, Description, PreviousItemId, NextItemId)
 VALUES(@Id, @ProcedureId, @Title, @Description, @PreviousItemId, @NextItemId)";
+        
         var result = _dataService.ExecuteSql(query, procedureItem);
-        
-        if (!result) throw new("Writing procedure item to table resulted in nothing happening");
-        
         return result;
     }
 
@@ -49,10 +49,8 @@ Description = @Description,
 PreviousItemId = @PreviousItemId, 
 NextItemId = @NextItemId
 WHERE [Id] = @Id";
+        
         var result = _dataService.ExecuteSql(query, procedureItem);
-        
-        if (!result) throw new("Updating procedure item to table resulted in nothing happening");
-        
         return result;
     }
 
@@ -63,15 +61,13 @@ WHERE [Id] = @Id";
 where [Id] = @Id";
 
         var result = _dataService.ExecuteSql(query, new { Id = id });
-        
-        if (!result) throw new("Deleting procedure item from table resulted in nothing happening");
-
         return result;
     }
 
     public IEnumerable<ProcedureItem> Parent(string id)
     {
         string query = $@"SELECT * FROM {TABLE} WHERE [ProcedureId] = @Id";
+        
         var result = _dataService.QuerySql<ProcedureItem>(query, new { Id = id });
         return result;
     }

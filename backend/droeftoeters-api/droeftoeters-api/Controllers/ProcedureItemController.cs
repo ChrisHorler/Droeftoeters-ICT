@@ -56,8 +56,13 @@ namespace droeftoeters_api.Controllers
                 if(!Guid.TryParse(procedureItem.Id, out _)) throw new("Invalid guid supplied");
                 
                 //TODO: check if id or name exists
+
+                var success = _procedureItemData.Write(procedureItem);
                 
-                return Ok(_procedureItemData.Write(procedureItem));
+                //Check if execution succeeded 
+                if (!success) throw new("Writing item to database failed");
+                
+                return Ok(success);
             }
             catch (Exception e)
             {
@@ -76,7 +81,12 @@ namespace droeftoeters_api.Controllers
                 
                 //TODO: check if procedure item exists
                 
-                return Ok(_procedureItemData.Update(procedureItem));
+                var success = _procedureItemData.Update(procedureItem);
+                
+                //Check if execution succeeded 
+                if (!success) throw new("Writing item to database failed");
+                
+                return Ok(success);
             }
             catch (Exception e)
             {
@@ -91,7 +101,12 @@ namespace droeftoeters_api.Controllers
             try
             {
                 //TODO: check if id exists
-                return Ok(_procedureItemData.Delete(id));
+                var success = _procedureItemData.Delete(id);
+                
+                //Check if execution succeeded 
+                if (!success) throw new("Writing item to database failed");
+                
+                return Ok(success);
             }
             catch (Exception e)
             {

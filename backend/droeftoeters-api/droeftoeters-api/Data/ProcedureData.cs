@@ -36,8 +36,6 @@ public class ProcedureData : IProcedureData
 VALUES(@Id, @Title, @Description)";
         var result = _dataService.ExecuteSql(query, procedure);
         
-        if (!result) throw new("Writing procedure to table resulted in nothing happening");
-        
         return result;
     }
 
@@ -50,8 +48,6 @@ Description = @Description
 WHERE [Id] = @Id";
         var result = _dataService.ExecuteSql(query, procedure);
         
-        if (!result) throw new("Updating procedure to table resulted in nothing happening");
-        
         return result;
     }
 
@@ -62,27 +58,11 @@ WHERE [Id] = @Id";
 where [Id] = @Id";
 
         var result = _dataService.ExecuteSql(query, new { Id = id });
-        
-        if (!result) throw new("Deleting procedure from table resulted in nothing happening");
 
         return result;
     }
 
-    public bool AddProcedureItem(ProcedureItem procedureItem)
-    {
-        var result = _procedureItemData.Write(procedureItem);
-        
-        if (!result) throw new("Adding procedureitem to table resulted in nothing happening");
+    public bool AddProcedureItem(ProcedureItem procedureItem) => _procedureItemData.Write(procedureItem);
 
-        return result;
-    }
-
-    public bool RemoveProcedureItem(string procedureItemId)
-    {
-        var result = _procedureItemData.Delete(procedureItemId);
-        
-        if (!result) throw new("Adding procedureitem to table resulted in nothing happening");
-
-        return result;
-    }
+    public bool RemoveProcedureItem(string procedureItemId) => _procedureItemData.Delete(procedureItemId);
 }

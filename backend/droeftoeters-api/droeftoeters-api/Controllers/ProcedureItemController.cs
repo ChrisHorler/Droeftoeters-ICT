@@ -1,11 +1,13 @@
 using droeftoeters_api.Interfaces;
 using droeftoeters_api.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace droeftoeters_api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProcedureItemController : ControllerBase
     {
         private readonly IProcedureItemData _procedureItemData;

@@ -1,17 +1,19 @@
 using droeftoeters_api.Interfaces;
 using droeftoeters_api.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace droeftoeters_api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProcedureController : ControllerBase
     {
         private readonly IProcedureData _procedureData;
         private readonly IProcedureItemData _procedureItemData;
         private readonly ILogger<ProcedureController> _logger;
-
+        
         public ProcedureController(IProcedureData procedureData, IProcedureItemData procedureItemData, ILogger<ProcedureController> logger)
         {
             _procedureData = procedureData;

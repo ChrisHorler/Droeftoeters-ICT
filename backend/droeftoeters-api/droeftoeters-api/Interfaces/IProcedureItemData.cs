@@ -4,5 +4,5 @@ namespace droeftoeters_api.Interfaces;
 
 public interface IProcedureItemData : IDatabaseObject<ProcedureItem>
 {
-    public Procedure Parent(string id);
+    public IEnumerable<ProcedureItem> Parent(string id);
 }

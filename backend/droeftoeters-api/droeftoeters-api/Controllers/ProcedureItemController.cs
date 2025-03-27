@@ -7,7 +7,6 @@ namespace droeftoeters_api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class ProcedureItemController : ControllerBase
     {
         private readonly IProcedureItemData _procedureItemData;

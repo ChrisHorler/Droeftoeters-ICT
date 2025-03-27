@@ -9,14 +9,12 @@ namespace droeftoeters_api.Controllers
     public class ProcedureItemController : ControllerBase
     {
         private readonly IProcedureItemData _procedureItemData;
-        private readonly IProcedureData _procedureData;
         private readonly ILogger<ProcedureItemController> _logger;
 
-        public ProcedureItemController(IProcedureItemData procedureItemData, ILogger<ProcedureItemController> logger, IProcedureData procedureData)
+        public ProcedureItemController(IProcedureItemData procedureItemData, ILogger<ProcedureItemController> logger)
         {
             _procedureItemData = procedureItemData;
             _logger = logger;
-            _procedureData = procedureData;
         }
         
         [HttpGet("all")]
@@ -38,14 +36,9 @@ namespace droeftoeters_api.Controllers
         {
             try
             {
-                if(!Guid.TryParse(id, out _)) throw new($"Invalid id guid supplied: {id}");
-
-                var result = _procedureItemData.Read(id);
-
-                //Check if item exists
-                if (result == null) throw new("procedure item not found");
-                    
-                return Ok(result);
+                if(!Guid.TryParse(id, out _)) throw new($"Id not valid guid: {id}");
+                //TODO: check if id exists
+                return Ok(_procedureItemData.Read(id));
             }
             catch (Exception e)
             {
@@ -60,19 +53,11 @@ namespace droeftoeters_api.Controllers
             try
             {
                 //Validate guid
-                if(!Guid.TryParse(procedureItem.Id, out _)) throw new($"Invalid id guid supplied: {procedureItem.Id}");
-
-                //Check if item id or name already exists in the database
-                var checkItem = _procedureItemData.Read(procedureItem.Id);
-                if (checkItem != null || checkItem!.Title == procedureItem.Title) 
-                    throw new("creation of procedure item failed because id or name of item already exists");
-
-                var success = _procedureItemData.Write(procedureItem);
+                if(!Guid.TryParse(procedureItem.Id, out _)) throw new("Invalid guid supplied");
                 
-                //Check if execution succeeded 
-                if (!success) throw new("Writing procedure item to database failed");
+                //TODO: check if id or name exists
                 
-                return Ok(success);
+                return Ok(_procedureItemData.Write(procedureItem));
             }
             catch (Exception e)
             {
@@ -87,17 +72,11 @@ namespace droeftoeters_api.Controllers
             try
             {
                 //Validate guid
-                if(!Guid.TryParse(procedureItem.Id, out _)) throw new($"Invalid id guid supplied: {procedureItem.Id}");
-
-                if (!Exists(procedureItem.Id))
-                    throw new Exception("Updating procedure item failed because the id does not exist");
+                if(!Guid.TryParse(procedureItem.Id, out _)) throw new("Invalid guid supplied");
                 
-                var success = _procedureItemData.Update(procedureItem);
+                //TODO: check if procedure item exists
                 
-                //Check if execution succeeded 
-                if (!success) throw new("Writing procedure item to database failed");
-                
-                return Ok(success);
+                return Ok(_procedureItemData.Update(procedureItem));
             }
             catch (Exception e)
             {
@@ -111,15 +90,8 @@ namespace droeftoeters_api.Controllers
         {
             try
             {
-                //Check if id exists
-                if (!Exists(id)) throw new("Deleting procedure item failed because the id does not exist");
-                
-                var success = _procedureItemData.Delete(id);
-                
-                //Check if execution succeeded 
-                if (!success) throw new("Writing item to database failed");
-                
-                return Ok(success);
+                //TODO: check if id exists
+                return Ok(_procedureItemData.Delete(id));
             }
             catch (Exception e)
             {
@@ -133,16 +105,8 @@ namespace droeftoeters_api.Controllers
         {
             try
             {
-                //Check if id exists
-                if (!Exists(id)) throw new("Getting parent from item failed because the item id does not exist");
-                
-                var item = _procedureItemData.Read(id)!;
-
-                var result = _procedureItemData.Parent(item.ProcedureId);
-                
-                //Add the procedure items
-                result.ProcedureItems = _procedureData.Children(result.Id);
-                return Ok(result);
+                //TODO: check if id exists
+                return Ok(_procedureItemData.Parent(id));
             }
             catch (Exception e)
             {
@@ -150,12 +114,5 @@ namespace droeftoeters_api.Controllers
                 return BadRequest();
             }
         }
-
-        /// <summary>
-        /// Check if procedure item exists
-        /// </summary>
-        /// <param name="id">the procedure item id being looked up</param>
-        /// <returns></returns>
-        private bool Exists(string id) => _procedureItemData.Read(id) != null;
     }
 }

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      glass-background-with-frosted-pattern_0: 2102683942703301457
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

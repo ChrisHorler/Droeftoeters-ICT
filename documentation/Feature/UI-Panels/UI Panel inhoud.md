@@ -4,7 +4,7 @@ tags:
   - author/lilah
   - front-end
 ---
-### Level 1, Inchecken 
+### Level 1, inchecken 
 
 Welkom bij Amphia ziekenhuis!  
 
@@ -12,7 +12,7 @@ Je moet naar de dokter om te praten over je gezondheid. Je hebt de dokter ontmoe
 
 >(Badge dokter) 
 
-### Level 2, Eerste beoordeling 
+### Level 2, eerste beoordeling 
 
 De dokter gaat je allemaal vragen stellen. De dokter kijkt of je misschien ziek bent door te veel suiker in je bloed. 
 
@@ -26,9 +26,11 @@ De dokter pakt heel voorzichtig een klein beetje bloed om te kijken hoeveel suik
 
 ### Level 4, diagnose 
 
-De dokter heeft gekeken hoeveel suiker er in je bloed zit en ontdekt dat je diabetes type 1 hebt. Dat betekent dat je lichaam extra hulp nodig heeft om je bloedsuiker goed te houden. 
+De dokter heeft gekeken hoeveel suiker er in je bloed zit en ontdekt dat je suikerziekte (diabetes type 1) hebt. Dat betekent dat je lichaam extra hulp nodig heeft om je bloedsuiker goed te houden. 
 
-Panels!!!!!!!!! 
+(Badge)
+
+==Panels!!!!!!!!!== 
 
 Route A: zonder ziekenhuisopname 
 
@@ -54,7 +56,7 @@ Route B, met ziekenhuisopname 
 
 Jij moet naar de kinderafdeling in het ziekenhuis, waar de dokter gaat zorgen dat het suiker in je bloed weer goed wordt. 
 
-Je krijgt misschien een slangenbuisje in je arm waarlangs de dokters medicijn en water geven om je suiker in je bloed beter te maken. 
+Je krijgt misschien een slangenbuisje in je arm waarin de dokter medicijn en water geeft om je suiker in je bloed beter te maken. 
 
 De dokters gaan goed in de gaten houden hoe het gaat met je bloedsuiker, of er iets in je plas zit, en hoe je je in het algemeen voelt. 
 
@@ -80,4 +82,4 @@ Moedig het kind aan om gezond te eten en te bewegen, en zorg ervoor dat het zich
 
 In overleg kan het kind doorgestuurd worden naar de Diëtetiek of het Diabetescentrum voor verdere begeleiding. 
 
-Level 8b, terug naar dagelijks leven
+### 8b, terug naar dagelijks leven

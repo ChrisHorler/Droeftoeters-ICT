@@ -5,7 +5,7 @@ tags:
 
 Welkom bij Obsidian. Met deze documentatie tool gaan we bijhouden en documenteren wat we hebben gemaakt. Dit doen we omdat we willen dat iedereen kan snappen wat je hebt gemaakt. Want op deze manier kan iemand makkelijker iets uitbreiden wat een ander heeft gemaakt. 
 
-In dit bestand volgt een uitleg over he obsidian werkt, en hoe we een structuur behouden.
+In dit bestand volgt een uitleg over hoe obsidian werkt, en hoe we een structuur behouden.
 
 ## Onze Structuur
 

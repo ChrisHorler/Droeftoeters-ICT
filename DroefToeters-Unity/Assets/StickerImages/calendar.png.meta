@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0aba513191cd5844da73eabea1c087b1
+guid: 385c3d32e1b1f244c906b96b79f356b2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3485184536122157715
-    second: syringe_0
+      213: 1717959649996741340
+    second: calendar_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: syringe_0
+      name: calendar_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 512
-        height: 512
+        x: 23
+        y: 12
+        width: 466
+        height: 488
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 39aee3ccedcdd5030800000000000000
-      internalID: 3485184536122157715
+      spriteID: cda9284133b67d710800000000000000
+      internalID: 1717959649996741340
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      syringe_0: 3485184536122157715
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

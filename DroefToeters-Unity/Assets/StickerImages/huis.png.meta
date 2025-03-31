@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0aba513191cd5844da73eabea1c087b1
+guid: 3de41487164e9aa4fa8d09cac620c120
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3485184536122157715
-    second: syringe_0
+      213: -512954636400884891
+    second: huis_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: syringe_0
+      name: huis_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 19
         width: 512
-        height: 512
+        height: 474
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 39aee3ccedcdd5030800000000000000
-      internalID: 3485184536122157715
+      spriteID: 5638f67d97e91e8f0800000000000000
+      internalID: -512954636400884891
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      syringe_0: 3485184536122157715
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

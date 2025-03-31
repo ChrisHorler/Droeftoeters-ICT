@@ -682,6 +682,7 @@ GameObject:
   - component: {fileID: 756999185}
   - component: {fileID: 756999190}
   - component: {fileID: 756999189}
+  - component: {fileID: 756999191}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -813,6 +814,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 756999184}
   m_CullTransparentMesh: 1
+--- !u!114 &756999191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756999184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8855c5c392f8ccb4dbd3fce78ce1d09f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &935039745
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 935039747}
+  - component: {fileID: 935039746}
+  - component: {fileID: 935039748}
+  m_Layer: 0
+  m_Name: MainManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &935039746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935039745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e767ebf98f909543b2ca9a6e3b49444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NavigationScene: 
+  LoginDataSaveLocation: UserSettings/playerLogin.json
+  LoginChoice: 
+--- !u!4 &935039747
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935039745}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &935039748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935039745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f880ddb71be344e9bdc65e56601c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseUrl: https://avansict2227807.azurewebsites.net
+  defaultLoginScene: TestFunctionalLogin
 --- !u!1 &996645676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,7 +1462,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1366543142}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 756999191}
+        m_TargetAssemblyTypeName: DashManager, Assembly-CSharp
+        m_MethodName: SwitchScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TimeLineScene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1366543142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1783,3 +1870,4 @@ SceneRoots:
   - {fileID: 1930701645}
   - {fileID: 756999188}
   - {fileID: 712548402}
+  - {fileID: 935039747}

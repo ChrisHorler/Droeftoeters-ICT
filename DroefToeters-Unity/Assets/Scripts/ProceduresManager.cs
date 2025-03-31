@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Button = UnityEngine.UI.Button;
@@ -19,7 +20,11 @@ public class ProceduresManager : MonoBehaviour
     void Start()
     {
         _apiConnecter = FindFirstObjectByType<ApiConnecter>();
-
+        for (int i = 1; i < 6; i++)
+        {
+            var btn = GameObject.Find("Procedure " + i);
+            btn.GetComponent<UnityEngine.UI.Image>().color = new(0, 0, 0, 0);
+        }
         GetProcedures();
     }
 
@@ -46,7 +51,7 @@ public class ProceduresManager : MonoBehaviour
                     {
                         Debug.Log("Procedure " + i);
                         var procedure = procedures[i - 1];
-                        btn.SetActive(true);
+                        btn.GetComponent<UnityEngine.UI.Image>().color = Color.gray;
                         btn.GetComponent<Button>().GetComponentInChildren<TextMeshProUGUI>().text = procedure.Title;
                         btn.GetComponent<Button>().onClick.AddListener(
                             delegate { LoadProcedure(procedure.Id); });

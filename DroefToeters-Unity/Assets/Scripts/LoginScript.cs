@@ -52,6 +52,7 @@ public class LoginScript : MonoBehaviour
     public string defaulSceneAfterLogin = "SampleScene";
     public string currentSceneName = "FunctionalLogin";
     public bool loginPage = true;
+    public GameObject ChildRegisterLoadingPanel;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -156,9 +157,22 @@ public class LoginScript : MonoBehaviour
 
     private void SetErrorMessages(string text)
     {
-        parentRegisterErrorMessageLabel.text = text;
-        parentLoginErrorMessageLabel.text = text;
-        childLoginErrorMessageLabel.text = text;
+        if (parentRegisterErrorMessageLabel != null)
+        {
+            parentRegisterErrorMessageLabel.text = text;
+        }
+        if (parentLoginErrorMessageLabel != null)
+        {
+            parentLoginErrorMessageLabel.text = text;
+        }
+        if (childLoginErrorMessageLabel != null)
+        {
+            childLoginErrorMessageLabel.text = text;
+        }
+        if (childRegisterErrorMessageLabel != null)
+        {
+            childRegisterErrorMessageLabel.text = text;
+        }
     }
 
     private void RegisterUser(bool child)
@@ -190,17 +204,21 @@ public class LoginScript : MonoBehaviour
         Debug.Log(json);
         StartCoroutine(apiConnecter.SendRequest("account/register", HttpMethod.POST, false, (string response, string error) =>
         {
-            SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+            SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
             SetErrorMessages("Connecting...");
             if (error == null)
             {
                 if (child)
                 {
+                    if (ChildRegisterLoadingPanel != null)
+                    {
+                        ChildRegisterLoadingPanel.SetActive(true);
 
+                    }
                 } else
                 {
                     Debug.Log("Response: " + response);
-                    SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+                    SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
                     SetErrorMessages("Account Created! You are now able to login!");
                     parentRegisterPasswordField.Select();
                     parentRegisterPasswordField.text = "";
@@ -215,7 +233,7 @@ public class LoginScript : MonoBehaviour
             }
             else
             {
-                SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+                SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
                 SetErrorMessages("Username already taken.");
                 Debug.LogError(error);
             }
@@ -225,7 +243,7 @@ public class LoginScript : MonoBehaviour
 
     private void LoginUser()
     {
-        SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+        SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
         SetErrorMessages("Connecting...");
         string json = JsonConvert.SerializeObject(new { email = usernameValue, password = passwordValue }, Formatting.Indented);
         Debug.Log(json);
@@ -242,7 +260,7 @@ public class LoginScript : MonoBehaviour
             }
             else
             {
-                SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+                SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
                 SetErrorMessages("Invalid username & password combination.");
             }
         },
@@ -272,13 +290,13 @@ public class LoginScript : MonoBehaviour
         childLoginUsernameField.Select();
         childLoginUsernameField.text = "";
         SetErrorMessages("");
-        SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+        SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
     }
 
     public void ClickButton(string registerOrLogin)
     {
         SetErrorMessages("");
-        SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+        SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
         if (registerOrLogin == "ParentRegister")
         {
             RegisterUser(false);
@@ -310,14 +328,26 @@ public class LoginScript : MonoBehaviour
         secondPasswordValue = value;
     }
 
-    public void SetTextColor(string colorText, TextMeshProUGUI element, TextMeshProUGUI element2, TextMeshProUGUI element3)
+    public void SetTextColor(string colorText, TextMeshProUGUI element, TextMeshProUGUI element2, TextMeshProUGUI element3, TextMeshProUGUI element4)
     {
         Color color;
         if (ColorUtility.TryParseHtmlString(colorText, out color))
         {
-            element.color = color;
-            element2.color = color;
-            element3.color = color;
+            if (element != null) {
+                element.color = color;
+            }
+            if (element2 != null)
+            {
+                element2.color = color;
+            }
+            if (element3 != null)
+            {
+                element3.color = color;
+            }
+            if (element4 != null)
+            {
+                element4.color = color;
+            }
         }
         else
         {

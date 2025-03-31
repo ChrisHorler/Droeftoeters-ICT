@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class MainManager : MonoBehaviour
     public LoginResponse LoginResponse; 
     public string NavigationScene; // the scene to go back to after login
     public string LoginDataSaveLocation = "UserSettings/playerLogin.json";
+    public string LoginChoice = "";
 
     private void Awake()
     {
@@ -41,6 +43,4 @@ public class MainManager : MonoBehaviour
             Debug.Log("No data found.");
         }
     }
-
-
 }

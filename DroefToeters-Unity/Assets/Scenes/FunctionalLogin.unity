@@ -454,7 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f880ddb71be344e9bdc65e56601c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseUrl: https://avansict2225486.azurewebsites.net
+  baseUrl: https://avansict2227807.azurewebsites.net
   defaultLoginScene: FunctionalLogin
 --- !u!114 &200978344
 MonoBehaviour:
@@ -468,8 +468,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e767ebf98f909543b2ca9a6e3b49444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NavigationScene: 
+  NavigationScene: DashboardScene
   LoginDataSaveLocation: UserSettings/playerLogin.json
+  LoginChoice: 
 --- !u!1 &679357043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,7 +1677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.6343057, b: 0, a: 1}
+  m_Color: {r: 0.4, g: 0.6784314, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1735,7 +1736,7 @@ GameObject:
   - component: {fileID: 2482767788294334459}
   - component: {fileID: 8024260708346736345}
   m_Layer: 5
-  m_Name: ParentButton
+  m_Name: ChildButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3354,7 +3355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4, g: 0.6784314, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.63529414, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3823,7 +3824,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ouder
+  m_text: Kind
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4836,7 +4837,7 @@ GameObject:
   - component: {fileID: 2001325406427809255}
   - component: {fileID: 6742273757748649779}
   m_Layer: 5
-  m_Name: ChildButton
+  m_Name: ParentButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5413,7 +5414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.63529414, b: 0, a: 1}
+  m_Color: {r: 0.4, g: 0.6784314, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6659,7 +6660,10 @@ MonoBehaviour:
   childLoginErrorMessageLabel: {fileID: 3509589253942155093}
   childLoginUsernameField: {fileID: 8497610406625838634}
   childLoginPasswordField: {fileID: 1778115310178872879}
-  defaulSceneAfterLogin: SampleScene
+  ParentlSceneAfterLogin: ProcedureSelection
+  ChildSceneAfterLogin: DashboardScene
+  ChildPanel: {fileID: 6706770848479583301}
+  ParentPanel: {fileID: 4947386076754469389}
 --- !u!1 &8367783365150855513
 GameObject:
   m_ObjectHideFlags: 0
@@ -7407,7 +7411,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Kind
+  m_text: Ouder
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

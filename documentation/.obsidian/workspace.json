@@ -11,10 +11,14 @@
             "id": "a36852da921044bc",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Feature/UI-Panels/UI Panel inhoud.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nieuw tabblad"
+              "title": "UI Panel inhoud"
             }
           }
         ]
@@ -40,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Verkenner"
+              "title": "Files"
             }
           },
           {
@@ -74,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "4bdfa20ddd0acdbf",
@@ -154,12 +157,12 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open snel wisselen": false,
-      "graph:Open grafiek weergave": false,
-      "canvas:Nieuw doek aanmaken": false,
-      "daily-notes:Open de notitie van vandaag": false,
-      "templates:Sjabloon invoegen": false,
-      "command-palette:Open opdrachtenpaneel": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
   "active": "a36852da921044bc",

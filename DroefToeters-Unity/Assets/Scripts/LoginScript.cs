@@ -6,6 +6,14 @@ using ColorUtility = UnityEngine.ColorUtility;
 using System.Collections;
 using System.Text.RegularExpressions;
 
+public class ChildData
+{
+    public string userId { get; set; }
+    public string username { get; set; }
+    public string password { get; set; }
+    public LoginResponse? loginResponse { get; set; }
+}
+
 public class Validator
 {
     // Password validation: Min 10 chars, at least one lowercase, uppercase, digit, and special character
@@ -53,6 +61,8 @@ public class LoginScript : MonoBehaviour
     public string currentSceneName = "FunctionalLogin";
     public bool loginPage = true;
     public GameObject ChildRegisterLoadingPanel;
+    private string parentUserId;
+    
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -84,7 +94,7 @@ public class LoginScript : MonoBehaviour
     {
         StartCoroutine(apiConnecter.SendRequest("account/checkAccessToken", HttpMethod.GET, true, (string response, string error) =>
         {
-            
+            // request the user id insted of the "account/checkAccessToken"
         }));
     }
 
@@ -214,6 +224,11 @@ public class LoginScript : MonoBehaviour
                     {
                         ChildRegisterLoadingPanel.SetActive(true);
 
+                        // login api request
+                        // save the bearer token etc
+                        // get child user id
+                        // forget the child login data
+                        // use parent data to link the 2 accounts.
                     }
                 } else
                 {

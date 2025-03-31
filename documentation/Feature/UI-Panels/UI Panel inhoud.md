@@ -38,7 +38,7 @@ Route A: zonder ziekenhuisopname 
 
 Je krijgt insuline met een prik of een klein pompje. De dokter legt uit hoe je insuline gebruikt, hoe je je bloedsuiker meet en welke dingen je beter wel of niet kunt eten. 
 
-### Level 6a,  
+### Level 6a,  ouders uitleg
 
 Jij en je ouders krijgen hulp om goed met diabetes om te gaan. Je leert hoe je je voelt als je bloedsuiker te hoog of te laag is en wat je kunt eten om je beter te voelen. 
 
@@ -52,27 +52,23 @@ Maak een nieuwe afspraak bij de dokter om te kijken hoe het met je gaat en of je
 
 Route B, met ziekenhuisopname 
 
-### Level 5b,  
+### Level 5b,  injecties
 
 Jij moet naar de kinderafdeling in het ziekenhuis, waar de dokter gaat zorgen dat het suiker in je bloed weer goed wordt. 
 
 Je krijgt misschien een slangenbuisje in je arm waarin de dokter medicijn en water geeft om je suiker in je bloed beter te maken. 
 
-De dokters gaan goed in de gaten houden hoe het gaat met je bloedsuiker, of er iets in je plas zit, en hoe je je in het algemeen voelt. 
+ De dokters gaan goed in de gaten houden hoe het gaat met je bloedsuiker, of er iets in je plas zit, en hoe je je in het algemeen voelt.  
 
-Jullie ouders krijgen uitleg over diabetes type 1, hoe ze insuline aan jou kunnen geven, en hoe ze je thuis kunnen helpen. 
 
 ### Level 6b,  
 
+Je ouders krijgen uitleg over diabetes type 1, hoe ze insuline aan jou kunnen geven, en hoe ze je thuis kunnen helpen. 
+
+
+### Level 7b, terug naar huis / dagelijks leven
+
 Als je bloed suiker weer goed is, mag je naar huis met een plan van de dokters en hulp om goed voor jezelf te zorgen. 
-
-Je moet regelmatig terug naar de dokter om je bloedsuiker en insuline te controleren. Ook kijken ze of er geen problemen zijn met je ogen of zenuwen. 
-
-De behandeling kan veranderen naarmate je groeit, als je dingen in je leven verandert, of als er andere medische dingen zijn die de dokters moeten bekijken. 
-
-Het is belangrijk om een omgeving te hebben die het kind en de ouders helpt. Praat over hoe het voelt om ziek te zijn en zorg ervoor dat ze genoeg steun en hulp krijgen. 
-
-### Level 7b, terug naar huis 
 
 Praat met je school en andere mensen die je helpen, zodat ze weten dat je je bloedsuiker moet meten tijdens school en altijd snacks bij je moeten hebben voor als het nodig is. 
 
@@ -80,6 +76,14 @@ Help het kind leren hoe je zelf je bloedsuiker kunt meten en hoe je zelf insulin
 
 Moedig het kind aan om gezond te eten en te bewegen, en zorg ervoor dat het zich gesteund voelt terwijl het leert omgaan met diabetes. 
 
-In overleg kan het kind doorgestuurd worden naar de Diëtetiek of het Diabetescentrum voor verdere begeleiding. 
+Het is belangrijk om een omgeving te hebben die het kind en de ouders helpt. Praat over hoe het voelt om ziek te zijn en zorg ervoor dat ze genoeg steun en hulp krijgen. 
 
-### 8b, terug naar dagelijks leven
+Je bloedsuiker is weer goed, je mag weer naar huis!
+De dokter 
+### Level 8b, follow-up afspraak
+
+Je moet regelmatig terug naar de dokter om je bloedsuiker en insuline te controleren. Ook kijken ze of er geen problemen zijn met je ogen of zenuwen. 
+
+De behandeling kan veranderen naarmate je groeit, als je dingen in je leven verandert, of als er andere medische dingen zijn die de dokters moeten bekijken. 
+
+In overleg kan het kind doorgestuurd worden naar de Diëtetiek of het Diabetescentrum voor verdere begeleiding. 

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace droeftoeters_api.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class ProcedureItemController : ControllerBase
     {

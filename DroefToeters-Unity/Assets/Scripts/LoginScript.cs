@@ -44,6 +44,10 @@ public class LoginScript : MonoBehaviour
     public TextMeshProUGUI childLoginErrorMessageLabel;
     public TMP_InputField childLoginUsernameField;
     public TMP_InputField childLoginPasswordField;
+    public TextMeshProUGUI childRegisterErrorMessageLabel;
+    public TMP_InputField childRegisterUsernameField;
+    public TMP_InputField childRegisterPasswordField;
+    public TMP_InputField childRegisterSecondPasswordField;
     private ApiConnecter apiConnecter;
     public string defaulSceneAfterLogin = "SampleScene";
 
@@ -129,7 +133,7 @@ public class LoginScript : MonoBehaviour
         childLoginErrorMessageLabel.text = text;
     }
 
-    private void RegisterUser()
+    private void RegisterUser(bool child)
     {
         if (!Validator.IsValidEmail(usernameValue))
         {
@@ -162,17 +166,23 @@ public class LoginScript : MonoBehaviour
             SetErrorMessages("Connecting...");
             if (error == null)
             {
-                Debug.Log("Response: " + response);
-                SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
-                SetErrorMessages("Account Created! You are now able to login!");
-                parentRegisterPasswordField.Select();
-                parentRegisterPasswordField.text = "";
-                passwordValue = "";
-                if (parentRegisterSecondPasswordField != null)
+                if (child)
                 {
-                    parentRegisterSecondPasswordField.Select();
-                    parentRegisterSecondPasswordField.text = "";
-                    secondPasswordValue = "";
+
+                } else
+                {
+                    Debug.Log("Response: " + response);
+                    SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+                    SetErrorMessages("Account Created! You are now able to login!");
+                    parentRegisterPasswordField.Select();
+                    parentRegisterPasswordField.text = "";
+                    passwordValue = "";
+                    if (parentRegisterSecondPasswordField != null)
+                    {
+                        parentRegisterSecondPasswordField.Select();
+                        parentRegisterSecondPasswordField.text = "";
+                        secondPasswordValue = "";
+                    }
                 }
             }
             else
@@ -243,7 +253,7 @@ public class LoginScript : MonoBehaviour
         SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
         if (registerOrLogin == "ParentRegister")
         {
-            RegisterUser();
+            RegisterUser(false);
         }
         else if (registerOrLogin == "ParentLogin")
         {
@@ -252,9 +262,13 @@ public class LoginScript : MonoBehaviour
         {
             LoginUser();
         }
+        else if (registerOrLogin == "ChildRegister")
+        {
+            RegisterUser(true);
+        }
         else
         {
-            Debug.LogError($"'{registerOrLogin}' is not a valid formButtonId, use 'ParentRegister', 'ParentLogin' or 'ChildLogin' instead.");
+            Debug.LogError($"'{registerOrLogin}' is not a valid formButtonId, use 'ParentRegister', 'ParentLogin', 'ChildRegister' or 'ChildLogin' instead.");
         }
     }
 

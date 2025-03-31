@@ -6,8 +6,26 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/FunctionalChoice.unity
+    guid: fbe73126dbd35e547b7735c06bc81e79
+  - enabled: 1
+    path: Assets/Scenes/FunctionalLogin.unity
+    guid: cb7b7d676937e7a4c88d6c3ad053e1d4
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/ChildCreator.unity
+    guid: 4ae9db914f92dae4186120a842728bb1
+  - enabled: 1
+    path: Assets/Scenes/ProcedureDetails.unity
+    guid: f07f5f9a368902b4bab1a8317ec3fc26
+  - enabled: 1
+    path: Assets/Scenes/ProcedureSelection.unity
+    guid: d6ef34b9b8bd2e6448bc46d2616eb94b
+  - enabled: 1
+    path: Assets/Scenes/TestFunctionalLogin.unity
+    guid: 61ea9ca64b23e1342bb8e1199c95d1ed
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

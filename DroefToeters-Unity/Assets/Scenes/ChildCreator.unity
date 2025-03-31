@@ -2753,6 +2753,8 @@ MonoBehaviour:
   childRegisterPasswordField: {fileID: 1229878427}
   childRegisterSecondPasswordField: {fileID: 1516240788}
   defaulSceneAfterLogin: SampleScene
+  currentSceneName: ChildCreator
+  loginPage: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

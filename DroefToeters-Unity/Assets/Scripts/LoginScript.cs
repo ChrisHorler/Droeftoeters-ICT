@@ -50,17 +50,45 @@ public class LoginScript : MonoBehaviour
     public TMP_InputField childRegisterSecondPasswordField;
     private ApiConnecter apiConnecter;
     public string defaulSceneAfterLogin = "SampleScene";
+    public string currentSceneName = "FunctionalLogin";
+    public bool loginPage = true;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (!loginPage)
+        {
+            MainManager.Instance.NavigationScene = currentSceneName;
+        }
         apiConnecter = FindFirstObjectByType<ApiConnecter>();
         StartCoroutine(DelayedRequest());
+
     }
 
     IEnumerator DelayedRequest()
     {
         yield return new WaitForSeconds(1f);
+        if (loginPage)
+        {
+            RefreshSessionToken();
+        }
+        else
+        {
+            CheckLoginStatus();
+        }
+    }
+
+    private void CheckLoginStatus()
+    {
+        StartCoroutine(apiConnecter.SendRequest("account/checkAccessToken", HttpMethod.GET, true, (string response, string error) =>
+        {
+            
+        }));
+    }
+
+    private void RefreshSessionToken()
+    {
         StartCoroutine(apiConnecter.SendRequest("account/checkAccessToken", HttpMethod.GET, true, (string response, string error) =>
         {
             if (error == null)

@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e767ebf98f909543b2ca9a6e3b49444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NavigationScene: 
+  NavigationScene: ProcedureSelection
   LoginDataSaveLocation: UserSettings/playerLogin.json
 --- !u!1 &273463755
 GameObject:

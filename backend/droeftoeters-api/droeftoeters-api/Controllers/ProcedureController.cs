@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace droeftoeters_api.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
     [Authorize]
+    [ApiController]
     public class ProcedureController : ControllerBase
     {
         private readonly IProcedureData _procedureData;

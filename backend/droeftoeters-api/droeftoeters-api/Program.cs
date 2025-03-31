@@ -1,5 +1,6 @@
 using droeftoeters_api.Data;
 using droeftoeters_api.Interfaces;
+using droeftoeters_api.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 
@@ -19,7 +20,7 @@ builder.Services.AddIdentityApiEndpoints<IdentityUser>(options =>
     .AddRoles<IdentityRole>()
     .AddDapperStores(options =>
     {
-        options.ConnectionString = Environment.GetEnvironmentVariable("ENVIRONMENT_VARIABLE_SQL") ?? builder.Configuration.GetConnectionString("azure");
+        options.ConnectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING_SQL") ?? builder.Configuration.GetConnectionString("azure");
     });
 
 builder.Services.AddControllers();

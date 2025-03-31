@@ -1,7 +1,8 @@
 ﻿using Dapper;
+using droeftoeters_api.Interfaces;
 using Microsoft.Data.SqlClient;
 
-namespace droeftoeters_api.Interfaces;
+namespace droeftoeters_api.Services;
 
 public class SqlDataService : IDataService
 {

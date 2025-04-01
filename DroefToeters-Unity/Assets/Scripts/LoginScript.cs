@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using ColorUtility = UnityEngine.ColorUtility;
 using System.Collections;
 using System.Text.RegularExpressions;
+using UnityEngine.Serialization;
 
 public class ChildData
 {
@@ -57,13 +58,15 @@ public class LoginScript : MonoBehaviour
     public TMP_InputField childRegisterPasswordField;
     public TMP_InputField childRegisterSecondPasswordField;
     private ApiConnecter apiConnecter;
+    public string ParentlSceneAfterLogin = "";
+    public string ChildSceneAfterLogin = "";
+    public GameObject ChildPanel;
+    public GameObject ParentPanel;
     public string defaulSceneAfterLogin = "SampleScene";
     public string currentSceneName = "FunctionalLogin";
     public bool loginPage = true;
     public GameObject ChildRegisterLoadingPanel;
     private string parentUserId;
-    
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -74,7 +77,16 @@ public class LoginScript : MonoBehaviour
         }
         apiConnecter = FindFirstObjectByType<ApiConnecter>();
         StartCoroutine(DelayedRequest());
-
+        if (MainManager.Instance.LoginChoice == "Parent")
+        {
+            ParentPanel.SetActive(true);
+            ChildPanel.SetActive(false);
+        }
+        if (MainManager.Instance.LoginChoice == "Child")
+        {
+            ParentPanel.SetActive(false);
+            ChildPanel.SetActive(true);
+        }
     }
 
     IEnumerator DelayedRequest()
@@ -110,7 +122,7 @@ public class LoginScript : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene(defaulSceneAfterLogin);
+                    SceneManager.LoadScene(ParentlSceneAfterLogin);
                 }
             }
             else
@@ -131,7 +143,7 @@ public class LoginScript : MonoBehaviour
                             }
                             else
                             {
-                                SceneManager.LoadScene(defaulSceneAfterLogin);
+                                SceneManager.LoadScene(ParentlSceneAfterLogin);
                             }
                         }
                         else
@@ -230,7 +242,8 @@ public class LoginScript : MonoBehaviour
                         // forget the child login data
                         // use parent data to link the 2 accounts.
                     }
-                } else
+                }
+                else
                 {
                     Debug.Log("Response: " + response);
                     SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
@@ -256,7 +269,7 @@ public class LoginScript : MonoBehaviour
         json, false));
     }
 
-    private void LoginUser()
+    private void LoginUser(bool isKind)
     {
         SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
         SetErrorMessages("Connecting...");
@@ -268,7 +281,14 @@ public class LoginScript : MonoBehaviour
             {
                 SetErrorMessages("");
                 Debug.Log("Response: " + response);
-                SceneManager.LoadScene(defaulSceneAfterLogin);
+                if (!isKind)
+                {
+                    SceneManager.LoadScene(ParentlSceneAfterLogin);
+                }
+                else
+                {
+                    SceneManager.LoadScene(ChildSceneAfterLogin);
+                }
                 LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
                 MainManager.Instance.SetLoginCredentials(decodedResponse);
                 System.IO.File.WriteAllText(MainManager.Instance.LoginDataSaveLocation, response);
@@ -318,10 +338,11 @@ public class LoginScript : MonoBehaviour
         }
         else if (registerOrLogin == "ParentLogin")
         {
-            LoginUser();
-        } else if (registerOrLogin == "ChildLogin")
+            LoginUser(false);
+        }
+        else if (registerOrLogin == "ChildLogin")
         {
-            LoginUser();
+            LoginUser(true);
         }
         else if (registerOrLogin == "ChildRegister")
         {
@@ -348,7 +369,8 @@ public class LoginScript : MonoBehaviour
         Color color;
         if (ColorUtility.TryParseHtmlString(colorText, out color))
         {
-            if (element != null) {
+            if (element != null)
+            {
                 element.color = color;
             }
             if (element2 != null)

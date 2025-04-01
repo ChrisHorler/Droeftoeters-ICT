@@ -553,7 +553,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 629671470}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1400202500}
+        m_TargetAssemblyTypeName: ChoiseManager, Assembly-CSharp
+        m_MethodName: GoToLoginScreen
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Child
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &629671470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -815,6 +827,7 @@ GameObject:
   - component: {fileID: 1400202498}
   - component: {fileID: 1400202497}
   - component: {fileID: 1400202496}
+  - component: {fileID: 1400202500}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -907,6 +920,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1400202500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400202495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17925ebe27a137047817a9139d0ca06c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1989800129
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,7 +1014,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1989800132}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1400202500}
+        m_TargetAssemblyTypeName: ChoiseManager, Assembly-CSharp
+        m_MethodName: GoToLoginScreen
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Parent
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1989800132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1028,6 +1065,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989800129}
   m_CullTransparentMesh: 1
+--- !u!1 &2069344788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2069344790}
+  - component: {fileID: 2069344789}
+  - component: {fileID: 2069344791}
+  m_Layer: 0
+  m_Name: MainManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2069344789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069344788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e767ebf98f909543b2ca9a6e3b49444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NavigationScene: 
+  LoginDataSaveLocation: UserSettings/playerLogin.json
+  LoginChoice: 
+--- !u!4 &2069344790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069344788}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2069344791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069344788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f880ddb71be344e9bdc65e56601c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseUrl: https://avansict2227807.azurewebsites.net
+  defaultLoginScene: TestFunctionalLogin
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1035,3 +1134,4 @@ SceneRoots:
   - {fileID: 250184674}
   - {fileID: 1400202499}
   - {fileID: 173040709}
+  - {fileID: 2069344790}

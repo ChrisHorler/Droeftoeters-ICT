@@ -20,4 +20,9 @@ public class DashManager : MonoBehaviour
         Debug.Log("Loading scene: "+ scene);
         SceneManager.LoadScene(scene);
     }
+
+    public void Logout()
+    {
+        MainManager.Instance.Logout();
+    }
 }

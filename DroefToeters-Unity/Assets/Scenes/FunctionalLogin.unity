@@ -454,7 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f880ddb71be344e9bdc65e56601c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseUrl: https://avansict2227807.azurewebsites.net
+  baseUrl: https://avansict2227807.azurewebsites.net/
   defaultLoginScene: FunctionalLogin
 --- !u!114 &200978344
 MonoBehaviour:
@@ -6660,10 +6660,17 @@ MonoBehaviour:
   childLoginErrorMessageLabel: {fileID: 3509589253942155093}
   childLoginUsernameField: {fileID: 8497610406625838634}
   childLoginPasswordField: {fileID: 1778115310178872879}
+  childRegisterErrorMessageLabel: {fileID: 0}
+  childRegisterUsernameField: {fileID: 0}
+  childRegisterPasswordField: {fileID: 0}
+  childRegisterSecondPasswordField: {fileID: 0}
   ParentlSceneAfterLogin: ProcedureSelection
   ChildSceneAfterLogin: DashboardScene
   ChildPanel: {fileID: 6706770848479583301}
   ParentPanel: {fileID: 4947386076754469389}
+  currentSceneName: FunctionalLogin
+  loginPage: 1
+  ChildRegisterLoadingPanel: {fileID: 0}
 --- !u!1 &8367783365150855513
 GameObject:
   m_ObjectHideFlags: 0

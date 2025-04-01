@@ -36,12 +36,29 @@ public class MainManager : MonoBehaviour
         if (System.IO.File.Exists(filePath))
         {
             string jsonString = System.IO.File.ReadAllText(filePath);
-            Debug.Log(jsonString);
             LoginResponse = JsonConvert.DeserializeObject<LoginSaveFile>(jsonString);
         }
         else
         {
-            Debug.Log("No data found.");
+            Debug.Log("No sessiontoken-ish data found.");
+        }
+    }
+
+    public void Logout()
+    {
+        LoginResponse = null;
+        ApiConnecter apiConnecter = FindFirstObjectByType<ApiConnecter>();
+        if (apiConnecter != null)
+        {
+            if (System.IO.File.Exists(LoginDataSaveLocation))
+            {
+                System.IO.File.Delete(LoginDataSaveLocation);
+            }
+            NavigationScene = null;
+            SceneManager.LoadScene(apiConnecter.defaultLoginScene);
+        } else
+        {
+            Debug.LogError("Error finding API connector when logging out.");
         }
     }
 }

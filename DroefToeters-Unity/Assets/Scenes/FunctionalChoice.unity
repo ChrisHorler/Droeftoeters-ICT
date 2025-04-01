@@ -1125,8 +1125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f880ddb71be344e9bdc65e56601c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseUrl: https://avansict2227807.azurewebsites.net
-  defaultLoginScene: TestFunctionalLogin
+  baseUrl: https://avansict2227807.azurewebsites.net/
+  defaultLoginScene: FunctionalLogin
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

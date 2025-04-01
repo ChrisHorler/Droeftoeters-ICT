@@ -47,18 +47,13 @@ public class MainManager : MonoBehaviour
     public void Logout()
     {
         LoginResponse = null;
-        ApiConnecter apiConnecter = FindFirstObjectByType<ApiConnecter>();
-        if (apiConnecter != null)
+        
+        if (System.IO.File.Exists(LoginDataSaveLocation))
         {
-            if (System.IO.File.Exists(LoginDataSaveLocation))
-            {
-                System.IO.File.Delete(LoginDataSaveLocation);
-            }
-            NavigationScene = null;
-            SceneManager.LoadScene(apiConnecter.defaultLoginScene);
-        } else
-        {
-            Debug.LogError("Error finding API connector when logging out.");
+            System.IO.File.Delete(LoginDataSaveLocation);
         }
+        NavigationScene = null;
+        SceneManager.LoadScene("FunctionalChoice");
+        
     }
 }

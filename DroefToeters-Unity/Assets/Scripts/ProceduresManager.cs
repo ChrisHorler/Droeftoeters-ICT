@@ -28,6 +28,10 @@ public class ProceduresManager : MonoBehaviour
         GetProcedures();
     }
 
+    public void Logout()
+    {
+        MainManager.Instance.Logout();
+    }
 
     void Update()
     {

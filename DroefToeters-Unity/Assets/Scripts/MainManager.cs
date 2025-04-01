@@ -6,7 +6,7 @@ public class MainManager : MonoBehaviour
 {
     // Start() and Update() methods deleted - we don't need them right now
     public static MainManager Instance;
-    public LoginResponse LoginResponse; 
+    public LoginSaveFile LoginResponse; 
     public string NavigationScene; // the scene to go back to after login
     public string LoginDataSaveLocation = "UserSettings/playerLogin.json";
     public string LoginChoice = "";
@@ -25,7 +25,7 @@ public class MainManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void SetLoginCredentials(LoginResponse loginResponse)
+    public void SetLoginCredentials(LoginSaveFile loginResponse)
     {
         MainManager.Instance.LoginResponse = loginResponse;
     }
@@ -36,7 +36,8 @@ public class MainManager : MonoBehaviour
         if (System.IO.File.Exists(filePath))
         {
             string jsonString = System.IO.File.ReadAllText(filePath);
-            LoginResponse = JsonConvert.DeserializeObject<LoginResponse>(jsonString);
+            Debug.Log(jsonString);
+            LoginResponse = JsonConvert.DeserializeObject<LoginSaveFile>(jsonString);
         }
         else
         {

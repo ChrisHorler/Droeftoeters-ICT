@@ -62,7 +62,6 @@ public class LoginScript : MonoBehaviour
     public string ChildSceneAfterLogin = "";
     public GameObject ChildPanel;
     public GameObject ParentPanel;
-    public string defaulSceneAfterLogin = "SampleScene";
     public string currentSceneName = "FunctionalLogin";
     public bool loginPage = true;
     public GameObject ChildRegisterLoadingPanel;
@@ -122,7 +121,14 @@ public class LoginScript : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene(ParentlSceneAfterLogin);
+                    if (MainManager.Instance.LoginResponse != null && MainManager.Instance.LoginResponse.isChild)
+                    {
+                        SceneManager.LoadScene(ChildSceneAfterLogin);
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene(ParentlSceneAfterLogin);
+                    }
                 }
             }
             else
@@ -135,7 +141,9 @@ public class LoginScript : MonoBehaviour
                         {
                             Debug.Log($"Trying to use new token: {response}");
                             LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
-                            MainManager.Instance.SetLoginCredentials(decodedResponse);
+                            LoginSaveFile values = new LoginSaveFile(decodedResponse, MainManager.Instance.LoginResponse.isChild);
+                            MainManager.Instance.SetLoginCredentials(values);
+                            response = JsonConvert.SerializeObject(values);
                             System.IO.File.WriteAllText(MainManager.Instance.LoginDataSaveLocation, response);
                             if (MainManager.Instance.NavigationScene != null && MainManager.Instance.NavigationScene != "")
                             {
@@ -143,7 +151,14 @@ public class LoginScript : MonoBehaviour
                             }
                             else
                             {
-                                SceneManager.LoadScene(ParentlSceneAfterLogin);
+                                if (MainManager.Instance.LoginResponse != null && MainManager.Instance.LoginResponse.isChild)
+                                {
+                                    SceneManager.LoadScene(ChildSceneAfterLogin);
+                                }
+                                else
+                                {
+                                    SceneManager.LoadScene(ParentlSceneAfterLogin);
+                                }
                             }
                         }
                         else
@@ -290,7 +305,9 @@ public class LoginScript : MonoBehaviour
                     SceneManager.LoadScene(ChildSceneAfterLogin);
                 }
                 LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
-                MainManager.Instance.SetLoginCredentials(decodedResponse);
+                LoginSaveFile values = new LoginSaveFile(decodedResponse, isKind);
+                MainManager.Instance.SetLoginCredentials(values);
+                response = JsonConvert.SerializeObject(values);
                 System.IO.File.WriteAllText(MainManager.Instance.LoginDataSaveLocation, response);
             }
             else

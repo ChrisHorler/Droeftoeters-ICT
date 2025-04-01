@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<IDataService, SqlDataService>();
 builder.Services.AddTransient<IProcedureData, ProcedureData>();
 builder.Services.AddTransient<IProcedureItemData, ProcedureItemData>();
+builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
 
 // Add services to the container.
 builder.Services.AddAuthorization();
@@ -20,7 +21,7 @@ builder.Services.AddIdentityApiEndpoints<IdentityUser>(options =>
     .AddRoles<IdentityRole>()
     .AddDapperStores(options =>
     {
-        options.ConnectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING_SQL") ?? builder.Configuration.GetConnectionString("azure");
+        options.ConnectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING_SQL") ?? builder.Configuration.GetConnectionString("local");
     });
 
 builder.Services.AddControllers();
@@ -42,6 +43,7 @@ app.UseHttpsRedirection();
 // these 2 endpoints could be merged
 app.MapGroup("/account").MapIdentityApi<IdentityUser>();
 app.MapGet("/account/checkAccessToken", [Authorize] () => Results.Content("{\"authorized\": true}", "application/json"));
+app.MapGet("/account/id", [Authorize] (IAuthenticationService auth) => auth.GetCurrentUserId());
 app.MapControllers();
 
 app.Run();

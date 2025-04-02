@@ -103,9 +103,16 @@ public class LoginScript : MonoBehaviour
 
     private void CheckLoginStatus()
     {
-        StartCoroutine(apiConnecter.SendRequest("account/checkAccessToken", HttpMethod.GET, true, (string response, string error) =>
+        StartCoroutine(apiConnecter.SendRequest("account/id", HttpMethod.GET, true, (string response, string error) =>
         {
             // request the user id insted of the "account/checkAccessToken"
+            if (error == null)
+            {
+                parentUserId = response;
+            } else
+            {
+                Debug.LogError($"Error whilst getting parent ID: {error}");
+            }
         }));
     }
 

@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public Button leftButton;
     public Button rightButton;
     public Button closeButton;
+    public Button finishButton;
     
     private List<GameObject> activePanels = new List<GameObject>();
     private int currentStep = 0;
@@ -21,6 +22,7 @@ public class UIManager : MonoBehaviour
         if (leftButton) leftButton.onClick.AddListener(PreviousStep);
         if (rightButton) rightButton.onClick.AddListener(NextStep);
         if (closeButton) closeButton.onClick.AddListener(ClosePanel);
+        if (finishButton) finishButton.onClick.AddListener(RewardManager.Instance.OnLevelFinished);
     }
 
     public void OpenPanelSequence(List<GameObject> panels) {
@@ -46,6 +48,16 @@ public class UIManager : MonoBehaviour
 
         if (leftButton) leftButton.interactable = (currentStep > 0);
         if (rightButton) rightButton.interactable = (currentStep < activePanels.Count - 1);
+
+        if (finishButton)
+        {
+            bool onLastStep = (currentStep == activePanels.Count - 1);
+            
+            finishButton.gameObject.SetActive(onLastStep);
+            
+            if (rightButton)
+                rightButton.gameObject.SetActive(!onLastStep);
+        }
     }
     
     public void NextStep() {
@@ -70,6 +82,4 @@ public class UIManager : MonoBehaviour
         activePanels.Clear();
         currentStep = 0;
     }
-    
-    
 }

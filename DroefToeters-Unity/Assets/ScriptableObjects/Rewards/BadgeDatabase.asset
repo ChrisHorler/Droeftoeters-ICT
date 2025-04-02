@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dde4dcd287b7ddf890818015a124a8b, type: 3}
   m_Name: BadgeDatabase
   m_EditorClassIdentifier: 
-  allBadges: []
+  allBadges:
+  - {fileID: 11400000, guid: a0cd7b9d38dd12814bcd94c8909a4c1e, type: 2}
+  - {fileID: 11400000, guid: 18ff9ae144c141b24ab95873654f2489, type: 2}
+  - {fileID: 11400000, guid: 298a56a59b0b2348d8d29ba7fab78989, type: 2}
+  - {fileID: 11400000, guid: 073466852b068aec591bfe234de341d1, type: 2}
+  - {fileID: 11400000, guid: 075bf10dd5509b65699c043a80124d7e, type: 2}
+  - {fileID: 11400000, guid: b05ad3f6bbf8a890aa1cbceef8b3ab1c, type: 2}
+  - {fileID: 11400000, guid: 00dc59a9db94cf551bbd0f224f39042c, type: 2}
+  - {fileID: 11400000, guid: c5f490ce95b21cdf091452633b697811, type: 2}
+  - {fileID: 11400000, guid: cee2e3519a5b61527b7cc41209e0ec55, type: 2}
+  - {fileID: 11400000, guid: 223709e00d46b179f8209887cdba61fc, type: 2}
+  - {fileID: 11400000, guid: b07545cc2c70f3544a24198b1939e962, type: 2}
+  - {fileID: 11400000, guid: e120b5e16c65197ee83c84a7b916eb93, type: 2}

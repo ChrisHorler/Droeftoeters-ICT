@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 285e92afad316e38da6bfc3a4b0c7565, type: 3}
-  m_Name: BloodSugar-Reward
+  m_Name: FollowUp-Reward_8B
   m_EditorClassIdentifier: 
-  rewardID: 1
-  icon: {fileID: -2231033993229590892, guid: e36297053e44a7349b679c1a139be988, type: 3}
-  displayName: bloodsugar
-  description: 
+  rewardID: Reward-Level8B
+  icon: {fileID: 1717959649996741340, guid: 385c3d32e1b1f244c906b96b79f356b2, type: 3}
+  displayName: Gezondheidscontrole
+  description: Regelmatig terug om te kijken hoe het gaat.

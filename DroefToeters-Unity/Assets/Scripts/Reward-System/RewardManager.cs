@@ -23,10 +23,10 @@ public class RewardManager : MonoBehaviour {
     
     void Start() {
         apiConnecter = FindFirstObjectByType<ApiConnecter>();
-        StartCoroutine(GetParentUserId());
+        StartCoroutine(GetUserId());
     }
 
-    private IEnumerator GetParentUserId() {
+    private IEnumerator GetUserId() {
         yield return apiConnecter.SendRequest("account/id", HttpMethod.GET, true,
             (string userIdResponse, string error) => {
                 if (error == null) {
@@ -48,7 +48,6 @@ public class RewardManager : MonoBehaviour {
     /// <summary>
     /// Unlocks a reward (badge/sticker) for this user locally
     /// </summary>
-
     public void UnlockReward(string rewardID) {
         if (string.IsNullOrEmpty(userId)) {
             Debug.LogWarning("[RewardManager] Can't unlock a reward - userId is null or empty");

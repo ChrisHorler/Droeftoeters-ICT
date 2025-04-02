@@ -23,8 +23,10 @@ public class UIManager : MonoBehaviour
         if (rightButton) rightButton.onClick.AddListener(NextStep);
         if (closeButton) closeButton.onClick.AddListener(ClosePanel);
         if (finishButton) finishButton.onClick.AddListener(RewardManager.Instance.OnLevelFinished);
-    }
 
+       
+    }
+    
     public void OpenPanelSequence(List<GameObject> panels) {
         if (panels == null || panels.Count == 0) {
             Debug.LogError("UIManager: Invalid panel sequence");
@@ -34,6 +36,8 @@ public class UIManager : MonoBehaviour
         
         activePanels = panels;
         currentStep = 0;
+        
+        SetGlobalButtonsActive(true);
         
         UpdateStepDisplay();
     }
@@ -49,8 +53,7 @@ public class UIManager : MonoBehaviour
         if (leftButton) leftButton.interactable = (currentStep > 0);
         if (rightButton) rightButton.interactable = (currentStep < activePanels.Count - 1);
 
-        if (finishButton)
-        {
+        if (finishButton) {
             bool onLastStep = (currentStep == activePanels.Count - 1);
             
             finishButton.gameObject.SetActive(onLastStep);
@@ -81,5 +84,15 @@ public class UIManager : MonoBehaviour
         
         activePanels.Clear();
         currentStep = 0;
+        
+        SetGlobalButtonsActive(false);
+    }
+
+    
+    private void SetGlobalButtonsActive(bool isActive) {
+        if (leftButton) leftButton.gameObject.SetActive(isActive);
+        if (rightButton) rightButton.gameObject.SetActive(isActive);
+        if (closeButton) closeButton.gameObject.SetActive(isActive);
+        if (finishButton) finishButton.gameObject.SetActive(isActive);
     }
 }

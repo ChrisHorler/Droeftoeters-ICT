@@ -12,4 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf0c1cf30a347f7b1810f3a392bdfd9, type: 3}
   m_Name: UISequenceDatabase
   m_EditorClassIdentifier: 
-  sequences: []
+  sequences:
+  - buttonName: Level-Button_1
+    panelData:
+    - panelType: 0
+      scenePanelID: L1-Panel01
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L1-Panel02
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L1-Panel03
+      prefab: {fileID: 0}

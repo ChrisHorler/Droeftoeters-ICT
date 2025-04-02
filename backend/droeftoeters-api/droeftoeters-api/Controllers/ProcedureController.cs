@@ -49,14 +49,19 @@ namespace droeftoeters_api.Controllers
         {
             try
             {
+                //Validate guid
                 if(!Guid.TryParse(id, out _)) throw new($"Id not valid guid: {id}");
-                //TODO: check if id exists
                 
+                //Get procedure by id
                 var result = _procedureData.Read(id);
+                
+                //Check if the id fetched anything
+                if (result == null) throw new("Procedure id fetch resulted in null");
                 
                 //Add the procedure items
                 result.ProcedureItems = _procedureItemData.Parent(result.Id);
                 
+                //Return result
                 return Ok(result);
             }
             catch (Exception e)
@@ -72,11 +77,17 @@ namespace droeftoeters_api.Controllers
             try
             {
                 //Validate guid
-                if(!Guid.TryParse(procedure.Id, out _)) throw new("Invalid guid supplied");
+                if(!Guid.TryParse(procedure.Id, out _))  throw new($"Id not valid guid: {procedure.Id}");
+
+                //Check if the procedure id already exists
+                if (Exists(procedure.Id)) throw new("Procedure with this id already exists");
+
+                //Check if writing to table succeeded
+                var result = _procedureData.Write(procedure);
+                if (!result) throw new("Writing procedure to table resulted in nothing happening");
                 
-                //TODO: check if procedure doesnt exist
-                
-                return Ok(_procedureData.Write(procedure));
+                //Return result
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -91,11 +102,17 @@ namespace droeftoeters_api.Controllers
             try
             {
                 //Validate guid
-                if(!Guid.TryParse(procedure.Id, out _)) throw new("Invalid guid supplied");
+                if(!Guid.TryParse(procedure.Id, out _))  throw new($"Id not valid guid: {procedure.Id}");
                 
-                //TODO: check if procedure exists
+                //Check if the procedure id doesn't exist
+                if (!Exists(procedure.Id)) throw new("Procedure with this id doesn't exist");
                 
-                return Ok(_procedureData.Update(procedure));
+                //Check if updating to table succeeded
+                var result = _procedureData.Update(procedure);
+                if (!result) throw new("Updating procedure to table resulted in nothing happening");
+                
+                //Return result
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -110,10 +127,17 @@ namespace droeftoeters_api.Controllers
             try
             {
                 //Validate guid
-                if(!Guid.TryParse(id, out _)) throw new("Invalid guid supplied");
+                if(!Guid.TryParse(id, out _))  throw new($"Id not valid guid: {id}");
                 
-                //TODO: check if id exists
-                return Ok(_procedureData.Delete(id));
+                //Check if the procedure id already exists
+                if (!Exists(id)) throw new("Procedure with this id doesn't exist");
+                
+                //Check if deleting on table succeeded
+                var result = _procedureData.Delete(id);
+                if (!result) throw new("Deleting procedure from table resulted in nothing happening");
+                
+                //Return result
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -127,8 +151,22 @@ namespace droeftoeters_api.Controllers
         {
             try
             {
-                //TODO: check if procedure exists
-                return Ok(_procedureData.AddProcedureItem(procedureItem));
+                //Validate guids
+                if(!Guid.TryParse(procedureItem.Id, out _))  throw new($"Id not valid guid: {procedureItem.Id}");
+                if(!Guid.TryParse(procedureItem.ProcedureId, out _))  throw new($"Id not valid guid: {procedureItem.ProcedureId}");
+                
+                //Check if the procedure id doesn't exist
+                if (!Exists(procedureItem.ProcedureId)) throw new("Procedure with this id doesn't exist"); 
+                
+                //Check if the procedure item id exists
+                if (ItemExists(procedureItem.Id)) throw new("Procedure item with this id already exists");
+
+                //Check if adding item succeeded
+                var result = _procedureData.AddProcedureItem(procedureItem);
+                if (!result) throw new("Adding procedure item to table resulted in nothing happening");
+                
+                //Return result
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -142,8 +180,15 @@ namespace droeftoeters_api.Controllers
         {
             try
             {
-                //TODO: check if procedure item id exists
-                return Ok(_procedureData.RemoveProcedureItem(id));
+                //Check if the procedure item id doesn't exist
+                if (!ItemExists(id)) throw new("Procedure item with this id doesn't exist");    
+                
+                //Check if adding item succeeded
+                var result = _procedureData.RemoveProcedureItem(id);
+                if (!result) throw new("Deleting procedure item from table resulted in nothing happening");
+                
+                //Return result
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -151,5 +196,13 @@ namespace droeftoeters_api.Controllers
                 return BadRequest();
             }
         }
+
+        private bool Exists(string id)
+        {
+            var result = _procedureData.Read(id) ;
+            return result != null;
+        }
+
+        private bool ItemExists(string id) => _procedureItemData.Read(id) != null;
     }
 }

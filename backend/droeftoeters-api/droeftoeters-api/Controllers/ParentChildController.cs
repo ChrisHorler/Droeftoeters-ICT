@@ -47,7 +47,7 @@ public class ParentChildController : Controller
             try
             {
                 //Validate guid
-                if (!Guid.TryParse(id, out _)) throw new($"Id not valid guid: {id}");
+                if (!Guid.TryParse(id, out _)) throw new($"Parent child combination id not valid guid: {id}");
                 
                 //Get parent child combination
                 var result = _parentChildData.Read(id);

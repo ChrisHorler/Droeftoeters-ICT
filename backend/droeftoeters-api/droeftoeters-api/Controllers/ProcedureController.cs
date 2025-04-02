@@ -28,6 +28,8 @@ namespace droeftoeters_api.Controllers
             {
                 var results = _procedureData.ReadAll();
 
+                if (results == null) throw new("Reading procedures resulted in null list");
+                
                 foreach (var result in results)
                 {
                     result.ProcedureItems = _procedureItemData.Parent(result.Id);

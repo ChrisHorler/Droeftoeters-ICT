@@ -24,3 +24,30 @@ MonoBehaviour:
     - panelType: 0
       scenePanelID: L1-Panel03
       prefab: {fileID: 0}
+  - buttonName: Level-Button_2
+    panelData:
+    - panelType: 0
+      scenePanelID: L2-Panel01
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L2-Panel02
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_3
+    panelData:
+    - panelType: 0
+      scenePanelID: L3-Panel01
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L3-Panel02
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_4
+    panelData:
+    - panelType: 0
+      scenePanelID: L4-Panel01
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L4-Panel02
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L4-Panel03
+      prefab: {fileID: 0}

@@ -92,10 +92,4 @@ public class RewardManager : MonoBehaviour {
         }
         return unlocked;
     }
-
-
-    public void OnLevelFinished()
-    {
-        
-    }
 }

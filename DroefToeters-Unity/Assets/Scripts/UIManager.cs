@@ -22,9 +22,6 @@ public class UIManager : MonoBehaviour
         if (leftButton) leftButton.onClick.AddListener(PreviousStep);
         if (rightButton) rightButton.onClick.AddListener(NextStep);
         if (closeButton) closeButton.onClick.AddListener(ClosePanel);
-        if (finishButton) finishButton.onClick.AddListener(RewardManager.Instance.OnLevelFinished);
-
-       
     }
     
     public void OpenPanelSequence(List<GameObject> panels) {
@@ -36,7 +33,15 @@ public class UIManager : MonoBehaviour
         
         activePanels = panels;
         currentStep = 0;
-        
+
+        var lastPanel = panels[^1];
+        var unlockScript = lastPanel.GetComponent<UnlockBadge>();
+        finishButton.onClick.RemoveAllListeners();
+
+        if (unlockScript != null)
+        {
+            finishButton.onClick.AddListener(unlockScript.UnlockReward);
+        }
         SetGlobalButtonsActive(true);
         
         UpdateStepDisplay();

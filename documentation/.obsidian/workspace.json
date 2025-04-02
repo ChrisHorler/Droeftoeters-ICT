@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Feature/UI-Panels/UI Panel Builder Tool - Guide.md",
+                "file": "Feature/UI-Panels/UI Panel inhoud.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "UI Panel Builder Tool - Guide"
+              "title": "UI Panel inhoud"
             }
           }
         ]
@@ -167,8 +167,8 @@
   },
   "active": "a36852da921044bc",
   "lastOpenFiles": [
-    "Feature/UI-Panels/UI Panel inhoud.md",
     "Feature/UI-Panels/UI Panel Builder Tool - Guide.md",
+    "Feature/UI-Panels/UI Panel inhoud.md",
     "index.md"
   ]
 }

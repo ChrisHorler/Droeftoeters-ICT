@@ -167,11 +167,13 @@ public class LoginScript : MonoBehaviour
                     else
                     {
                         Debug.LogError($"Error whilst getting children: {error}");
+                        NavigateToScene("ProcedureSelection");
                     }
                 }));
             } else
             {
                 Debug.LogError($"Error whilst getting parent ID: {error}");
+                NavigateToScene("ProcedureSelection");
             }
         }));
     }

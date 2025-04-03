@@ -74,6 +74,11 @@ public class ProceduresManager : MonoBehaviour
         }));
     }
 
+    public void RegisterChild()
+    {
+        SceneManager.LoadScene("ChildCreator");
+    }
+
     public void LoadProcedure(string id)
     {
         //Im sorry

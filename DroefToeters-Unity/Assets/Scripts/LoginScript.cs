@@ -296,7 +296,6 @@ public class LoginScript : MonoBehaviour
         SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
         SetErrorMessages("Connecting...");
         string json = JsonConvert.SerializeObject(new { email = usernameValue, password = passwordValue }, Formatting.Indented);
-        Debug.Log(json);
         StartCoroutine(apiConnecter.SendRequest("account/login", HttpMethod.POST, false, (string response, string error) =>
         {
             if (error == null)

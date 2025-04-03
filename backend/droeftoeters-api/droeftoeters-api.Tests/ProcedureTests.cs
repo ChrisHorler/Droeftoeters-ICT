@@ -88,7 +88,7 @@ public class ProcedureTests
         var response = procedureController.Read(id);
 
         //Assert
-        Assert.IsInstanceOfType(response, typeof(BadRequestResult));;
+        Assert.IsInstanceOfType(response, typeof(BadRequestResult));
     }    
 
     //Write procedure
@@ -96,7 +96,7 @@ public class ProcedureTests
     public void Write_WriteProcedure_Success()
     {
         //Arrange
-        ProcedureController procedureController = GenerateProcedureController(out string id, out var procedure, outputBoolean:true);
+        ProcedureController procedureController = GenerateProcedureController(out _, out var procedure, outputBoolean:true);
         
         //Act
         var response = procedureController.Write(procedure);
@@ -109,7 +109,7 @@ public class ProcedureTests
     public void Write_WriteProcedure_Failed()
     {
         //Arrange
-        ProcedureController procedureController = GenerateProcedureController(out string id, out var procedure, outputBoolean:false);
+        ProcedureController procedureController = GenerateProcedureController(out _, out var procedure, outputBoolean:false);
         
         //Act
         var response = procedureController.Write(procedure);
@@ -122,7 +122,7 @@ public class ProcedureTests
     public void Write_WriteProcedure_InvalidGuid()
     {
         //Arrange
-        ProcedureController procedureController = GenerateProcedureController(out string id,  out var procedure, inputId: "hldfllghdf", outputBoolean:true);
+        ProcedureController procedureController = GenerateProcedureController(out _,  out var procedure, inputId: "hldfllghdf", outputBoolean:true);
         
         //Act
         var response = procedureController.Write(procedure);
@@ -286,9 +286,11 @@ public class ProcedureTests
         Mock<IProcedureData> procedureData = new();
         Mock<IProcedureItemData> procedureItemData = new();
         var id = Guid.NewGuid().ToString();
-        var procedure = GenerateProcedure(id);
         
+        //Set up the data call method
         procedureData.Setup(x => x.AddProcedureItem(It.IsAny<ProcedureItem>())).Returns(true);
+        
+        //Set up the method for existance checking
         procedureItemData.Setup(x => x.Read(id)).Returns(GenerateItem(id));
         
         var procedureController = GenerateEmptyProcedureController(procedureData: procedureData, procedureItemData: procedureItemData);
@@ -304,122 +306,129 @@ public class ProcedureTests
     public void Write_AddItem_Failed()
     {
         //Arrange
+        Mock<IProcedureData> procedureData = new();
+        Mock<IProcedureItemData> procedureItemData = new();
+        var id = Guid.NewGuid().ToString();
         
-        //Act
+        //Set up the data call method
+        procedureData.Setup(x => x.AddProcedureItem(It.IsAny<ProcedureItem>())).Returns(false);
         
-        //Assert
+        //Set up the method for existance checking
+        procedureItemData.Setup(x => x.Read(id)).Returns(GenerateItem(id));
+        
+        var procedureController = GenerateEmptyProcedureController(procedureData: procedureData, procedureItemData: procedureItemData);
 
+        //Act
+        var response = procedureController.AddProcedureItem(GenerateItem());
+
+        //Assert
+        Assert.IsInstanceOfType(response, typeof(BadRequestResult));
     }
 
     [TestMethod]
     public void Write_AddItem_InvalidProcedureGuid()
     {
         //Arrange
+        Mock<IProcedureData> procedureData = new();
+        Mock<IProcedureItemData> procedureItemData = new();
         
-        //Act
+        //Set up the data call method
+        procedureData.Setup(x => x.AddProcedureItem(It.IsAny<ProcedureItem>())).Returns(false);
         
-        //Assert
+        var procedureController = GenerateEmptyProcedureController(procedureData: procedureData, procedureItemData: procedureItemData);
 
+        //Act
+        var response = procedureController.AddProcedureItem(GenerateItem("invalid guid supplied"));
+
+        //Assert
+        Assert.IsInstanceOfType(response, typeof(BadRequestResult));
     }
 
     [TestMethod]
     public void Write_AddItem_InvalidItemGuid()
     {
         //Arrange
+        Mock<IProcedureData> procedureData = new();
+        Mock<IProcedureItemData> procedureItemData = new();
         
-        //Act
+        //Set up the data call method
+        procedureData.Setup(x => x.AddProcedureItem(It.IsAny<ProcedureItem>())).Returns(false);
         
-        //Assert
+        var procedureController = GenerateEmptyProcedureController(procedureData: procedureData, procedureItemData: procedureItemData);
 
+        //Act
+        var response = procedureController.AddProcedureItem(GenerateItem("invalid guid supplied"));
+
+        //Assert
+        Assert.IsInstanceOfType(response, typeof(BadRequestResult));
     }
 
-    [TestMethod]
-    public void Write_AddItem_ProcedureNotFound()
-    {
-        //Arrange
-        
-        //Act
-        
-        //Assert
-
-    }
-
-    [TestMethod]
-    public void Write_AddItem_ItemAlreadyExists()
-    {
-        //Arrange
-        
-        //Act
-        
-        //Assert
-
-    }
     
     //Delete procedure item
     [TestMethod]
     public void Delete_RemoveItem_Succes()
     {
         //Arrange
+        Mock<IProcedureData> procedureData = new();
+        Mock<IProcedureItemData> procedureItemData = new();
+        var id = Guid.NewGuid().ToString();
         
-        //Act
+        //Set up the data call method
+        procedureData.Setup(x => x.RemoveProcedureItem(id)).Returns(true);
         
-        //Assert
+        //Set up the method for existance checking
+        procedureItemData.Setup(x => x.Read(id)).Returns(GenerateItem(id));
+        
+        var procedureController = GenerateEmptyProcedureController(procedureData: procedureData, procedureItemData: procedureItemData);
 
+        //Act
+        var response = procedureController.RemoveProcedureItem(id);
+
+        //Assert
+        Assert.IsInstanceOfType(response, typeof(OkObjectResult));
     }
 
     [TestMethod]
     public void Delete_RemoveItem_Failed()
     {
         //Arrange
+        Mock<IProcedureData> procedureData = new();
+        Mock<IProcedureItemData> procedureItemData = new();
+        var id = Guid.NewGuid().ToString();
         
-        //Act
+        //Set up the data call method
+        procedureData.Setup(x => x.RemoveProcedureItem(id)).Returns(false);
         
-        //Assert
+        //Set up the method for existance checking
+        procedureItemData.Setup(x => x.Read(id)).Returns(GenerateItem(id));
+        
+        var procedureController = GenerateEmptyProcedureController(procedureData: procedureData, procedureItemData: procedureItemData);
 
+        //Act
+        var response = procedureController.RemoveProcedureItem(id);
+
+        //Assert
+        Assert.IsInstanceOfType(response, typeof(BadRequestResult));
     }
 
     [TestMethod]
     public void Delete_RemoveItem_InvalidProcedureGuid()
     {
         //Arrange
+        Mock<IProcedureData> procedureData = new();
+        Mock<IProcedureItemData> procedureItemData = new();
+        var id = "invalid guid";
         
+        //Set up the data call method
+        procedureData.Setup(x => x.RemoveProcedureItem(id)).Returns(false);
+        
+        var procedureController = GenerateEmptyProcedureController(procedureData: procedureData, procedureItemData: procedureItemData);
+
         //Act
-        
+        var response = procedureController.RemoveProcedureItem(id);
+
         //Assert
-
-    }
-
-    [TestMethod]
-    public void Delete_RemoveItem_InvalidItemGuid()
-    {
-        //Arrange
-        
-        //Act
-        
-        //Assert
-
-    }
-
-    [TestMethod]
-    public void Delete_RemoveItem_ProcedureNotFound()
-    {
-        //Arrange
-        
-        //Act
-        
-        //Assert
-
-    }
-
-    [TestMethod]
-    public void Delete_RemoveItem_ItemNotFound()
-    {
-        //Arrange
-        
-        //Act
-        
-        //Assert
-
+        Assert.IsInstanceOfType(response, typeof(BadRequestResult));
     }
 
     private Procedure GenerateProcedure(string? id = null) => new()
@@ -463,7 +472,7 @@ public class ProcedureTests
         inputProcedure ??= GenerateProcedure(inputId);
         outProcedure = inputProcedure;
         
-        procedureData.Setup(x => x.ReadAll()).Returns(outputProcedures);
+        procedureData.Setup(x => x.ReadAll()).Returns(outputProcedures!);
         procedureData.Setup(x => x.Read(inputId)).Returns(outputProcedure);
         procedureData.Setup(x => x.Write(inputProcedure)).Returns(outputBoolean);
         procedureData.Setup(x => x.Update(inputProcedure)).Returns(outputBoolean);

@@ -80,7 +80,7 @@ namespace droeftoeters_api.Controllers
                 if(!Guid.TryParse(procedure.Id, out _))  throw new($"Id not valid guid: {procedure.Id}");
 
                 //Check if the procedure id already exists
-                if (Exists(procedure.Id)) throw new("Procedure with this id already exists");
+                if (ProcedureExists(procedure.Id)) throw new("Procedure with this id already exists");
 
                 //Check if writing to table succeeded
                 var result = _procedureData.Write(procedure);
@@ -105,7 +105,7 @@ namespace droeftoeters_api.Controllers
                 if(!Guid.TryParse(procedure.Id, out _))  throw new($"Id not valid guid: {procedure.Id}");
                 
                 //Check if the procedure id doesn't exist
-                if (!Exists(procedure.Id)) throw new("Procedure with this id doesn't exist");
+                if (!ProcedureExists(procedure.Id)) throw new("Procedure with this id doesn't exist");
                 
                 //Check if updating to table succeeded
                 var result = _procedureData.Update(procedure);
@@ -130,7 +130,7 @@ namespace droeftoeters_api.Controllers
                 if(!Guid.TryParse(id, out _))  throw new($"Id not valid guid: {id}");
                 
                 //Check if the procedure id already exists
-                if (!Exists(id)) throw new("Procedure with this id doesn't exist");
+                if (!ProcedureExists(id)) throw new("Procedure with this id doesn't exist");
                 
                 //Check if deleting on table succeeded
                 var result = _procedureData.Delete(id);
@@ -156,7 +156,7 @@ namespace droeftoeters_api.Controllers
                 if(!Guid.TryParse(procedureItem.ProcedureId, out _))  throw new($"Id not valid guid: {procedureItem.ProcedureId}");
                 
                 //Check if the procedure id doesn't exist
-                if (!Exists(procedureItem.ProcedureId)) throw new("Procedure with this id doesn't exist"); 
+                if (ProcedureExists(procedureItem.ProcedureId)) throw new("Procedure with this id doesn't exist"); 
                 
                 //Check if the procedure item id exists
                 if (ItemExists(procedureItem.Id)) throw new("Procedure item with this id already exists");
@@ -196,13 +196,8 @@ namespace droeftoeters_api.Controllers
                 return BadRequest();
             }
         }
-
-        private bool Exists(string id)
-        {
-            var result = _procedureData.Read(id) ;
-            return result != null;
-        }
-
         private bool ItemExists(string id) => _procedureItemData.Read(id) != null;
+
+        private bool ProcedureExists(string id) => _procedureData.Read(id) != null;
     }
 }

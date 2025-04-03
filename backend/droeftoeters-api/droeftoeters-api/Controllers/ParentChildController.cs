@@ -81,8 +81,13 @@ public class ParentChildController : Controller
                 //Check if parent child combination doesn't already exist
                 if (Exists(parentChild)) throw new("Parent child combination already exists");
                 
+                //Data call
+                var result = _parentChildData.Write(parentChild);
+
+                if (!result) throw new("Deleting parent child combination from database resulted in nothing happenign");
+                
                 //Return result
-                return Ok(_parentChildData.Write(parentChild));
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -102,8 +107,13 @@ public class ParentChildController : Controller
                 //Check if the id exists
                 if (!IdExists(id)) throw new Exception("Target id for parent child deletion does not exist");
                 
+                //Data call
+                var result = _parentChildData.Delete(id);
+
+                if (!result) throw new("Deleting parent child combination from database resulted in nothing happenign");
+                
                 //Return result
-                return Ok(_parentChildData.Delete(id));
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -116,7 +126,7 @@ public class ParentChildController : Controller
 
         private bool Exists(ParentChild parentChild)
         { 
-            var results = _parentChildData.ReadAll();
+            var results = _parentChildData.ReadAll() ?? [];
             foreach (var result in results)
             {
                 if (result.ChildId == parentChild.ChildId && result.ParentId == parentChild.ParentId)

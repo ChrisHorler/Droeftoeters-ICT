@@ -325,6 +325,11 @@ public class LoginScript : MonoBehaviour
         json, false));
     }
 
+    public void NavigateToScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
+
     public void EmptyLoginFormFields()
     {
         parentRegisterPasswordField.Select();

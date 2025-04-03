@@ -384,12 +384,14 @@ public class ProcedureItemTests
         string? inputId = null, ProcedureItem? inputProcedureItem = null, ProcedureItem? outputProcedureItem = null,
         List<ProcedureItem>? outputProcedureItems = null, bool outputBoolean = false)
     {
+        //set up input output data
         Mock<IProcedureItemData> procedureItemData = new();
         inputId ??= Guid.NewGuid().ToString();
         outId = inputId; //Lambdas do not accept out variables
         inputProcedureItem ??= GenerateProcedureItem(inputId);
         outProcedureItem = inputProcedureItem;
         
+        //Setup mock data layer
         procedureItemData.Setup(x => x.ReadAll()).Returns(outputProcedureItems!);
         procedureItemData.Setup(x => x.Read(inputId)).Returns(outputProcedureItem);
         procedureItemData.Setup(x => x.Write(inputProcedureItem)).Returns(outputBoolean);
@@ -397,6 +399,7 @@ public class ProcedureItemTests
         procedureItemData.Setup(x => x.Delete(inputId)).Returns(outputBoolean);
         procedureItemData.Setup(x => x.Parent(inputId)).Returns(new List<ProcedureItem>());
         
+        //Create controller
         return GenerateEmptyProcedureItemController(procedureItemData: procedureItemData);
     }
 

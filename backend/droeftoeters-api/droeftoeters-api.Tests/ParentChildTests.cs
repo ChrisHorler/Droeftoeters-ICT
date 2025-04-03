@@ -238,18 +238,21 @@ public class ParentChildTests
         string? inputId = null, ParentChild? inputParentChild = null, ParentChild? outputParentChild = null,
         List<ParentChild>? outputParentChildren = null, bool outputBoolean = false)
     {
+        //set up input output data
         Mock<IParentChildData> parentChildData = new();
         inputId ??= Guid.NewGuid().ToString();
         outId = inputId; //Lambdas do not accept out variables
         inputParentChild ??= GenerateParentChild(inputId);
         outParentChild = inputParentChild;
         
+        //Setup mock data layer
         parentChildData.Setup(x => x.ReadAll()).Returns(outputParentChildren!);
         parentChildData.Setup(x => x.Read(inputId)).Returns(outputParentChild);
         parentChildData.Setup(x => x.Write(inputParentChild)).Returns(outputBoolean);
         parentChildData.Setup(x => x.Update(inputParentChild)).Returns(outputBoolean);
         parentChildData.Setup(x => x.Delete(inputId)).Returns(outputBoolean);
         
+        //Create controller
         return GenerateEmptyParentChildController(parentChildData);
     }    
     

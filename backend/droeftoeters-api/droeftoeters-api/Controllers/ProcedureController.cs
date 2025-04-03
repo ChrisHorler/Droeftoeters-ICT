@@ -145,57 +145,7 @@ namespace droeftoeters_api.Controllers
                 return BadRequest();
             }
         }
-
-        [HttpPost("additem")]
-        public IActionResult AddProcedureItem(ProcedureItem procedureItem)
-        {
-            try
-            {
-                //Validate guids
-                if(!Guid.TryParse(procedureItem.Id, out _))  throw new($"Id not valid guid: {procedureItem.Id}");
-                if(!Guid.TryParse(procedureItem.ProcedureId, out _))  throw new($"Id not valid guid: {procedureItem.ProcedureId}");
-                
-                //Check if the procedure id doesn't exist
-                if (ProcedureExists(procedureItem.ProcedureId)) throw new("Procedure with this id doesn't exist"); 
-                
-                //Check if the procedure item id exists
-                if (ItemExists(procedureItem.Id)) throw new("Procedure item with this id already exists");
-
-                //Check if adding item succeeded
-                var result = _procedureData.AddProcedureItem(procedureItem);
-                if (!result) throw new("Adding procedure item to table resulted in nothing happening");
-                
-                //Return result
-                return Ok(result);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(e.Message + "\n" + e.InnerException);
-                return BadRequest();
-            }
-        }
         
-        [HttpDelete("removeitem/{id}")]
-        public IActionResult RemoveProcedureItem(string id)
-        {
-            try
-            {
-                //Check if the procedure item id doesn't exist
-                if (!ItemExists(id)) throw new("Procedure item with this id doesn't exist");    
-                
-                //Check if adding item succeeded
-                var result = _procedureData.RemoveProcedureItem(id);
-                if (!result) throw new("Deleting procedure item from table resulted in nothing happening");
-                
-                //Return result
-                return Ok(result);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(e.Message + "\n" + e.InnerException);
-                return BadRequest();
-            }
-        }
         private bool ItemExists(string id) => _procedureItemData.Read(id) != null;
 
         private bool ProcedureExists(string id) => _procedureData.Read(id) != null;

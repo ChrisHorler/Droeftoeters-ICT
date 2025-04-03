@@ -22,7 +22,7 @@ public class ParentChildData : IParentChildData
 
     public ParentChild Read(string id)
     {
-        string query = @$"SELECT * FROM {TABLE} WHERE [Id] = @Id";
+        string query = @$"SELECT * FROM {TABLE} WHERE [ParentId] = @Id";
         var result = _dataService.QueryFirstSql<ParentChild>(query, new {Id = id});
         return result;
     }
@@ -30,7 +30,7 @@ public class ParentChildData : IParentChildData
     public bool Write(ParentChild parentChild)
     {
         string query = @$"INSERT INTO {TABLE}
-(Id, ParentID, ChildId)
+(Id, ParentId, ChildId)
 VALUES(@Id, @ParentId, @ChildId)";
         var result = _dataService.ExecuteSql(query, parentChild);
         
@@ -49,7 +49,7 @@ VALUES(@Id, @ParentId, @ChildId)";
     {
         string query =
             $@"DELETE FROM {TABLE}
-where [Id] = @Id";
+where [ParentId] = @Id";
 
         var result = _dataService.ExecuteSql(query, new { Id = id });
         

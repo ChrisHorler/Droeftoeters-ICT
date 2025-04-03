@@ -51,3 +51,82 @@ MonoBehaviour:
     - panelType: 0
       scenePanelID: L4-Panel03
       prefab: {fileID: 0}
+  - buttonName: Level-Button_5A
+    panelData:
+    - panelType: 0
+      scenePanelID: L5-Panel01
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L5-Panel02
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L5-Panel03
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_6A
+    panelData:
+    - panelType: 0
+      scenePanelID: L6-Panel01
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L6-Panel02
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_7A
+    panelData:
+    - panelType: 0
+      scenePanelID: L7-Panel01
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_8A
+    panelData:
+    - panelType: 0
+      scenePanelID: L8-Panel01
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_5B
+    panelData:
+    - panelType: 0
+      scenePanelID: L5-Panel01B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L5-Panel02B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L5-Panel03B
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_6B
+    panelData:
+    - panelType: 0
+      scenePanelID: L6-Panel01B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L6-Panel02B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L6-Panel03B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L6-Panel04B
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_7B
+    panelData:
+    - panelType: 0
+      scenePanelID: L7-Panel01B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L7-Panel02B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L7-Panel03B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L7-Panel04B
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_8B
+    panelData:
+    - panelType: 0
+      scenePanelID: L8-Panel01B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L8-Panel02B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L8-Panel03B
+      prefab: {fileID: 0}

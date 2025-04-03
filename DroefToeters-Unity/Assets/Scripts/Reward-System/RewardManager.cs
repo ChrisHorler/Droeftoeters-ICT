@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RewardManager : MonoBehaviour {
     public static RewardManager Instance { get; private set; }
@@ -24,6 +25,7 @@ public class RewardManager : MonoBehaviour {
     void Start() {
         apiConnecter = FindFirstObjectByType<ApiConnecter>();
         StartCoroutine(GetUserId());
+        
     }
 
     private IEnumerator GetUserId() {

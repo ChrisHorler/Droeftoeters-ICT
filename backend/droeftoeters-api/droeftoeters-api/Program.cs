@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<IDataService, SqlDataService>();
 builder.Services.AddTransient<IProcedureData, ProcedureData>();
 builder.Services.AddTransient<IProcedureItemData, ProcedureItemData>();
+builder.Services.AddTransient<IParentChildData, ParentChildData>();
 builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
 
 // Add services to the container.

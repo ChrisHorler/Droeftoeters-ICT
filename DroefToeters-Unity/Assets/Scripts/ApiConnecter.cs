@@ -23,6 +23,22 @@ public class LoginResponse
     public int expiresIn { get; set; }
     public string refreshToken { get; set; }
 }
+
+public class LoginSaveFile: LoginResponse
+{
+    public bool isChild { get; set; }
+    public LoginSaveFile(LoginResponse response, bool isChild)
+    {
+        this.tokenType = response.tokenType;
+        this.accessToken = response.accessToken;
+        this.expiresIn = response.expiresIn;
+        this.refreshToken = response.refreshToken;
+        this.isChild = isChild;
+    }
+    public LoginSaveFile()
+    {
+    }
+}
 public class ApiConnecter : MonoBehaviour
 {
     public string baseUrl = "";
@@ -199,7 +215,9 @@ public class ApiConnecter : MonoBehaviour
                     {
                         Debug.Log($"Trying to use new token: {response}");
                         LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
-                        MainManager.Instance.SetLoginCredentials(decodedResponse);
+                        LoginSaveFile values = new LoginSaveFile(decodedResponse, MainManager.Instance.LoginResponse.isChild);
+                        MainManager.Instance.SetLoginCredentials(values);
+                        response = JsonConvert.SerializeObject(values);
                         System.IO.File.WriteAllText(MainManager.Instance.LoginDataSaveLocation, response);
                         SceneManager.LoadScene(defaultLoginScene);
                     }

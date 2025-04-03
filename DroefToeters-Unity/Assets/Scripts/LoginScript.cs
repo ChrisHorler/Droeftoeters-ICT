@@ -5,6 +5,17 @@ using UnityEngine.SceneManagement;
 using ColorUtility = UnityEngine.ColorUtility;
 using System.Collections;
 using System.Text.RegularExpressions;
+using UnityEngine.Serialization;
+using static UnityEngine.InputManagerEntry;
+using System;
+
+public class ChildData
+{
+    public string userId { get; set; }
+    public string username { get; set; }
+    public string password { get; set; }
+    public LoginResponse? loginResponse { get; set; }
+}
 
 public class Validator
 {
@@ -29,6 +40,9 @@ public class Validator
     }
 }
 
+// deze class wordt gebruikt bij de login pagina en de kind registratie pagina omdat ze soortgelijk functionaliteit hebben
+// als ik meer tijd had gehad had ik een nieuwere class gemaakt die deze inherit, zodat het er minder uit ziet als spaghetti code.
+// maar in verband met tijd druk hebben we het in 1 bestand gegooid.
 public class LoginScript : MonoBehaviour
 {
     private string passwordValue = "";
@@ -44,19 +58,128 @@ public class LoginScript : MonoBehaviour
     public TextMeshProUGUI childLoginErrorMessageLabel;
     public TMP_InputField childLoginUsernameField;
     public TMP_InputField childLoginPasswordField;
+    public TextMeshProUGUI childRegisterErrorMessageLabel;
+    public TMP_InputField childRegisterUsernameField;
+    public TMP_InputField childRegisterPasswordField;
+    public TMP_InputField childRegisterSecondPasswordField;
     private ApiConnecter apiConnecter;
-    public string defaulSceneAfterLogin = "SampleScene";
+    public string ParentlSceneAfterLogin = "";
+    public string ChildSceneAfterLogin = "";
+    public GameObject ChildPanel;
+    public GameObject ParentPanel;
+    public string currentSceneName = "FunctionalLogin";
+    public bool loginPage = true;
+    public GameObject ChildRegisterLoadingPanel;
+    public GameObject ChildRegisterPanel;
+    public GameObject ChildRegisteredPanel;
+    public GameObject ChildRegisteredSuccessfullyPanel;
+    private string parentUserId = "";
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (!loginPage)
+        {
+            MainManager.Instance.NavigationScene = currentSceneName;
+        }
         apiConnecter = FindFirstObjectByType<ApiConnecter>();
         StartCoroutine(DelayedRequest());
+        if (ChildPanel != null && ParentPanel != null)
+        {
+            if (MainManager.Instance.LoginChoice == "Parent")
+            {
+                ParentPanel.SetActive(true);
+                ChildPanel.SetActive(false);
+            }
+            if (MainManager.Instance.LoginChoice == "Child")
+            {
+                ParentPanel.SetActive(false);
+                ChildPanel.SetActive(true);
+            }
+        }
     }
 
     IEnumerator DelayedRequest()
     {
         yield return new WaitForSeconds(1f);
+        if (loginPage)
+        {
+            RefreshSessionToken();
+        }
+        else
+        {
+            CheckLoginStatus();
+        }
+    }
+
+    private void CheckLoginStatus()
+    {
+        StartCoroutine(apiConnecter.SendRequest("account/id", HttpMethod.GET, true, (string response, string error) =>
+        {
+            if (error == null)
+            {
+                parentUserId = response;
+                Debug.Log(parentUserId);
+                StartCoroutine(apiConnecter.SendRequest($"api/ParentChild/{parentUserId}", HttpMethod.GET, true, (string response, string error) =>
+                {
+                    // request the user id insted of the "account/checkAccessToken"
+                    if (error == null)
+                    {
+                        Debug.Log($"getting children: {response}");
+                        if (response != "[]")
+                        {
+                            if (ChildRegisterLoadingPanel != null)
+                            {
+                                ChildRegisterLoadingPanel.SetActive(false);
+                            }
+                            if (ChildRegisterPanel != null)
+                            {
+                                ChildRegisterPanel.SetActive(false);
+                            }
+                            if (ChildRegisteredPanel != null)
+                            {
+                                ChildRegisteredPanel.SetActive(true);
+                            }
+                            if (ChildRegisteredSuccessfullyPanel != null)
+                            {
+                                ChildRegisteredSuccessfullyPanel.SetActive(false);
+                            }
+                        } else
+                        {
+                            if (ChildRegisterLoadingPanel != null)
+                            {
+                                ChildRegisterLoadingPanel.SetActive(false);
+                            }
+                            if (ChildRegisterPanel != null)
+                            {
+                                ChildRegisterPanel.SetActive(true);
+                            }
+                            if (ChildRegisteredPanel != null)
+                            {
+                                ChildRegisteredPanel.SetActive(false);
+                            }
+                            if (ChildRegisteredSuccessfullyPanel != null)
+                            {
+                                ChildRegisteredSuccessfullyPanel.SetActive(false);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError($"Error whilst getting children: {error}");
+                        NavigateToScene("ProcedureSelection");
+                    }
+                }));
+            } else
+            {
+                Debug.LogError($"Error whilst getting parent ID: {error}");
+                NavigateToScene("ProcedureSelection");
+            }
+        }));
+    }
+
+    private void RefreshSessionToken()
+    {
         StartCoroutine(apiConnecter.SendRequest("account/checkAccessToken", HttpMethod.GET, true, (string response, string error) =>
         {
             if (error == null)
@@ -67,7 +190,14 @@ public class LoginScript : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene(defaulSceneAfterLogin);
+                    if (MainManager.Instance.LoginResponse != null && MainManager.Instance.LoginResponse.isChild)
+                    {
+                        SceneManager.LoadScene(ChildSceneAfterLogin);
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene(ParentlSceneAfterLogin);
+                    }
                 }
             }
             else
@@ -80,7 +210,9 @@ public class LoginScript : MonoBehaviour
                         {
                             Debug.Log($"Trying to use new token: {response}");
                             LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
-                            MainManager.Instance.SetLoginCredentials(decodedResponse);
+                            LoginSaveFile values = new LoginSaveFile(decodedResponse, MainManager.Instance.LoginResponse.isChild);
+                            MainManager.Instance.SetLoginCredentials(values);
+                            response = JsonConvert.SerializeObject(values);
                             System.IO.File.WriteAllText(MainManager.Instance.LoginDataSaveLocation, response);
                             if (MainManager.Instance.NavigationScene != null && MainManager.Instance.NavigationScene != "")
                             {
@@ -88,7 +220,14 @@ public class LoginScript : MonoBehaviour
                             }
                             else
                             {
-                                SceneManager.LoadScene(defaulSceneAfterLogin);
+                                if (MainManager.Instance.LoginResponse != null && MainManager.Instance.LoginResponse.isChild)
+                                {
+                                    SceneManager.LoadScene(ChildSceneAfterLogin);
+                                }
+                                else
+                                {
+                                    SceneManager.LoadScene(ParentlSceneAfterLogin);
+                                }
                             }
                         }
                         else
@@ -124,12 +263,25 @@ public class LoginScript : MonoBehaviour
 
     private void SetErrorMessages(string text)
     {
-        parentRegisterErrorMessageLabel.text = text;
-        parentLoginErrorMessageLabel.text = text;
-        childLoginErrorMessageLabel.text = text;
+        if (parentRegisterErrorMessageLabel != null)
+        {
+            parentRegisterErrorMessageLabel.text = text;
+        }
+        if (parentLoginErrorMessageLabel != null)
+        {
+            parentLoginErrorMessageLabel.text = text;
+        }
+        if (childLoginErrorMessageLabel != null)
+        {
+            childLoginErrorMessageLabel.text = text;
+        }
+        if (childRegisterErrorMessageLabel != null)
+        {
+            childRegisterErrorMessageLabel.text = text;
+        }
     }
 
-    private void RegisterUser()
+    private void RegisterUser(bool child)
     {
         if (!Validator.IsValidEmail(usernameValue))
         {
@@ -158,26 +310,166 @@ public class LoginScript : MonoBehaviour
         Debug.Log(json);
         StartCoroutine(apiConnecter.SendRequest("account/register", HttpMethod.POST, false, (string response, string error) =>
         {
-            SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+            SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
             SetErrorMessages("Connecting...");
             if (error == null)
             {
-                Debug.Log("Response: " + response);
-                SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
-                SetErrorMessages("Account Created! You are now able to login!");
-                parentRegisterPasswordField.Select();
-                parentRegisterPasswordField.text = "";
-                passwordValue = "";
-                if (parentRegisterSecondPasswordField != null)
+                if (child)
                 {
-                    parentRegisterSecondPasswordField.Select();
-                    parentRegisterSecondPasswordField.text = "";
-                    secondPasswordValue = "";
+                    // deze manier van een kind en ouder linken is scuffed.
+                    // bij query 1 maken we het kind aan, dan doen we nog 3 queries
+                    // als 1 van die 3 queries faalt is er wel een kind, maar is het niet gelinked aan een parent.
+                    // en dan geven we terug dat het account al bestaat xD
+                    // de rede dat dit zo is is omdat we geen tijd hebben gehad om onze eigen register endpoint te maken.
+                    // we snappen dat je het nooit zo zou doen in production, maar door tijdsnood is dit nu wel de uitwerking.
+
+                    if (ChildRegisterLoadingPanel != null)
+                    {
+                        ChildRegisterLoadingPanel.SetActive(true);
+                    }
+                    if (ChildRegisterPanel != null)
+                    {
+                        ChildRegisterPanel.SetActive(false);
+                    }
+                    if (ChildRegisteredPanel != null)
+                    {
+                        ChildRegisteredPanel.SetActive(false);
+                    }
+                    if (ChildRegisteredSuccessfullyPanel != null)
+                    {
+                        ChildRegisteredSuccessfullyPanel.SetActive(false);
+                    }
+                    StartCoroutine(apiConnecter.SendRequest("account/login", HttpMethod.POST, false, (string response, string error) =>
+                    {
+                        if (error == null)
+                        {
+                            SetErrorMessages("");
+                            Debug.Log("Response: " + response);
+
+                            LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
+                            LoginSaveFile values = new LoginSaveFile(decodedResponse, true);
+                            response = JsonConvert.SerializeObject(values);
+                            LoginSaveFile personalData = MainManager.Instance.LoginResponse;
+                            MainManager.Instance.SetLoginCredentials(values);
+                            StartCoroutine(apiConnecter.SendRequest("account/id", HttpMethod.GET, true, (string response, string error) =>
+                            {
+                                MainManager.Instance.SetLoginCredentials(personalData);
+                                if (error == null)
+                                {
+                                    string childId = response;
+                                    string uuid = Guid.NewGuid().ToString();
+                                    string jsonData = JsonConvert.SerializeObject(new { id = uuid, parentId = parentUserId, childId = childId }, Formatting.Indented);
+                                    Debug.Log(jsonData);
+                                    StartCoroutine(apiConnecter.SendRequest("api/ParentChild", HttpMethod.POST, true, (string response, string error) =>
+                                    {
+                                        if (error == null)
+                                        {
+                                            Debug.Log(response);
+                                            SetErrorMessages("");
+                                            if (ChildRegisterLoadingPanel != null)
+                                            {
+                                                ChildRegisterLoadingPanel.SetActive(false);
+                                            }
+                                            if (ChildRegisterPanel != null)
+                                            {
+                                                ChildRegisterPanel.SetActive(false);
+                                            }
+                                            if (ChildRegisteredPanel != null)
+                                            {
+                                                ChildRegisteredPanel.SetActive(false);
+                                            }
+                                            if (ChildRegisteredSuccessfullyPanel != null)
+                                            {
+                                                ChildRegisteredSuccessfullyPanel.SetActive(true);
+                                            }
+                                        } else
+                                        {
+                                            Debug.LogError(error);
+                                            SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
+                                            SetErrorMessages("Username already taken.");
+                                            if (ChildRegisterLoadingPanel != null)
+                                            {
+                                                ChildRegisterLoadingPanel.SetActive(false);
+                                            }
+                                            if (ChildRegisterPanel != null)
+                                            {
+                                                ChildRegisterPanel.SetActive(true);
+                                            }
+                                            if (ChildRegisteredPanel != null)
+                                            {
+                                                ChildRegisteredPanel.SetActive(false);
+                                            }
+                                            if (ChildRegisteredSuccessfullyPanel != null)
+                                            {
+                                                ChildRegisteredSuccessfullyPanel.SetActive(false);
+                                            }
+                                        }
+                                    }, jsonData));
+                                } else
+                                {
+                                    SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
+                                    SetErrorMessages("Username already taken.");
+                                    if (ChildRegisterLoadingPanel != null)
+                                    {
+                                        ChildRegisterLoadingPanel.SetActive(false);
+                                    }
+                                    if (ChildRegisterPanel != null)
+                                    {
+                                        ChildRegisterPanel.SetActive(true);
+                                    }
+                                    if (ChildRegisteredPanel != null)
+                                    {
+                                        ChildRegisteredPanel.SetActive(false);
+                                    }
+                                    if (ChildRegisteredSuccessfullyPanel != null)
+                                    {
+                                        ChildRegisteredSuccessfullyPanel.SetActive(false);
+                                    }
+                                }
+                            }));
+                        }
+                        else
+                        {
+                            SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
+                            SetErrorMessages("Username already taken.");
+                            if (ChildRegisterLoadingPanel != null)
+                            {
+                                ChildRegisterLoadingPanel.SetActive(false);
+                            }
+                            if (ChildRegisterPanel != null)
+                            {
+                                ChildRegisterPanel.SetActive(true);
+                            }
+                            if (ChildRegisteredPanel != null)
+                            {
+                                ChildRegisteredPanel.SetActive(false);
+                            }
+                            if (ChildRegisteredSuccessfullyPanel != null)
+                            {
+                                ChildRegisteredSuccessfullyPanel.SetActive(false);
+                            }
+                        }
+                    }, json, false));
+                }
+                else
+                {
+                    Debug.Log("Response: " + response);
+                    SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
+                    SetErrorMessages("Account Created! You are now able to login!");
+                    parentRegisterPasswordField.Select();
+                    parentRegisterPasswordField.text = "";
+                    passwordValue = "";
+                    if (parentRegisterSecondPasswordField != null)
+                    {
+                        parentRegisterSecondPasswordField.Select();
+                        parentRegisterSecondPasswordField.text = "";
+                        secondPasswordValue = "";
+                    }
                 }
             }
             else
             {
-                SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+                SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
                 SetErrorMessages("Username already taken.");
                 Debug.LogError(error);
             }
@@ -185,30 +477,43 @@ public class LoginScript : MonoBehaviour
         json, false));
     }
 
-    private void LoginUser()
+    private void LoginUser(bool isKind)
     {
-        SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+        SetTextColor("#FFFFFF", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
         SetErrorMessages("Connecting...");
         string json = JsonConvert.SerializeObject(new { email = usernameValue, password = passwordValue }, Formatting.Indented);
-        Debug.Log(json);
         StartCoroutine(apiConnecter.SendRequest("account/login", HttpMethod.POST, false, (string response, string error) =>
         {
             if (error == null)
             {
                 SetErrorMessages("");
                 Debug.Log("Response: " + response);
-                SceneManager.LoadScene(defaulSceneAfterLogin);
+                if (!isKind)
+                {
+                    SceneManager.LoadScene(ParentlSceneAfterLogin);
+                }
+                else
+                {
+                    SceneManager.LoadScene(ChildSceneAfterLogin);
+                }
                 LoginResponse decodedResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
-                MainManager.Instance.SetLoginCredentials(decodedResponse);
+                LoginSaveFile values = new LoginSaveFile(decodedResponse, isKind);
+                MainManager.Instance.SetLoginCredentials(values);
+                response = JsonConvert.SerializeObject(values);
                 System.IO.File.WriteAllText(MainManager.Instance.LoginDataSaveLocation, response);
             }
             else
             {
-                SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+                SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
                 SetErrorMessages("Invalid username & password combination.");
             }
         },
         json, false));
+    }
+
+    public void NavigateToScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 
     public void EmptyLoginFormFields()
@@ -234,27 +539,32 @@ public class LoginScript : MonoBehaviour
         childLoginUsernameField.Select();
         childLoginUsernameField.text = "";
         SetErrorMessages("");
-        SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+        SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
     }
 
     public void ClickButton(string registerOrLogin)
     {
         SetErrorMessages("");
-        SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel);
+        SetTextColor("#FF0000", parentRegisterErrorMessageLabel, parentLoginErrorMessageLabel, childLoginErrorMessageLabel, childRegisterErrorMessageLabel);
         if (registerOrLogin == "ParentRegister")
         {
-            RegisterUser();
+            RegisterUser(false);
         }
         else if (registerOrLogin == "ParentLogin")
         {
-            LoginUser();
-        } else if (registerOrLogin == "ChildLogin")
+            LoginUser(false);
+        }
+        else if (registerOrLogin == "ChildLogin")
         {
-            LoginUser();
+            LoginUser(true);
+        }
+        else if (registerOrLogin == "ChildRegister")
+        {
+            RegisterUser(true);
         }
         else
         {
-            Debug.LogError($"'{registerOrLogin}' is not a valid formButtonId, use 'ParentRegister', 'ParentLogin' or 'ChildLogin' instead.");
+            Debug.LogError($"'{registerOrLogin}' is not a valid formButtonId, use 'ParentRegister', 'ParentLogin', 'ChildRegister' or 'ChildLogin' instead.");
         }
     }
 
@@ -268,14 +578,27 @@ public class LoginScript : MonoBehaviour
         secondPasswordValue = value;
     }
 
-    public void SetTextColor(string colorText, TextMeshProUGUI element, TextMeshProUGUI element2, TextMeshProUGUI element3)
+    public void SetTextColor(string colorText, TextMeshProUGUI element, TextMeshProUGUI element2, TextMeshProUGUI element3, TextMeshProUGUI element4)
     {
         Color color;
         if (ColorUtility.TryParseHtmlString(colorText, out color))
         {
-            element.color = color;
-            element2.color = color;
-            element3.color = color;
+            if (element != null)
+            {
+                element.color = color;
+            }
+            if (element2 != null)
+            {
+                element2.color = color;
+            }
+            if (element3 != null)
+            {
+                element3.color = color;
+            }
+            if (element4 != null)
+            {
+                element4.color = color;
+            }
         }
         else
         {

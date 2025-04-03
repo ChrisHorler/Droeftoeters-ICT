@@ -28,6 +28,10 @@ public class ProceduresManager : MonoBehaviour
         GetProcedures();
     }
 
+    public void Logout()
+    {
+        MainManager.Instance.Logout();
+    }
 
     void Update()
     {
@@ -68,6 +72,11 @@ public class ProceduresManager : MonoBehaviour
                 Debug.LogError(error);
             }
         }));
+    }
+
+    public void RegisterChild()
+    {
+        SceneManager.LoadScene("ChildCreator");
     }
 
     public void LoadProcedure(string id)

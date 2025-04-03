@@ -28,7 +28,7 @@ De dokter pakt heel voorzichtig een klein beetje bloed om te kijken hoeveel suik
 
 De dokter heeft gekeken hoeveel suiker er in je bloed zit en ontdekt dat je suikerziekte (diabetes type 1) hebt. Dat betekent dat je lichaam extra hulp nodig heeft om je bloedsuiker goed te houden. 
 
-(Badge)
+> (Badge bloedsuiker)
 
 ==Panels!!!!!!!!!== 
 
@@ -37,53 +37,64 @@ Route A: zonder ziekenhuisopname 
 ### Level 5a, injecties 
 
 Je krijgt insuline met een prik of een klein pompje. De dokter legt uit hoe je insuline gebruikt, hoe je je bloedsuiker meet en welke dingen je beter wel of niet kunt eten. 
-
+> syringe badge
 ### Level 6a,  ouders uitleg
 
 Jij en je ouders krijgen hulp om goed met diabetes om te gaan. Je leert hoe je je voelt als je bloedsuiker te hoog of te laag is en wat je kunt eten om je beter te voelen. 
-
+> chalkboard badge
 ### Level 7a, 
 
 Je mag naar huis met een plan en uitleg over hoe je elke dag goed voor je diabetes kunt zorgen. 
+> Huis badge
 
 ### Level 8a, Follow-up afspraak 
 
 Maak een nieuwe afspraak bij de dokter om te kijken hoe het met je gaat en of je bloedsuiker goed blijft. 
 
 Route B, met ziekenhuisopname 
+>Kalender badge
 
 ### Level 5b,  injecties
 
 Jij moet naar de kinderafdeling in het ziekenhuis, waar de dokter gaat zorgen dat het suiker in je bloed weer goed wordt. 
-
-Je krijgt misschien een slangenbuisje in je arm waarin de dokter medicijn en water geeft om je suiker in je bloed beter te maken. 
-
- De dokters gaan goed in de gaten houden hoe het gaat met je bloedsuiker, of er iets in je plas zit, en hoe je je in het algemeen voelt.  
+Misschien krijg je een slangenbuisje in je arm waarin de dokter medicijn en water geeft om je suiker in je bloed beter te maken. 
+ De dokters gaan goed in de gaten houden hoe het gaat met je bloedsuiker, of er iets in je plas zit, en hoe je je in het algemeen voelt.
+   
+ > Badge syringe
 
 
 ### Level 6b,  
 
 Je ouders krijgen uitleg over diabetes type 1, hoe ze insuline aan jou kunnen geven, en hoe ze je thuis kunnen helpen. 
-
+Wat is insuline?:
+Insuline is een stofje in je lichaam dat helpt om suiker uit je eten om te zetten in energie. Het is als een sleutel die de suiker in je bloed opent, zodat je spieren en organen het kunnen gebruiken. Als je diabetes hebt, maakt je lichaam die sleutel niet goed. Daarom krijg je insuline via een prikje, zodat je sterk en gezond blijft! 😊
+> (Chalkboard badge)
 
 ### Level 7b, terug naar huis / dagelijks leven
 
-Als je bloed suiker weer goed is, mag je naar huis met een plan van de dokters en hulp om goed voor jezelf te zorgen. 
+%% Als je bloed suiker weer goed is, mag je naar huis met een plan van de dokters en hulp om goed voor jezelf te zorgen. 
 
 Praat met je school en andere mensen die je helpen, zodat ze weten dat je je bloedsuiker moet meten tijdens school en altijd snacks bij je moeten hebben voor als het nodig is. 
 
-Help het kind leren hoe je zelf je bloedsuiker kunt meten en hoe je zelf insuline kunt inspuiten, zodat je dit op een dag helemaal zelf kunt doen. 
+Je hebt geleerd hoe je zelf het suiker in je bloed kan meten en hoe je insuline kan inspuiten, nu kan je dit goed zelfstandig!
 
-Moedig het kind aan om gezond te eten en te bewegen, en zorg ervoor dat het zich gesteund voelt terwijl het leert omgaan met diabetes. 
+Je moet goed eten en veel bewegen, dit is goed voor je gezondheid.
 
-Het is belangrijk om een omgeving te hebben die het kind en de ouders helpt. Praat over hoe het voelt om ziek te zijn en zorg ervoor dat ze genoeg steun en hulp krijgen. 
+Het is belangrijk om een omgeving te hebben die het kind en de ouders helpt. Praat over hoe het voelt om ziek te zijn en zorg ervoor dat ze genoeg steun en hulp krijgen.  %%
 
-Je bloedsuiker is weer goed, je mag weer naar huis!
-De dokter 
+Je bloedsuiker is weer goed, je mag weer naar huis! 
+De dokters geven je een plan, zodat je voor jezelf kan zorgen. Je leert om zelf het suiker in je bloed te meten en hoe je dit kan oplossen! 
+Zorg ervoor dat school hier ook vanaf weet en dat je altijd snacks bij je hebt als het nodig is!
+>(Huis badge)
 ### Level 8b, follow-up afspraak
 
-Je moet regelmatig terug naar de dokter om je bloedsuiker en insuline te controleren. Ook kijken ze of er geen problemen zijn met je ogen of zenuwen. 
+%% Je moet regelmatig terug naar de dokter om je bloedsuiker en insuline te controleren. Ook kijken ze of er geen problemen zijn met je ogen of zenuwen. 
 
 De behandeling kan veranderen naarmate je groeit, als je dingen in je leven verandert, of als er andere medische dingen zijn die de dokters moeten bekijken. 
 
-In overleg kan het kind doorgestuurd worden naar de Diëtetiek of het Diabetescentrum voor verdere begeleiding. 
+In overleg kan het kind doorgestuurd worden naar de Diëtetiek of het Diabetescentrum voor verdere begeleiding.  %%
+
+Je moet soms terug naar de dokter om je bloedsuiker te controleren. 
+Als er iets verandert, doordat je misschien groeit, meer of minder sport of ziek word, dan kun je doorgestuurd worden naar een diabetescentrum , waar dokters zijn die nog meer weten over diabetes en jou goed kunnen helpen!
+
+> Kalender badge

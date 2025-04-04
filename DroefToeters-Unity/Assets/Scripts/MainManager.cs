@@ -1,12 +1,15 @@
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
     // Start() and Update() methods deleted - we don't need them right now
     public static MainManager Instance;
-    public LoginResponse LoginResponse; 
+    public LoginSaveFile LoginResponse; 
     public string NavigationScene; // the scene to go back to after login
+    public string LoginDataSaveLocation = "UserSettings/playerLogin.json";
+    public string LoginChoice = "";
 
     private void Awake()
     {
@@ -22,24 +25,35 @@ public class MainManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void SetLoginCredentials(LoginResponse loginResponse)
+    public void SetLoginCredentials(LoginSaveFile loginResponse)
     {
         MainManager.Instance.LoginResponse = loginResponse;
     }
 
     private void Start()
     {
-        string filePath = "UserSettings/playerLogin.json";
+        string filePath = LoginDataSaveLocation;
         if (System.IO.File.Exists(filePath))
         {
             string jsonString = System.IO.File.ReadAllText(filePath);
-            LoginResponse = JsonConvert.DeserializeObject<LoginResponse>(jsonString);
+            LoginResponse = JsonConvert.DeserializeObject<LoginSaveFile>(jsonString);
         }
         else
         {
-            Debug.Log("No data found.");
+            Debug.Log("No sessiontoken-ish data found.");
         }
     }
 
-
+    public void Logout()
+    {
+        LoginResponse = null;
+        
+        if (System.IO.File.Exists(LoginDataSaveLocation))
+        {
+            System.IO.File.Delete(LoginDataSaveLocation);
+        }
+        NavigationScene = null;
+        SceneManager.LoadScene("FunctionalChoice");
+        
+    }
 }

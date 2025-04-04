@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf0c1cf30a347f7b1810f3a392bdfd9, type: 3}
+  m_Name: UISequenceDatabase
+  m_EditorClassIdentifier: 
+  sequences:
+  - buttonName: Level-Button_1
+    panelData:
+    - panelType: 0
+      scenePanelID: L1-Panel01
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L1-Panel02
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L1-Panel03
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_2
+    panelData:
+    - panelType: 0
+      scenePanelID: L2-Panel01
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L2-Panel02
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_3
+    panelData:
+    - panelType: 0
+      scenePanelID: L3-Panel01
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L3-Panel02
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_4
+    panelData:
+    - panelType: 0
+      scenePanelID: L4-Panel01
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L4-Panel02
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L4-Panel03
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_5A
+    panelData:
+    - panelType: 0
+      scenePanelID: L5-Panel01A
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L5-Panel02A
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L5-Panel03A
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_6A
+    panelData:
+    - panelType: 0
+      scenePanelID: L6-Panel01A
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L6-Panel02A
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_7A
+    panelData:
+    - panelType: 0
+      scenePanelID: L7-Panel01A
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_8A
+    panelData:
+    - panelType: 0
+      scenePanelID: L8-Panel01A
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_5B
+    panelData:
+    - panelType: 0
+      scenePanelID: L5-Panel01B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L5-Panel02B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L5-Panel03B
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_6B
+    panelData:
+    - panelType: 0
+      scenePanelID: L6-Panel01B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L6-Panel02B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L6-Panel03B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L6-Panel04B
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_7B
+    panelData:
+    - panelType: 0
+      scenePanelID: L7-Panel01B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L7-Panel02B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L7-Panel03B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L7-Panel04B
+      prefab: {fileID: 0}
+  - buttonName: Level-Button_8B
+    panelData:
+    - panelType: 0
+      scenePanelID: L8-Panel01B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L8-Panel02B
+      prefab: {fileID: 0}
+    - panelType: 0
+      scenePanelID: L8-Panel03B
+      prefab: {fileID: 0}

@@ -22,12 +22,15 @@ public class RouteStarUI : MonoBehaviour
     public Button routeB_Level8;
 
     private void OnEnable() {
+        UpdateAllStars();
+    }
+
+    public void UpdateAllStars() {
         UpdateDefaultStars();
-        
         UpdateRouteAStars();
         UpdateRouteBStars();
     }
-
+    
     private void UpdateDefaultStars() {
         UpdateStar(button_Level1, "Reward-Level1");
         UpdateStar(button_Level2, "Reward-Level2");

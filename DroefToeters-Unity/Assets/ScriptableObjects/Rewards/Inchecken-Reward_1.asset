@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 285e92afad316e38da6bfc3a4b0c7565, type: 3}
   m_Name: Inchecken-Reward_1
   m_EditorClassIdentifier: 
-  rewardID: Reward_Level1
+  rewardID: Reward-Level1
   icon: {fileID: 4643977824246099726, guid: bd5c698fd7016f54da85255997b1151c, type: 3}
   displayName: Ontmoet de Dokter!
   description: Je eerste stap in het ziekenhuis!

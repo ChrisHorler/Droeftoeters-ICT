@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class RewardUI : MonoBehaviour {
@@ -5,7 +6,22 @@ public class RewardUI : MonoBehaviour {
     public Transform rewardListCOntainer;
 
     void OnEnable() {
-        RefreshUI();
+        if (RewardManager.Instance != null) 
+            RewardManager.Instance.OnRewardDataReady -= RefreshUI;
+        
+        if (RewardManager.Instance != null)
+            RewardManager.Instance.OnRewardDataReady += RefreshUI;
+    }
+    
+    void OnDisable() {
+        if (RewardManager.Instance != null)
+            RewardManager.Instance.OnRewardDataReady -= RefreshUI;
+    }
+
+    private void Start() {
+        if (RewardManager.Instance != null && RewardManager.Instance.HasUserId()) {
+            RefreshUI();
+        }
     }
 
     public void RefreshUI() {
@@ -20,5 +36,7 @@ public class RewardUI : MonoBehaviour {
             var itemUI = itemGO.GetComponent<RewardItemUI>();
             itemUI.SetData(reward);
         }
+        
+        Debug.Log("Refreshing Reward UI");
     }
 }

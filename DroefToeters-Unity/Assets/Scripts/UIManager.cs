@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance { get; private set; }
-    
     [Header("UI Navigation Elements")]
     public Button leftButton;
     public Button rightButton;
@@ -16,9 +14,6 @@ public class UIManager : MonoBehaviour
     private int currentStep = 0;
 
     private void Awake() {
-        if (instance == null) instance = this;
-        else Destroy(gameObject);
-        
         if (leftButton) leftButton.onClick.AddListener(PreviousStep);
         if (rightButton) rightButton.onClick.AddListener(NextStep);
         if (closeButton) closeButton.onClick.AddListener(ClosePanel);
@@ -38,12 +33,16 @@ public class UIManager : MonoBehaviour
         var unlockScript = lastPanel.GetComponent<UnlockBadge>();
         finishButton.onClick.RemoveAllListeners();
 
-        if (unlockScript != null)
-        {
+        if (unlockScript != null) {
             finishButton.onClick.AddListener(unlockScript.UnlockReward);
         }
-        SetGlobalButtonsActive(true);
+        finishButton.onClick.AddListener(ClosePanel);
+        var starUI = FindObjectOfType<RouteStarUI>();
+        if (starUI) {
+            finishButton.onClick.AddListener(() => starUI.UpdateAllStars());
+        }
         
+        SetGlobalButtonsActive(true);
         UpdateStepDisplay();
     }
     

@@ -54,31 +54,31 @@ MonoBehaviour:
   - buttonName: Level-Button_5A
     panelData:
     - panelType: 0
-      scenePanelID: L5-Panel01
+      scenePanelID: L5-Panel01A
       prefab: {fileID: 0}
     - panelType: 0
-      scenePanelID: L5-Panel02
+      scenePanelID: L5-Panel02A
       prefab: {fileID: 0}
     - panelType: 0
-      scenePanelID: L5-Panel03
+      scenePanelID: L5-Panel03A
       prefab: {fileID: 0}
   - buttonName: Level-Button_6A
     panelData:
     - panelType: 0
-      scenePanelID: L6-Panel01
+      scenePanelID: L6-Panel01A
       prefab: {fileID: 0}
     - panelType: 0
-      scenePanelID: L6-Panel02
+      scenePanelID: L6-Panel02A
       prefab: {fileID: 0}
   - buttonName: Level-Button_7A
     panelData:
     - panelType: 0
-      scenePanelID: L7-Panel01
+      scenePanelID: L7-Panel01A
       prefab: {fileID: 0}
   - buttonName: Level-Button_8A
     panelData:
     - panelType: 0
-      scenePanelID: L8-Panel01
+      scenePanelID: L8-Panel01A
       prefab: {fileID: 0}
   - buttonName: Level-Button_5B
     panelData:

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine.UI;
 
 public class RewardManager : MonoBehaviour {
     public static RewardManager Instance { get; private set; }
+
+    public event Action OnRewardDataReady;
     
     private ApiConnecter apiConnecter;
     private string userId;
@@ -25,7 +28,6 @@ public class RewardManager : MonoBehaviour {
     void Start() {
         apiConnecter = FindFirstObjectByType<ApiConnecter>();
         StartCoroutine(GetUserId());
-        
     }
 
     private IEnumerator GetUserId() {
@@ -36,11 +38,18 @@ public class RewardManager : MonoBehaviour {
                     Debug.Log($"User ID: {userId}");
 
                     CheckRewards(userId);
+                    
+                    OnRewardDataReady?.Invoke();
                 }
                 else {
                     Debug.LogError($"Error whilst getting user id: {error}");
                 }
             });
+    }
+
+    public bool HasUserId()
+    {
+        return !string.IsNullOrEmpty(userId);
     }
 
     private void CheckRewards(string userId) {

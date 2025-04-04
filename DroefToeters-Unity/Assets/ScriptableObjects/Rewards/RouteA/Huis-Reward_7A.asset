@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 285e92afad316e38da6bfc3a4b0c7565, type: 3}
+  m_Name: Huis-Reward_7A
+  m_EditorClassIdentifier: 
+  rewardID: Reward-Level7A
+  icon: {fileID: -512954636400884891, guid: 3de41487164e9aa4fa8d09cac620c120, type: 3}
+  displayName: Thuisbaas!
+  description: Je bent klaar om zelf goed voor jezelf te zorgen.

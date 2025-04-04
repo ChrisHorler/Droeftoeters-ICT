@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 285e92afad316e38da6bfc3a4b0c7565, type: 3}
+  m_Name: FollowUp-Reward_8A
+  m_EditorClassIdentifier: 
+  rewardID: Reward-Level8A
+  icon: {fileID: 1717959649996741340, guid: 385c3d32e1b1f244c906b96b79f356b2, type: 3}
+  displayName: Terug bij de Dokter
+  description: Even checken hoe het gaat met je gezondheid.

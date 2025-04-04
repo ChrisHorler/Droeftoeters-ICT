@@ -26,7 +26,7 @@ De dokter pakt heel voorzichtig een klein beetje bloed om te kijken hoeveel suik
 
 ### Level 4, diagnose 
 
-De dokter heeft gekeken hoeveel suiker er in je bloed zit en ontdekt dat je suikerziekte (diabetes type 1) hebt. Dat betekent dat je lichaam extra hulp nodig heeft om je bloedsuiker goed te houden. 
+De dokter heeft gekeken hoeveel suiker er in je bloed zit. hij ontdekt dat je suikerziekte (diabetes type 1) hebt. Dat betekent dat je lichaam extra hulp nodig heeft om je bloedsuiker goed te houden. 
 
 > (Badge bloedsuiker)
 

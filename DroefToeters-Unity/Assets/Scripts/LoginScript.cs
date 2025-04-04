@@ -119,7 +119,7 @@ public class LoginScript : MonoBehaviour
             if (error == null)
             {
                 parentUserId = response;
-                Debug.Log(parentUserId);
+                //Debug.Log(parentUserId);
                 StartCoroutine(apiConnecter.SendRequest($"api/ParentChild/{parentUserId}", HttpMethod.GET, true, (string response, string error) =>
                 {
                     // request the user id insted of the "account/checkAccessToken"

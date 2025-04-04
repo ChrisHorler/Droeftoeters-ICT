@@ -1,0 +1,2678 @@
+fileFormatVersion: 2
+guid: d4e64ffa5d73d1684822c88f126205b9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2112705421729113953
+    second: StarLines_0
+  - first:
+      213: -76303086964741581
+    second: StarLines_1
+  - first:
+      213: 3828609986674130497
+    second: StarLines_2
+  - first:
+      213: -5441495101709387912
+    second: StarLines_3
+  - first:
+      213: -2876466180129118857
+    second: StarLines_4
+  - first:
+      213: -1457635277379494273
+    second: StarLines_5
+  - first:
+      213: 6978519901627477988
+    second: StarLines_6
+  - first:
+      213: -6725885981804185340
+    second: StarLines_7
+  - first:
+      213: -5025268579975857706
+    second: StarLines_8
+  - first:
+      213: 8326681018617252471
+    second: StarLines_9
+  - first:
+      213: -8667309175306659608
+    second: StarLines_10
+  - first:
+      213: -8204695076197013514
+    second: StarLines_11
+  - first:
+      213: -1882762575346791140
+    second: StarLines_12
+  - first:
+      213: -4604075371905711638
+    second: StarLines_13
+  - first:
+      213: 5140820986865302499
+    second: StarLines_14
+  - first:
+      213: -8450481189517461499
+    second: StarLines_15
+  - first:
+      213: -755162555285525550
+    second: StarLines_16
+  - first:
+      213: 2504931489167000946
+    second: StarLines_17
+  - first:
+      213: -273441972961924321
+    second: StarLines_18
+  - first:
+      213: -8050802774095020092
+    second: StarLines_19
+  - first:
+      213: -5128663445591297965
+    second: StarLines_20
+  - first:
+      213: -8001963801250788802
+    second: StarLines_21
+  - first:
+      213: 72394051422469543
+    second: StarLines_22
+  - first:
+      213: 8326769768800914061
+    second: StarLines_23
+  - first:
+      213: 3117183425371393103
+    second: StarLines_24
+  - first:
+      213: -6395073594925490219
+    second: StarLines_25
+  - first:
+      213: 8292024416835717503
+    second: StarLines_26
+  - first:
+      213: 2180952020689460114
+    second: StarLines_27
+  - first:
+      213: 8231741454979660696
+    second: StarLines_28
+  - first:
+      213: 9031561522686742136
+    second: StarLines_29
+  - first:
+      213: 3215800429466131743
+    second: StarLines_30
+  - first:
+      213: 6482609215969308562
+    second: StarLines_31
+  - first:
+      213: -2604922348836405146
+    second: StarLines_32
+  - first:
+      213: -7566420579288723272
+    second: StarLines_33
+  - first:
+      213: 1883004072460076008
+    second: StarLines_34
+  - first:
+      213: -3861527827656827198
+    second: StarLines_35
+  - first:
+      213: 1913767844925605146
+    second: StarLines_36
+  - first:
+      213: -3389826145489335808
+    second: StarLines_37
+  - first:
+      213: 3532338150300676703
+    second: StarLines_38
+  - first:
+      213: 832102717852391304
+    second: StarLines_39
+  - first:
+      213: 419483538602779777
+    second: StarLines_40
+  - first:
+      213: -5975884950952749961
+    second: StarLines_41
+  - first:
+      213: 5451537957515565624
+    second: StarLines_42
+  - first:
+      213: -3132947623429160486
+    second: StarLines_43
+  - first:
+      213: -4955308903260529733
+    second: StarLines_44
+  - first:
+      213: -2308045091741913939
+    second: StarLines_45
+  - first:
+      213: -1493641553353090665
+    second: StarLines_46
+  - first:
+      213: 4002905757775992476
+    second: StarLines_47
+  - first:
+      213: -4740842716780463857
+    second: StarLines_48
+  - first:
+      213: -240273002666329977
+    second: StarLines_49
+  - first:
+      213: -8923387087633870766
+    second: StarLines_50
+  - first:
+      213: -5219221272365910878
+    second: StarLines_51
+  - first:
+      213: 5538651019370955956
+    second: StarLines_52
+  - first:
+      213: 2882085865013474395
+    second: StarLines_53
+  - first:
+      213: -7135366537772496011
+    second: StarLines_54
+  - first:
+      213: -1094622838322412701
+    second: StarLines_55
+  - first:
+      213: -1360899665926914758
+    second: StarLines_56
+  - first:
+      213: 2421810095080011847
+    second: StarLines_57
+  - first:
+      213: 1554982532509507706
+    second: StarLines_58
+  - first:
+      213: 5771009498329778875
+    second: StarLines_59
+  - first:
+      213: -812740550202194172
+    second: StarLines_60
+  - first:
+      213: 994600665240170928
+    second: StarLines_61
+  - first:
+      213: 7411943033263430016
+    second: StarLines_62
+  - first:
+      213: -2687511513518744474
+    second: StarLines_63
+  - first:
+      213: -6222551426472847978
+    second: StarLines_64
+  - first:
+      213: -3224702066793936335
+    second: StarLines_65
+  - first:
+      213: 2738637929792862069
+    second: StarLines_66
+  - first:
+      213: -1123608884703824416
+    second: StarLines_67
+  - first:
+      213: -9055937966558125095
+    second: StarLines_68
+  - first:
+      213: 2950541136261107236
+    second: StarLines_69
+  - first:
+      213: -5268078702650125863
+    second: StarLines_70
+  - first:
+      213: -2583656884473234880
+    second: StarLines_71
+  - first:
+      213: 8825473986584610765
+    second: StarLines_72
+  - first:
+      213: 5616473376791336428
+    second: StarLines_73
+  - first:
+      213: 318190708477090470
+    second: StarLines_74
+  - first:
+      213: 8909842712390100666
+    second: StarLines_75
+  - first:
+      213: -8330934299512482530
+    second: StarLines_76
+  - first:
+      213: -4349655526924862283
+    second: StarLines_77
+  - first:
+      213: 7319425787171847914
+    second: StarLines_78
+  - first:
+      213: 5848715162176568541
+    second: StarLines_79
+  - first:
+      213: -5213573993870174841
+    second: StarLines_80
+  - first:
+      213: -521490741561078476
+    second: StarLines_81
+  - first:
+      213: 5851294578976122451
+    second: StarLines_82
+  - first:
+      213: 7743920126887138334
+    second: StarLines_83
+  - first:
+      213: 6863218302777296521
+    second: StarLines_84
+  - first:
+      213: -45141170527368369
+    second: StarLines_85
+  - first:
+      213: 4332246943001443110
+    second: StarLines_86
+  - first:
+      213: -8945168970007278620
+    second: StarLines_87
+  - first:
+      213: 8057376049302520099
+    second: StarLines_88
+  - first:
+      213: 8655432465147153321
+    second: StarLines_89
+  - first:
+      213: 5704864632277157069
+    second: StarLines_90
+  - first:
+      213: 2189444041078415678
+    second: StarLines_91
+  - first:
+      213: -5680595999073376520
+    second: StarLines_92
+  - first:
+      213: -2546791184619353518
+    second: StarLines_93
+  - first:
+      213: -7916803507619177284
+    second: StarLines_94
+  - first:
+      213: -2103462580900635170
+    second: StarLines_95
+  - first:
+      213: 4450345295890722256
+    second: StarLines_96
+  - first:
+      213: -5207898353258639816
+    second: StarLines_97
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: StarLines_0
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 905
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f985bcecc992ea2e0800000000000000
+      internalID: -2112705421729113953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_1
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 907
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33a63362fbae0fef0800000000000000
+      internalID: -76303086964741581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_2
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 909
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14e793f7f74f12530800000000000000
+      internalID: 3828609986674130497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_3
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 911
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8777597090deb74b0800000000000000
+      internalID: -5441495101709387912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_4
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 913
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 775aaf4df3db418d0800000000000000
+      internalID: -2876466180129118857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_5
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 914
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7e97b7207075cbe0800000000000000
+      internalID: -1457635277379494273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_6
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 916
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4efef7270eea8d060800000000000000
+      internalID: 6978519901627477988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_7
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 918
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40938c6b55ad8a2a0800000000000000
+      internalID: -6725885981804185340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_8
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 919
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d97b9df9d8a24ab0800000000000000
+      internalID: -5025268579975857706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_9
+      rect:
+        serializedVersion: 2
+        x: 1258
+        y: 906
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77a4ba015405e8370800000000000000
+      internalID: 8326681018617252471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_10
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 894
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e8dc57f93887b780800000000000000
+      internalID: -8667309175306659608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_11
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 896
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f761ec6c41132e80800000000000000
+      internalID: -8204695076197013514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_12
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 898
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1d0e0cb9651fd5e0800000000000000
+      internalID: -1882762575346791140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_13
+      rect:
+        serializedVersion: 2
+        x: 841
+        y: 899
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae18f6ab7d90b10c0800000000000000
+      internalID: -4604075371905711638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_14
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 901
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ebbaf7437dd75740800000000000000
+      internalID: 5140820986865302499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_15
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 903
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 508f0b5712cd9ba80800000000000000
+      internalID: -8450481189517461499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_16
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 893
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dba78038af1585f0800000000000000
+      internalID: -755162555285525550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_17
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 880
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2754d7eeaed43c220800000000000000
+      internalID: 2504931489167000946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_18
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 867
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1b2cee69f9843cf0800000000000000
+      internalID: -273441972961924321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_19
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 854
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cf365d288dc54090800000000000000
+      internalID: -8050802774095020092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_20
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 841
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 350fff0e4c353d8b0800000000000000
+      internalID: -5128663445591297965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_21
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 828
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3a89e8a15053f090800000000000000
+      internalID: -8001963801250788802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_22
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 815
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ad33e69102310100800000000000000
+      internalID: 72394051422469543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_23
+      rect:
+        serializedVersion: 2
+        x: 1419
+        y: 802
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8a07d3dcf0ae8370800000000000000
+      internalID: 8326769768800914061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_24
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 789
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4c4ff05fc5724b20800000000000000
+      internalID: 3117183425371393103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_25
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 776
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5df5cfda2722047a0800000000000000
+      internalID: -6395073594925490219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_26
+      rect:
+        serializedVersion: 2
+        x: 1480
+        y: 764
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f79cb5a2640331370800000000000000
+      internalID: 8292024416835717503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_27
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 751
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29b9d51ce4c444e10800000000000000
+      internalID: 2180952020689460114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_28
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 738
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89b7bea5d350d3270800000000000000
+      internalID: 8231741454979660696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_29
+      rect:
+        serializedVersion: 2
+        x: 1494
+        y: 705
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87e44d68a5d865d70800000000000000
+      internalID: 9031561522686742136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_30
+      rect:
+        serializedVersion: 2
+        x: 1515
+        y: 717
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1d90ead371d0ac20800000000000000
+      internalID: 3215800429466131743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_31
+      rect:
+        serializedVersion: 2
+        x: 1453
+        y: 681
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29f268f4cbad6f950800000000000000
+      internalID: 6482609215969308562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_32
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 693
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 660412adce479dbd0800000000000000
+      internalID: -2604922348836405146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_33
+      rect:
+        serializedVersion: 2
+        x: 1411
+        y: 657
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b05a4e529caef690800000000000000
+      internalID: -7566420579288723272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_34
+      rect:
+        serializedVersion: 2
+        x: 1432
+        y: 669
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e3c8913a36c12a10800000000000000
+      internalID: 1883004072460076008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_35
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 633
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ce9a3666e8196ac0800000000000000
+      internalID: -3861527827656827198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_36
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 645
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a150b5327b11f8a10800000000000000
+      internalID: 1913767844925605146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_37
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 609
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00ac6cba41be4f0d0800000000000000
+      internalID: -3389826145489335808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_38
+      rect:
+        serializedVersion: 2
+        x: 1349
+        y: 621
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f527b3325d2650130800000000000000
+      internalID: 3532338150300676703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_39
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 586
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8879a3263093c8b00800000000000000
+      internalID: 832102717852391304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_40
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 588
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 184ea8b4e0e42d500800000000000000
+      internalID: 419483538602779777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_41
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 588
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 774dbd77c44611da0800000000000000
+      internalID: -5975884950952749961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_42
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 588
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83a164d83e0c7ab40800000000000000
+      internalID: 5451537957515565624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_43
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 588
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad1c99d4cb88584d0800000000000000
+      internalID: -3132947623429160486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_44
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 588
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbb53dc8ec43b3bb0800000000000000
+      internalID: -4955308903260529733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_45
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 588
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daca325b73d28ffd0800000000000000
+      internalID: -2308045091741913939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_46
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 588
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79950aebbe4854be0800000000000000
+      internalID: -1493641553353090665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_47
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 588
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c969a91149d2d8730800000000000000
+      internalID: 4002905757775992476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_48
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 588
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f097d4acaa4253eb0800000000000000
+      internalID: -4740842716780463857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_49
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 588
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 788f4f22af06aacf0800000000000000
+      internalID: -240273002666329977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_50
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 588
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2509640d8b2c92480800000000000000
+      internalID: -8923387087633870766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_51
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 588
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a4b778c7e99197b0800000000000000
+      internalID: -5219221272365910878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_52
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 588
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b40670d1cd3ddc40800000000000000
+      internalID: 5538651019370955956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_53
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 588
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b547d4403d93ff720800000000000000
+      internalID: 2882085865013474395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_54
+      rect:
+        serializedVersion: 2
+        x: 1307
+        y: 597
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57b8cdd40f51afc90800000000000000
+      internalID: -7135366537772496011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_55
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 564
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36343cef35e1fc0f0800000000000000
+      internalID: -1094622838322412701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_56
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 575
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3d7a75d6fc1d1de0800000000000000
+      internalID: -1360899665926914758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_57
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 542
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 748f2be337ffb9120800000000000000
+      internalID: 2421810095080011847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_58
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 553
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a70aa2aef58649510800000000000000
+      internalID: 1554982532509507706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_59
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 520
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bba0a57009eb61050800000000000000
+      internalID: 5771009498329778875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_60
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 531
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40784a296c098b4f0800000000000000
+      internalID: -812740550202194172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_61
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 498
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b1f10119088dcd00800000000000000
+      internalID: 994600665240170928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_62
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 509
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08919192be28cd660800000000000000
+      internalID: 7411943033263430016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_63
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 477
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66c51fa748a04bad0800000000000000
+      internalID: -2687511513518744474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_64
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 487
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6955c74327e05a9a0800000000000000
+      internalID: -6222551426472847978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_65
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 466
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13a87423e8e8f33d0800000000000000
+      internalID: -3224702066793936335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_66
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 381
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 577f6bdefa8910620800000000000000
+      internalID: 2738637929792862069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_67
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 368
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e571c82ca32860f0800000000000000
+      internalID: -1123608884703824416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_68
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 356
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d3645b5668d25280800000000000000
+      internalID: -9055937966558125095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_69
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 344
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42e4502e78d62f820800000000000000
+      internalID: 2950541136261107236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_70
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 331
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d11db7d45604e6b0800000000000000
+      internalID: -5268078702650125863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_71
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 319
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04afa7b90c1052cd0800000000000000
+      internalID: -2583656884473234880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_72
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 307
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc783d8d4d16a7a70800000000000000
+      internalID: 8825473986584610765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_73
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 295
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce5161267c8b1fd40800000000000000
+      internalID: 5616473376791336428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_74
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 282
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6aa5b9573c07a6400800000000000000
+      internalID: 318190708477090470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_75
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 270
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab66d949dbe16ab70800000000000000
+      internalID: 8909842712390100666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_76
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 258
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e15d07ec463926c80800000000000000
+      internalID: -8330934299512482530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_77
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 245
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bc345ef75be2a3c0800000000000000
+      internalID: -4349655526924862283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_78
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 233
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aee363439f2d39560800000000000000
+      internalID: 7319425787171847914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_79
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 221
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddcb9f1c37fca2150800000000000000
+      internalID: 5848715162176568541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_80
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 168
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7855725431aa5a7b0800000000000000
+      internalID: -5213573993870174841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_81
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 166
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43dc89bfeea43c8f0800000000000000
+      internalID: -521490741561078476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_82
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 164
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3566a080b69f33150800000000000000
+      internalID: 5851294578976122451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_83
+      rect:
+        serializedVersion: 2
+        x: 1014
+        y: 162
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e141b1c835ee77b60800000000000000
+      internalID: 7743920126887138334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_84
+      rect:
+        serializedVersion: 2
+        x: 1038
+        y: 160
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9860009feac0f3f50800000000000000
+      internalID: 6863218302777296521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_85
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 158
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4b88f53850af5ff0800000000000000
+      internalID: -45141170527368369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_86
+      rect:
+        serializedVersion: 2
+        x: 1085
+        y: 156
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62b7fd434ab3f1c30800000000000000
+      internalID: 4332246943001443110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_87
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 153
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eb8ede17306cd380800000000000000
+      internalID: -8945168970007278620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_88
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 151
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 321ca68b3dc81df60800000000000000
+      internalID: 8057376049302520099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_89
+      rect:
+        serializedVersion: 2
+        x: 1157
+        y: 149
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9abca76f7f54e1870800000000000000
+      internalID: 8655432465147153321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_90
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 147
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc4c19a4820cb2f40800000000000000
+      internalID: 5704864632277157069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_91
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 145
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e31231451c7726e10800000000000000
+      internalID: 2189444041078415678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_92
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 143
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f6e9b239087a21b0800000000000000
+      internalID: -5680595999073376520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_93
+      rect:
+        serializedVersion: 2
+        x: 1253
+        y: 140
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25acaab39eaf7acd0800000000000000
+      internalID: -2546791184619353518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_94
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 138
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbcdac3a72dd12290800000000000000
+      internalID: -7916803507619177284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_95
+      rect:
+        serializedVersion: 2
+        x: 1301
+        y: 136
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edd57136deffec2e0800000000000000
+      internalID: -2103462580900635170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_96
+      rect:
+        serializedVersion: 2
+        x: 1324
+        y: 134
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dda569b77dc2cd30800000000000000
+      internalID: 4450345295890722256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarLines_97
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 132
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83e4da35a04d9b7b0800000000000000
+      internalID: -5207898353258639816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      StarLines_0: -2112705421729113953
+      StarLines_1: -76303086964741581
+      StarLines_10: -8667309175306659608
+      StarLines_11: -8204695076197013514
+      StarLines_12: -1882762575346791140
+      StarLines_13: -4604075371905711638
+      StarLines_14: 5140820986865302499
+      StarLines_15: -8450481189517461499
+      StarLines_16: -755162555285525550
+      StarLines_17: 2504931489167000946
+      StarLines_18: -273441972961924321
+      StarLines_19: -8050802774095020092
+      StarLines_2: 3828609986674130497
+      StarLines_20: -5128663445591297965
+      StarLines_21: -8001963801250788802
+      StarLines_22: 72394051422469543
+      StarLines_23: 8326769768800914061
+      StarLines_24: 3117183425371393103
+      StarLines_25: -6395073594925490219
+      StarLines_26: 8292024416835717503
+      StarLines_27: 2180952020689460114
+      StarLines_28: 8231741454979660696
+      StarLines_29: 9031561522686742136
+      StarLines_3: -5441495101709387912
+      StarLines_30: 3215800429466131743
+      StarLines_31: 6482609215969308562
+      StarLines_32: -2604922348836405146
+      StarLines_33: -7566420579288723272
+      StarLines_34: 1883004072460076008
+      StarLines_35: -3861527827656827198
+      StarLines_36: 1913767844925605146
+      StarLines_37: -3389826145489335808
+      StarLines_38: 3532338150300676703
+      StarLines_39: 832102717852391304
+      StarLines_4: -2876466180129118857
+      StarLines_40: 419483538602779777
+      StarLines_41: -5975884950952749961
+      StarLines_42: 5451537957515565624
+      StarLines_43: -3132947623429160486
+      StarLines_44: -4955308903260529733
+      StarLines_45: -2308045091741913939
+      StarLines_46: -1493641553353090665
+      StarLines_47: 4002905757775992476
+      StarLines_48: -4740842716780463857
+      StarLines_49: -240273002666329977
+      StarLines_5: -1457635277379494273
+      StarLines_50: -8923387087633870766
+      StarLines_51: -5219221272365910878
+      StarLines_52: 5538651019370955956
+      StarLines_53: 2882085865013474395
+      StarLines_54: -7135366537772496011
+      StarLines_55: -1094622838322412701
+      StarLines_56: -1360899665926914758
+      StarLines_57: 2421810095080011847
+      StarLines_58: 1554982532509507706
+      StarLines_59: 5771009498329778875
+      StarLines_6: 6978519901627477988
+      StarLines_60: -812740550202194172
+      StarLines_61: 994600665240170928
+      StarLines_62: 7411943033263430016
+      StarLines_63: -2687511513518744474
+      StarLines_64: -6222551426472847978
+      StarLines_65: -3224702066793936335
+      StarLines_66: 2738637929792862069
+      StarLines_67: -1123608884703824416
+      StarLines_68: -9055937966558125095
+      StarLines_69: 2950541136261107236
+      StarLines_7: -6725885981804185340
+      StarLines_70: -5268078702650125863
+      StarLines_71: -2583656884473234880
+      StarLines_72: 8825473986584610765
+      StarLines_73: 5616473376791336428
+      StarLines_74: 318190708477090470
+      StarLines_75: 8909842712390100666
+      StarLines_76: -8330934299512482530
+      StarLines_77: -4349655526924862283
+      StarLines_78: 7319425787171847914
+      StarLines_79: 5848715162176568541
+      StarLines_8: -5025268579975857706
+      StarLines_80: -5213573993870174841
+      StarLines_81: -521490741561078476
+      StarLines_82: 5851294578976122451
+      StarLines_83: 7743920126887138334
+      StarLines_84: 6863218302777296521
+      StarLines_85: -45141170527368369
+      StarLines_86: 4332246943001443110
+      StarLines_87: -8945168970007278620
+      StarLines_88: 8057376049302520099
+      StarLines_89: 8655432465147153321
+      StarLines_9: 8326681018617252471
+      StarLines_90: 5704864632277157069
+      StarLines_91: 2189444041078415678
+      StarLines_92: -5680595999073376520
+      StarLines_93: -2546791184619353518
+      StarLines_94: -7916803507619177284
+      StarLines_95: -2103462580900635170
+      StarLines_96: 4450345295890722256
+      StarLines_97: -5207898353258639816
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

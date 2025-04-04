@@ -1,0 +1,49 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.9 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="26.0.9">
+  <diagram name="Page-1" id="7H-jBLWZlrdjJO8HGoJw">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t6Lsa2P6Yyw3fsS84nSD-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=0;endSize=22;dashed=1;dashPattern=8 8;" edge="1" parent="1" source="t6Lsa2P6Yyw3fsS84nSD-6" target="t6Lsa2P6Yyw3fsS84nSD-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t6Lsa2P6Yyw3fsS84nSD-6" value="&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;div&gt;IAuthenticationService&lt;br&gt;&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="200" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="t6Lsa2P6Yyw3fsS84nSD-7" value="GetCurrentUserId (): string?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="t6Lsa2P6Yyw3fsS84nSD-6">
+          <mxGeometry y="30" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t6Lsa2P6Yyw3fsS84nSD-10" value="SqlDataService" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=20;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="40" width="250" height="156" as="geometry" />
+        </mxCell>
+        <mxCell id="t6Lsa2P6Yyw3fsS84nSD-11" value="- _config: IConfiguration" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="t6Lsa2P6Yyw3fsS84nSD-10">
+          <mxGeometry y="20" width="250" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t6Lsa2P6Yyw3fsS84nSD-12" value="- CONN: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="t6Lsa2P6Yyw3fsS84nSD-10">
+          <mxGeometry y="46" width="250" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="t6Lsa2P6Yyw3fsS84nSD-13" value="+ QuerySql(string, object?): IEnumerable&amp;lt;T&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="t6Lsa2P6Yyw3fsS84nSD-10">
+          <mxGeometry y="72" width="250" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="t6Lsa2P6Yyw3fsS84nSD-14" value="+&amp;nbsp;ExecuteSql(string, object): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="t6Lsa2P6Yyw3fsS84nSD-10">
+          <mxGeometry y="100" width="250" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="t6Lsa2P6Yyw3fsS84nSD-15" value="+&amp;nbsp;CreateMySqlConnection(): SqlConnection" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="t6Lsa2P6Yyw3fsS84nSD-10">
+          <mxGeometry y="128" width="250" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="t6Lsa2P6Yyw3fsS84nSD-16" value="AuthenticationService extends&amp;nbsp;IAuthenticationService" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="270" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="t6Lsa2P6Yyw3fsS84nSD-20" value="-&amp;nbsp;_httpContextAccessor:&amp;nbsp;IHttpContextAccessor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="t6Lsa2P6Yyw3fsS84nSD-16">
+          <mxGeometry y="30" width="270" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="t6Lsa2P6Yyw3fsS84nSD-35" value="+&amp;nbsp;GetCurrentUserId(): string?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="t6Lsa2P6Yyw3fsS84nSD-16">
+          <mxGeometry y="58" width="270" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="t6Lsa2P6Yyw3fsS84nSD-25" value="+&amp;nbsp;ExecuteSql(string, object): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="240" width="250" height="28" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
